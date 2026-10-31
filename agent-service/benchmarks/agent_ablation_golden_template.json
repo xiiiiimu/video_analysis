@@ -1,0 +1,18 @@
+{
+  "datasetVersion": "video-diagnosis-agent-ablation-v0.1",
+  "variants": [
+    "VIDEO_EVIDENCE_ONLY",
+    "RAG",
+    "LOCAL_REACT",
+    "EVALUATOR"
+  ],
+  "cases": [
+    {
+      "id": "manual-agent-case-hook-001",
+      "video_case_id": "fill-real-video-case-id",
+      "golden_findings": [],
+      "notes": "Human annotator must fill golden_findings before metrics are meaningful.",
+      "needs_human_label": true
+    }
+  ]
+}

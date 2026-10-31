@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: video-diagnosis-test
+  datasource:
+    url: jdbc:h2:mem:agent_integration_test;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+  task:
+    scheduling:
+      enabled: false
+
+app:
+  internal:
+    api-key: test-internal-api-key
+  agent-service:
+    base-url: http://localhost:18090
+    connect-timeout-ms: 1000
+    read-timeout-ms: 2000
+  agent-job:
+    max-retry-count: 3
+    agent-timeout: 2s
+    dispatch-scan-interval: PT1H
+    timeout-scan-interval: PT1H
+    retry-backoff-first: 10ms
+    retry-backoff-second: 20ms
+    retry-backoff-third: 30ms
+    scheduler:
+      enabled: false
+  diagnosis:
+    running-timeout-minutes: 30
+    timeout-scan-interval-ms: 60000
+  storage:
+    endpoint: http://localhost:9000
+    access-key: test
+    secret-key: test
+    bucket: test-bucket
+    public-base-url: http://localhost:9000
+    initialize-bucket: false

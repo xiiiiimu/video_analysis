@@ -1,0 +1,1014 @@
+{
+  "dataset_version": "video-diagnosis-agent-eval-v0.3-verified",
+  "dataset_role": "EVAL_CANDIDATE",
+  "annotation_policy": "Only human-reviewed cases may set verification_status=VERIFIED. PENDING cases are excluded from formal metrics.",
+  "cases": [
+    {
+      "case_id": "agent-case-hook-value-boundary-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "cross_skill_ambiguity",
+      "case_type": "cross_skill_ambiguity",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "前三秒说新品升级了三种功能，第四秒才解释能帮用户少走弯路。",
+          "ocr": "升级版 / 三大功能 / 省时间",
+          "metadata": "duration=18s; opening_text_visible=0-4s; benefit_statement_start=4.2s",
+          "evidence_refs": [
+            "ASR:agent-hv-001",
+            "OCR:agent-hv-001",
+            "META:agent-hv-001",
+            "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+            "KNOWLEDGE:value-pattern-audience-outcome-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "opening_value_boundary",
+          "label": "前三秒主要展示产品功能升级，显式用户收益直到约 4.2 秒才出现，因此开场的用户价值表达存在延迟。",
+          "required_evidence_refs": [
+            "ASR:agent-hv-001",
+            "OCR:agent-hv-001",
+            "META:agent-hv-001"
+          ],
+          "acceptable_variants": [
+            "opening feature claim before explicit benefit",
+            "hook value boundary ambiguous"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": true,
+      "expected_handoff_capability": "value_delivery",
+      "expected_conflict_resolution": "Value specialist should judge whether the feature wording has a concrete user outcome before final hook conclusion.",
+      "review_notes": "Human reviewed; finding wording normalized to evidence-supported diagnosis."
+    },
+    {
+      "case_id": "agent-case-visual-proof-value-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "cross_skill_ambiguity",
+      "case_type": "cross_skill_ambiguity",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "开头展示一张夸张前后对比图，但旁白只说你看这个变化很明显，没有解释变化对用户有什么用。",
+          "ocr": "前后对比 / 变化明显",
+          "metadata": "duration=22s; visual_proof_start=0.5s; explicit_outcome_absent=true",
+          "evidence_refs": [
+            "ASR:agent-hv-002",
+            "OCR:agent-hv-002",
+            "FRAME:agent-hv-002",
+            "KNOWLEDGE:hook-good-case-visual-proof-v1",
+            "KNOWLEDGE:value-good-case-proof-before-claim-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "visual_attention_without_value",
+          "label": "首屏展示了明显的前后对比，但旁白和画面文字没有说明这种变化对应什么用户结果，因此视觉证据尚未被转化为清晰的价值表达。",
+          "required_evidence_refs": [
+            "ASR:agent-hv-002",
+            "OCR:agent-hv-002",
+            "FRAME:agent-hv-002"
+          ],
+          "acceptable_variants": [
+            "visual proof helps hook but does not prove value",
+            "attention evidence lacks user outcome"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": true,
+      "expected_handoff_capability": "value_delivery",
+      "expected_conflict_resolution": "Hook may pass on visual attention, but final value finding should require explicit user outcome evidence.",
+      "review_notes": "Human reviewed; finding wording normalized to evidence-supported diagnosis."
+    },
+    {
+      "case_id": "agent-case-hook-clear-positive-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_FIXTURE",
+      "primary_skill": "hook_analysis",
+      "case_type": "clear_positive",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "",
+          "ocr": "前三秒直接给出痛点",
+          "metadata": "{\"duration\":12}",
+          "evidence_refs": [
+            "OCR:target-1",
+            "FRAME:target-1",
+            "KNOWLEDGE:hook-pattern-opening-pain-v1"
+          ]
+        },
+        "reference_evidence": [
+          {
+            "asr": "",
+            "ocr": "参考视频先讲收益",
+            "evidence_refs": [
+              "OCR:ref-1",
+              "FRAME:ref-1"
+            ]
+          }
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "strong_opening_hook",
+          "label": "前三秒直接给出用户痛点，开场信息明确，能够形成清晰的 Hook 线索。",
+          "required_evidence_refs": [
+            "OCR:target-1",
+            "FRAME:target-1"
+          ],
+          "acceptable_variants": [
+            "opening hook is clear",
+            "first three seconds show direct pain point"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed; finding wording normalized to evidence-supported diagnosis."
+    },
+    {
+      "case_id": "agent-case-hook-clear-negative-001",
+      "verification_status": "VERIFIED",
+      "source_type": "SYNTHETIC",
+      "primary_skill": "hook_analysis",
+      "case_type": "clear_negative",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "大家好我是小林，我做这个行业已经八年了，今天给大家分享一下我的经历。",
+          "ocr": "8年经验 / 我的经历",
+          "metadata": "duration=30s; benefit_statement_start=8.1s",
+          "evidence_refs": [
+            "ASR:agent-hook-002",
+            "OCR:agent-hook-002",
+            "META:agent-hook-002",
+            "KNOWLEDGE:hook-pattern-self-intro-delay-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "self_intro_delay",
+          "label": "开头长时间介绍自己，用户能获得什么出现太晚，容易削弱前三秒停留。",
+          "required_evidence_refs": [
+            "ASR:agent-hook-002",
+            "OCR:agent-hook-002",
+            "META:agent-hook-002"
+          ],
+          "acceptable_variants": [
+            "delayed user benefit due to self introduction",
+            "authority intro delays hook"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-hook-hard-negative-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "hook_analysis",
+      "case_type": "hard_negative",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "我做这行八年，踩过这三个坑，所以今天直接告诉你怎么避开。",
+          "ocr": "8年经验 / 3个坑 / 直接避开",
+          "metadata": "duration=25s; authority_claim=0.6s; user_benefit=2.2s",
+          "evidence_refs": [
+            "ASR:agent-hook-003",
+            "OCR:agent-hook-003",
+            "META:agent-hook-003",
+            "KNOWLEDGE:hook-good-case-authority-fast-v1",
+            "KNOWLEDGE:hook-pattern-self-intro-delay-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "authority_fast_hook",
+          "label": "虽然出现了资历信息，但资历马上服务于用户避坑收益，不应误判为自我介绍拖延。",
+          "required_evidence_refs": [
+            "ASR:agent-hook-003",
+            "OCR:agent-hook-003",
+            "META:agent-hook-003"
+          ],
+          "acceptable_variants": [
+            "authority supports immediate benefit",
+            "not self intro delay"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-hook-insufficient-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_FIXTURE",
+      "primary_skill": "hook_analysis",
+      "case_type": "insufficient_evidence",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "",
+          "ocr": "",
+          "metadata": "",
+          "evidence_refs": []
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "evidence_gap",
+          "label": "缺少前三秒画面文字、关键帧和 ASR，不能强行判断 Hook 强弱，应输出低置信或 evidence gap。",
+          "required_evidence_refs": [],
+          "acceptable_variants": [
+            "insufficient opening evidence",
+            "abstain until frame text or ASR is available"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-hook-curiosity-negative-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "hook_analysis",
+      "case_type": "clear_negative",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "很多人都不知道这个秘密，看到最后你就懂了。",
+          "ocr": "99%的人不知道 / 看到最后",
+          "metadata": "duration=19s; concrete_topic_start=7.0s",
+          "evidence_refs": [
+            "ASR:agent-hook-005",
+            "OCR:agent-hook-005",
+            "META:agent-hook-005",
+            "KNOWLEDGE:hook-bad-case-empty-suspense-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "empty_suspense",
+          "label": "开头使用悬念词但没有给出具体对象或收益，属于空悬念，停留理由不稳定。",
+          "required_evidence_refs": [
+            "ASR:agent-hook-005",
+            "OCR:agent-hook-005",
+            "META:agent-hook-005"
+          ],
+          "acceptable_variants": [
+            "empty suspense without concrete payoff",
+            "curiosity hook lacks object"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-hook-transition-001",
+      "verification_status": "VERIFIED",
+      "source_type": "SYNTHETIC",
+      "primary_skill": "hook_analysis",
+      "case_type": "conflict_case",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "别急，先看这个结果，后面我再拆为什么。",
+          "ocr": "先看结果",
+          "metadata": "duration=28s; result_visual=0.7s; explanation_start=5.6s",
+          "evidence_refs": [
+            "ASR:agent-hook-006",
+            "OCR:agent-hook-006",
+            "FRAME:agent-hook-006",
+            "KNOWLEDGE:hook-good-case-visual-proof-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "visual_result_hook",
+          "label": "首屏先展示结果画面，解释在约 5.6 秒后才开始，因此不能仅因解释延后就判断开场缺少 Hook；该开场主要依赖结果展示建立初始吸引。",
+          "required_evidence_refs": [
+            "ASR:agent-hook-006",
+            "OCR:agent-hook-006",
+            "FRAME:agent-hook-006"
+          ],
+          "acceptable_variants": [
+            "visual result creates initial hook",
+            "opening transition relies on result proof"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "Visual result may pass hook even if structure explanation starts later.",
+      "review_notes": "Human reviewed; finding wording normalized to evidence-supported diagnosis."
+    },
+    {
+      "case_id": "agent-case-structure-clear-positive-001",
+      "verification_status": "VERIFIED",
+      "source_type": "SYNTHETIC",
+      "primary_skill": "structure_rhythm_analysis",
+      "case_type": "clear_positive",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "先看问题，再看原因，最后给你三个动作。",
+          "ocr": "问题-原因-动作",
+          "metadata": "duration=34s; segment_count=3; scene_changes=5; midpoint_summary=true",
+          "evidence_refs": [
+            "ASR:agent-structure-001",
+            "OCR:agent-structure-001",
+            "META:agent-structure-001",
+            "KNOWLEDGE:structure-rule-midpoint-retention-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "clear_structure_flow",
+          "label": "视频按问题、原因、动作推进，中段有承接，结构路径清晰。",
+          "required_evidence_refs": [
+            "ASR:agent-structure-001",
+            "OCR:agent-structure-001",
+            "META:agent-structure-001"
+          ],
+          "acceptable_variants": [
+            "clear problem-cause-action flow",
+            "midpoint transition supports retention"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-structure-clear-negative-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "structure_rhythm_analysis",
+      "case_type": "clear_negative",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "第一个建议是选题，第二个是剪辑，第三个又回到选题，后面再讲账号定位。",
+          "ocr": "选题 / 剪辑 / 选题 / 定位",
+          "metadata": "duration=42s; topic_jumps=4; segment_order_repeats=true",
+          "evidence_refs": [
+            "ASR:agent-structure-002",
+            "OCR:agent-structure-002",
+            "META:agent-structure-002",
+            "KNOWLEDGE:structure-bad-case-topic-jump-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "topic_jump",
+          "label": "内容多次跳回同一主题，段落推进不稳定，影响结构节奏判断。",
+          "required_evidence_refs": [
+            "ASR:agent-structure-002",
+            "OCR:agent-structure-002",
+            "META:agent-structure-002"
+          ],
+          "acceptable_variants": [
+            "topic order is scattered",
+            "structure repeats and jumps"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-structure-hard-negative-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "structure_rhythm_analysis",
+      "case_type": "hard_negative",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "先展示改造前，再展示改造后，然后按三个步骤解释中间怎么做。",
+          "ocr": "前 / 后 / 三步拆解",
+          "metadata": "duration=38s; before_after_visual=0-5s; process_steps=3",
+          "evidence_refs": [
+            "ASR:agent-structure-003",
+            "OCR:agent-structure-003",
+            "META:agent-structure-003",
+            "KNOWLEDGE:structure-pattern-contrast-before-after-v1",
+            "KNOWLEDGE:value-rule-before-after-outcome-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "before_after_structure",
+          "label": "视频先展示改造前后结果，再按三个步骤解释过程，前后对比在这里构成了明确的内容组织顺序和结构递进。",
+          "required_evidence_refs": [
+            "ASR:agent-structure-003",
+            "OCR:agent-structure-003",
+            "META:agent-structure-003"
+          ],
+          "acceptable_variants": [
+            "before-after organizes the explanation",
+            "structure sequence uses contrast"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed; finding wording normalized to evidence-supported diagnosis."
+    },
+    {
+      "case_id": "agent-case-structure-insufficient-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_FIXTURE",
+      "primary_skill": "structure_rhythm_analysis",
+      "case_type": "insufficient_evidence",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "",
+          "ocr": "",
+          "metadata": "",
+          "evidence_refs": [
+            "FRAME:agent-structure-004"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "evidence_gap",
+          "label": "只有一个关键帧，缺少 ASR、镜头节奏和时长信息，不能稳定判断结构节奏。",
+          "required_evidence_refs": [
+            "FRAME:agent-structure-004"
+          ],
+          "acceptable_variants": [
+            "insufficient rhythm metadata",
+            "needs transcript or scene metadata"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-structure-static-density-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "structure_rhythm_analysis",
+      "case_type": "clear_negative",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "今天我从四个方面给你讲，第一点很重要，第二点也重要，第三点还是很关键。",
+          "ocr": "四个重点",
+          "metadata": "duration=45s; scene_changes=0; face_talking_head=true; on_screen_text_changes=1",
+          "evidence_refs": [
+            "ASR:agent-structure-005",
+            "OCR:agent-structure-005",
+            "META:agent-structure-005",
+            "KNOWLEDGE:structure-bad-case-static-talking-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "static_talking_low_density",
+          "label": "长时间静态口播且画面信息变化少，节奏密度不足。",
+          "required_evidence_refs": [
+            "ASR:agent-structure-005",
+            "OCR:agent-structure-005",
+            "META:agent-structure-005"
+          ],
+          "acceptable_variants": [
+            "static talking head reduces rhythm",
+            "low scene density"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-structure-example-driven-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "structure_rhythm_analysis",
+      "case_type": "clear_positive",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "先给你看一个真实例子，再从这个例子里拆出三个步骤。",
+          "ocr": "案例 -> 三步",
+          "metadata": "duration=36s; example_start=0.8s; steps_start=8.4s",
+          "evidence_refs": [
+            "ASR:agent-structure-006",
+            "OCR:agent-structure-006",
+            "META:agent-structure-006",
+            "KNOWLEDGE:structure-good-case-example-driven-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "example_driven_structure",
+          "label": "先用例子建立上下文，再从例子拆步骤，结构承接清楚。",
+          "required_evidence_refs": [
+            "ASR:agent-structure-006",
+            "OCR:agent-structure-006",
+            "META:agent-structure-006"
+          ],
+          "acceptable_variants": [
+            "example drives structure",
+            "case-to-steps flow"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-value-clear-positive-001",
+      "verification_status": "VERIFIED",
+      "source_type": "SYNTHETIC",
+      "primary_skill": "value_delivery_analysis",
+      "case_type": "clear_positive",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "看完你能直接拿走一个选题模板，今晚就能改你的第一条视频。",
+          "ocr": "选题模板 / 今晚可用",
+          "metadata": "duration=24s; outcome_statement_start=1.5s; action_steps=3",
+          "evidence_refs": [
+            "ASR:agent-value-001",
+            "OCR:agent-value-001",
+            "META:agent-value-001",
+            "KNOWLEDGE:value-pattern-actionable-advice-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "actionable_value",
+          "label": "价值表达具体，明确说明用户能拿走模板并立即执行。",
+          "required_evidence_refs": [
+            "ASR:agent-value-001",
+            "OCR:agent-value-001",
+            "META:agent-value-001"
+          ],
+          "acceptable_variants": [
+            "clear actionable outcome",
+            "specific user takeaway"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-value-clear-negative-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "value_delivery_analysis",
+      "case_type": "clear_negative",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "这个功能很强大，体验也很顺滑，整体升级很多。",
+          "ocr": "强大 / 顺滑 / 升级",
+          "metadata": "duration=20s; feature_terms=5; explicit_user_outcome=0",
+          "evidence_refs": [
+            "ASR:agent-value-002",
+            "OCR:agent-value-002",
+            "META:agent-value-002",
+            "KNOWLEDGE:value-bad-case-feature-without-benefit-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "feature_without_benefit",
+          "label": "只描述功能和体验，没有翻译成用户收益，价值交付不清晰。",
+          "required_evidence_refs": [
+            "ASR:agent-value-002",
+            "OCR:agent-value-002",
+            "META:agent-value-002"
+          ],
+          "acceptable_variants": [
+            "feature claims lack user benefit",
+            "value outcome absent"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-value-hard-negative-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "value_delivery_analysis",
+      "case_type": "hard_negative",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "最后点主页领表格，但前面已经教完三个判断标准。",
+          "ocr": "三个标准 / 主页领表格",
+          "metadata": "duration=32s; advice_steps=3; cta_start=29s",
+          "evidence_refs": [
+            "ASR:agent-value-003",
+            "OCR:agent-value-003",
+            "META:agent-value-003",
+            "KNOWLEDGE:value-pattern-actionable-advice-v1",
+            "KNOWLEDGE:value-rule-call-to-action-fit-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "actionable_advice_with_fit_cta",
+          "label": "主体内容已经给出可执行标准，结尾 CTA 与前文价值一致，不应误判为只有引流没有价值。",
+          "required_evidence_refs": [
+            "ASR:agent-value-003",
+            "OCR:agent-value-003",
+            "META:agent-value-003"
+          ],
+          "acceptable_variants": [
+            "CTA fits delivered advice",
+            "actionable content precedes call to action"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-value-insufficient-001",
+      "verification_status": "VERIFIED",
+      "source_type": "SYNTHETIC",
+      "primary_skill": "value_delivery_analysis",
+      "case_type": "insufficient_evidence",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "",
+          "ocr": "第2步",
+          "metadata": "duration=15s; transcript_missing=true; partial_frame_text=true",
+          "evidence_refs": [
+            "OCR:agent-value-004",
+            "META:agent-value-004"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "evidence_gap",
+          "label": "只有局部步骤文字，缺少上下文和完整 ASR，不能稳定判断价值是否完整交付。",
+          "required_evidence_refs": [
+            "OCR:agent-value-004",
+            "META:agent-value-004"
+          ],
+          "acceptable_variants": [
+            "insufficient value context",
+            "needs full transcript before value judgment"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-value-proof-positive-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "value_delivery_analysis",
+      "case_type": "clear_positive",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "我先给你看后台数据，再说为什么这个方法能让转化率提高。",
+          "ocr": "转化率 +18%",
+          "metadata": "duration=27s; proof_before_claim=true; metric_visible=0.9s",
+          "evidence_refs": [
+            "ASR:agent-value-005",
+            "OCR:agent-value-005",
+            "FRAME:agent-value-005",
+            "KNOWLEDGE:value-good-case-proof-before-claim-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "proof_before_claim",
+          "label": "先展示数据证据再解释价值主张，价值可信度有证据支撑。",
+          "required_evidence_refs": [
+            "ASR:agent-value-005",
+            "OCR:agent-value-005",
+            "FRAME:agent-value-005"
+          ],
+          "acceptable_variants": [
+            "proof supports value claim",
+            "evidence precedes claim"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-value-specificity-negative-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "value_delivery_analysis",
+      "case_type": "clear_negative",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "这个方法能提升很多，让你的内容更好，效果也会更明显。",
+          "ocr": "提升很多 / 效果明显",
+          "metadata": "duration=21s; numeric_metric_absent=true; audience_absent=true",
+          "evidence_refs": [
+            "ASR:agent-value-006",
+            "OCR:agent-value-006",
+            "META:agent-value-006",
+            "KNOWLEDGE:value-rule-specificity-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "low_specificity",
+          "label": "价值表述主要停留在“提升很多”“效果更明显”等泛化描述，缺少明确适用对象、可验证指标和具体结果，因此价值表达的具体性不足。",
+          "required_evidence_refs": [
+            "ASR:agent-value-006",
+            "OCR:agent-value-006",
+            "META:agent-value-006"
+          ],
+          "acceptable_variants": [
+            "value claim lacks specificity",
+            "generic outcome wording"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": false,
+      "expected_handoff_capability": "NONE",
+      "expected_conflict_resolution": "",
+      "review_notes": "Human reviewed; finding wording normalized to evidence-supported diagnosis."
+    },
+    {
+      "case_id": "agent-case-cross-hook-value-002",
+      "verification_status": "VERIFIED",
+      "source_type": "SYNTHETIC",
+      "primary_skill": "cross_skill_ambiguity",
+      "case_type": "cross_skill_ambiguity",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "开头说这个工具能让你少加班，但后面只演示按钮位置。",
+          "ocr": "少加班 / 一键生成",
+          "metadata": "duration=26s; benefit_in_opening=true; later_value_detail=weak",
+          "evidence_refs": [
+            "ASR:agent-cross-hv-002",
+            "OCR:agent-cross-hv-002",
+            "META:agent-cross-hv-002",
+            "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+            "KNOWLEDGE:value-bad-case-feature-without-benefit-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "opening_benefit_not_delivered",
+          "label": "开头承诺少加班能形成 Hook，但后续只讲按钮功能，价值交付可能不足。",
+          "required_evidence_refs": [
+            "ASR:agent-cross-hv-002",
+            "OCR:agent-cross-hv-002",
+            "META:agent-cross-hv-002"
+          ],
+          "acceptable_variants": [
+            "hook promise not supported by value detail",
+            "benefit claim needs value verification"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": true,
+      "expected_handoff_capability": "value_delivery",
+      "expected_conflict_resolution": "Hook may be positive while value delivery is negative or uncertain.",
+      "review_notes": "Human reviewed and accepted."
+    },
+    {
+      "case_id": "agent-case-cross-hook-structure-001",
+      "verification_status": "VERIFIED",
+      "source_type": "SYNTHETIC",
+      "primary_skill": "cross_skill_ambiguity",
+      "case_type": "cross_skill_ambiguity",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "前三秒抛出一个问题，接着连续切了五个场景但没有回答问题。",
+          "ocr": "你是不是也这样？",
+          "metadata": "duration=24s; scene_changes_first_5s=5; answer_start=9.5s",
+          "evidence_refs": [
+            "ASR:agent-cross-hs-001",
+            "OCR:agent-cross-hs-001",
+            "META:agent-cross-hs-001",
+            "KNOWLEDGE:hook-pattern-curiosity-gap-v1",
+            "KNOWLEDGE:structure-rule-density-scene-change-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "fast_cut_without_answer",
+          "label": "开头提出了明确问题，但随后连续高频切换场景，直到约 9.5 秒才开始回答，开场问题与后续内容之间的结构承接存在明显延迟。",
+          "required_evidence_refs": [
+            "ASR:agent-cross-hs-001",
+            "OCR:agent-cross-hs-001",
+            "META:agent-cross-hs-001"
+          ],
+          "acceptable_variants": [
+            "hook question lacks structural follow-through",
+            "scene density does not answer opening question"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": true,
+      "expected_handoff_capability": "structure_rhythm",
+      "expected_conflict_resolution": "Hook can be valid while structure follow-through is weak.",
+      "review_notes": "Human reviewed; finding wording normalized to evidence-supported diagnosis."
+    },
+    {
+      "case_id": "agent-case-cross-hook-structure-002",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "cross_skill_ambiguity",
+      "case_type": "conflict_case",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "先展示最终效果，然后中间跳过步骤，直接说你照做就行。",
+          "ocr": "最终效果 / 照做就行",
+          "metadata": "duration=31s; result_visual=0.5s; process_gap=true",
+          "evidence_refs": [
+            "ASR:agent-cross-hs-002",
+            "OCR:agent-cross-hs-002",
+            "META:agent-cross-hs-002",
+            "KNOWLEDGE:hook-good-case-visual-proof-v1",
+            "KNOWLEDGE:structure-pattern-contrast-before-after-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "proof_hook_process_gap",
+          "label": "首屏直接展示最终效果，但中间过程被跳过，结果展示与后续方法说明之间缺少必要衔接，结构上存在明显的过程断层。",
+          "required_evidence_refs": [
+            "ASR:agent-cross-hs-002",
+            "OCR:agent-cross-hs-002",
+            "META:agent-cross-hs-002"
+          ],
+          "acceptable_variants": [
+            "visual proof hook but weak structure",
+            "result-to-process transition gap"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": true,
+      "expected_handoff_capability": "structure_rhythm",
+      "expected_conflict_resolution": "Do not let positive visual hook hide structure gap.",
+      "review_notes": "Human reviewed; finding wording normalized to evidence-supported diagnosis."
+    },
+    {
+      "case_id": "agent-case-cross-structure-value-001",
+      "verification_status": "VERIFIED",
+      "source_type": "EXISTING_BENCHMARK",
+      "primary_skill": "cross_skill_ambiguity",
+      "case_type": "cross_skill_ambiguity",
+      "candidate_only": false,
+      "input": {
+        "target_evidence": {
+          "asr": "第一步找账号，第二步看数据，第三步套模板，但没有说明什么人适合这个方法。",
+          "ocr": "三步流程 / 找账号 / 看数据 / 套模板",
+          "metadata": "duration=40s; structure_steps=3; target_audience_absent=true",
+          "evidence_refs": [
+            "ASR:agent-cross-sv-001",
+            "OCR:agent-cross-sv-001",
+            "META:agent-cross-sv-001",
+            "KNOWLEDGE:structure-good-case-example-driven-v1",
+            "KNOWLEDGE:value-pattern-audience-outcome-v1"
+          ]
+        },
+        "reference_evidence": []
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "clear_steps_missing_audience_outcome",
+          "label": "结构上步骤清楚，但价值层缺少适用人群和预期结果，需要 Value 维度补判。",
+          "required_evidence_refs": [
+            "ASR:agent-cross-sv-001",
+            "OCR:agent-cross-sv-001",
+            "META:agent-cross-sv-001"
+          ],
+          "acceptable_variants": [
+            "clear structure but weak audience outcome",
+            "steps do not equal value clarity"
+          ]
+        }
+      ],
+      "cross_skill_ambiguity": true,
+      "expected_handoff_capability": "value_delivery",
+      "expected_conflict_resolution": "Structure-positive conclusion should not imply value-positive conclusion.",
+      "review_notes": "Human reviewed and accepted."
+    }
+  ]
+}

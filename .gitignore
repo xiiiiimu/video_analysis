@@ -1,0 +1,75 @@
+# 本地密钥与环境配置
+.env
+.env.*
+*.env.local
+!.env.example
+!**/.env.example
+*.pem
+*.key
+
+# Python 与缓存
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.cache/
+*.egg-info/
+build/
+dist/
+.coverage
+htmlcov/
+
+# Java 构建与崩溃日志
+target/
+*.class
+hs_err_pid*.log
+replay_pid*.log
+
+# 编辑器与系统文件
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+*.log
+
+# 本地改造备份
+/_backup_*/
+
+# 视频、音频及本地运行数据；示例材料请使用脱敏文本
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.mp3
+*.wav
+/uploads/
+/tmp/
+/data/
+/job*.json
+/criteria.txt
+
+# 本机 Python 安装文件（不是项目依赖）
+/python.exe
+/pythonw.exe
+/python*.dll
+/python*.pdb
+/pythonw.pdb
+/vcruntime*.dll
+/DLLs/
+/Doc/
+/include/
+/Lib/
+/libs/
+/Scripts/
+/tcl/
+/Tools/
+/LICENSE.txt
+/NEWS.txt
+
+# 本地导出文档；保留 docs 下 Markdown 源文档
+/docs/interview_docx/
+/docs/project_docx/

@@ -1,0 +1,2482 @@
+{
+  "finishedAt": "2026-10-29T13:53:05.389706+00:00",
+  "model": "deepseek-flash",
+  "provider": "api.deepseek.com",
+  "rag": "on",
+  "aborted": "",
+  "caseCount": 2,
+  "repeat": 2,
+  "cases": {
+    "cc1_criteria_no_cta": {
+      "description": "c04 的证据包 + 用户标准。目标开场就承诺收益、每一步有字幕标题、没有竞品、但结尾没有行动号召。",
+      "expected": [
+        "no_cta"
+      ],
+      "forbidden": [
+        "hook_no_value_promise",
+        "hook_slow_start",
+        "value_late"
+      ],
+      "strengthDims": []
+    },
+    "cc2_criteria_overall": {
+      "description": "c08 的证据包 + 带小标题的用户标准 + 勾选整体补充分析。目标没有分步标记，也没有提到要求的品牌名。",
+      "expected": [
+        "structure_unclear"
+      ],
+      "forbidden": [
+        "no_cta",
+        "hook_no_value_promise"
+      ],
+      "strengthDims": []
+    }
+  },
+  "results": {
+    "v2": {
+      "summary": {
+        "runs": 4,
+        "failedRuns": 0,
+        "issueRecall": 1.0,
+        "falseAlarmRate": 0.0,
+        "strengthMisreportRate": null,
+        "quotedFindingRate": 1.0,
+        "typedFindingRate": 1.0,
+        "invalidRefRate": 0.0,
+        "abstainRate": 0.0,
+        "rubricCitedRate": 1.0,
+        "criteriaSplitAccuracy": 1.0,
+        "criteriaDimensionAccuracy": 1.0,
+        "criteriaVerdictAccuracy": 1.0,
+        "criteriaCoverage": 1.0,
+        "polarityOverrides": 0,
+        "typeCorrections": 0,
+        "downgrades": 0,
+        "specialistErrors": 0,
+        "avgRetries": 0,
+        "avgTokens": 37881,
+        "avgLatencySeconds": 34.6,
+        "counts": {
+          "issueRecall": [
+            4,
+            4
+          ],
+          "falseAlarmRate": [
+            0,
+            10
+          ],
+          "strengthMisreportRate": [
+            0,
+            0
+          ],
+          "quotedFindingRate": [
+            12,
+            12
+          ],
+          "typedFindingRate": [
+            12,
+            12
+          ],
+          "invalidRefRate": [
+            0,
+            170
+          ],
+          "abstainRate": [
+            0,
+            12
+          ],
+          "rubricCitedRate": [
+            12,
+            12
+          ],
+          "criteriaSplitAccuracy": [
+            4,
+            4
+          ],
+          "criteriaDimensionAccuracy": [
+            14,
+            14
+          ],
+          "criteriaVerdictAccuracy": [
+            14,
+            14
+          ],
+          "criteriaCoverage": [
+            14,
+            14
+          ],
+          "stability": [
+            8,
+            12
+          ]
+        },
+        "stability": 0.667
+      },
+      "runs": [
+        {
+          "caseId": "cc1_criteria_no_cta",
+          "status": "success",
+          "stopReason": "completed",
+          "error": "",
+          "latencySeconds": 18.3,
+          "usage": {
+            "modelCalls": 6,
+            "inputTokens": 28584,
+            "outputTokens": 5895,
+            "totalTokens": 34479
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标在前 3 秒内就给出了清晰的收益承诺：第 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，同时第 0~4 秒屏幕文字「5分钟早餐 3个技巧」与口播同步强化，观众在首屏即可知道能获得“3 个技巧 / 5 分钟做完早餐”。首屏没有出现「大家好今天分享一下」这类缺少对象与收益的泛泛开场（对照 KNOWLEDGE:hook-bad-case-generic-opening-v1）；开场也未停留在空泛悬念上（对照 KNOWLEDGE:hook-bad-case-empty-suspense-v1）。不足在于只给了收益、没有明说痛点（如“早上没时间”），且口播从 0.5 秒才开始，第 0~0.5 秒仅有屏幕文字支撑。",
+              "differenceText": "目标与参考在开场环节几乎逐字一致：R1 同样是第 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，第 0~4 秒屏幕文字「5分钟早餐 3个技巧」，两者首次给出收益的时间同为 0.5 秒，开场镜头结构也同为 3 个 6 秒镜头（METADATA:T / METADATA:R1）。因此两者在“前三秒信息承诺”上满足程度相同，没有可归因于目标的差距。",
+              "suggestedAction": "保持现有开场：第 0.5 秒的口播「三个技巧，让你的早餐五分钟就能做好」与第 0~4 秒屏幕文字「5分钟早餐 3个技巧」同步的写法继续沿用，无需改动。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:02",
+                "FRAME:T@00:00:03",
+                "FRAME:R1@00:00:02",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00",
+                "METADATA:T",
+                "ASR:R1@00:00:00",
+                "OCR:R1@00:00:00"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1",
+                "KNOWLEDGE:hook-platform-short-feed-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-good-case-authority-fast-v1",
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-bad-case-empty-suspense-v1"
+              ],
+              "confidence": 0.88,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标的段落结构清晰：METADATA:T 显示全片共 15 个镜头，平均镜头时长 5.7 秒，中位镜头时长 6.0 秒，最长镜头 6.0 秒，2 秒内短镜头 0 个，每 30 秒切换次数依次为 4、5、5 次，全片节奏均匀。步骤标记明确：OCR:T@00:00:12「第一步 提前煮蛋」、OCR:T@00:00:30「第二步 隔夜燕麦」、OCR:T@00:00:50「第三步 面包机定时」，口播同步说「第一步，前一天晚上把鸡蛋煮好放冰箱」（12-18 秒）、「第二步，燕麦用牛奶提前泡一晚」（30-37 秒）、「第三步，面包机定时，早上起来直接拿」（50-57 秒），形成三点列表式结构；第 65-73 秒屏幕文字「以前25分钟 → 现在5分钟」加上口播「比以前省了二十分钟」，构成前后对比收尾。每条用户要求「每一步都要有字幕标题」均在屏幕上得到满足。全片没有段落跳跃，也没有主题跳跃，只有第 80-84 秒「好了，今天就到这里」收尾较平淡，但这属于价值收束，不影响结构判断。",
+              "differenceText": "参考与目标在结构与节奏的数字上几乎一致：METADATA:R1 显示 15 个镜头、平均镜头时长 5.9 秒、中位 6.0 秒、最长镜头 6.0 秒、2 秒内短镜头 0 个、每 30 秒切换次数依次为 4、5、5 次；同样在第 12、30、50 秒出现「第一步」「第二步」「第三步」字幕与口播（ASR:R1@00:00:12 等），第 65 秒出现「以前25分钟 → 现在5分钟」对比字幕。两者段落划分、步骤标记和切换节奏基本重合，没有可识别的结构或节奏差距（唯一差别在结尾口播内容，属于价值交付维度，不属于本维度）。",
+              "suggestedAction": "保持现有结构：继续沿用 12、30、50 秒的「第一步/第二步/第三步」字幕标题，保持 15 个镜头、平均 5.7 秒、每 30 秒 4~5 次的切换密度；若要进一步优化，可在第 65 秒对比字幕处插入一个约 1.5 秒的短镜头来强化结果瞬间，而非整体提速。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                },
+                {
+                  "ref": "ASR:R1@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:12",
+                "FRAME:T@00:00:30",
+                "FRAME:T@00:00:50",
+                "FRAME:R1@00:00:12",
+                "FRAME:R1@00:00:30",
+                "METADATA:T",
+                "METADATA:R1",
+                "OCR:T@00:00:12",
+                "OCR:T@00:00:30",
+                "OCR:T@00:00:50",
+                "ASR:T@00:00:50",
+                "ASR:R1@00:00:12"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-topic-list-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-topic-list-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1",
+                "KNOWLEDGE:structure-bad-case-static-talking-v1",
+                "KNOWLEDGE:structure-good-case-example-driven-v1",
+                "KNOWLEDGE:structure-bad-case-topic-jump-v1"
+              ],
+              "confidence": 0.85,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "no_cta",
+              "observation": "目标视频的价值交付大部分是成立的：第 0.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，同时屏幕文字 0-4 秒同步打出「5分钟早餐 3个技巧」，观众收益（三个技巧 + 5 分钟完成早餐）在第一句就出现；第 12/30/50 秒依次给出「第一步/第二步/第三步」的可执行步骤（OCR:第一步 提前煮蛋、第二步 隔夜燕麦、第三步 面包机定时）；第 65 秒给结果证明，口播「我每天早上只花五分钟，比以前省了二十分钟」，屏幕文字「以前25分钟 → 现在5分钟」形成前后对比。问题出在结尾：第 80-84 秒口播「好了，今天就到这里」，没有任何关注/收藏/下期的引导，86 秒视频到此结束，价值交付没有收束动作。",
+              "differenceText": "参考视频 R1 与目标在价值承诺、三步结构、比较证明上高度一致（同样在 0.5 秒说「三个技巧，让你的早餐五分钟就能做好」，65 秒说「比以前省了二十分钟」，OCR「以前25分钟 → 现在5分钟」），唯一实质差异在结尾：R1 第 80-85 秒说「觉得有用就关注我，下期教你做便当」，把上文「省时早餐」的价值直接转成关注理由并预告下期；目标第 80-84 秒只说「好了，今天就到这里」，同一个位置少了一次引导关注的行动号召。",
+              "suggestedAction": "把第 80-84 秒的「好了，今天就到这里」替换成与收益一致的引导，例如「觉得这 3 个技巧有用就关注我，下期教你 5 分钟便当」，与参考 R1 的第 80-85 秒同样的口播位置对齐；同时在 78-85 秒的画面加上大字幕「关注我，下期：5分钟便当」，让结尾 CTA 有口播 + 屏幕文字双通道。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:01:20",
+                  "text": "好了，今天就到这里"
+                },
+                {
+                  "ref": "ASR:R1@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                },
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:T@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:01:23",
+                "FRAME:R1@00:01:23",
+                "ASR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20",
+                "ASR:R1@00:01:20",
+                "OCR:T@00:01:05"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:value-rule-call-to-action-fit-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:value-rule-call-to-action-fit-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1",
+                "KNOWLEDGE:value-bad-case-scattered-benefits-v1",
+                "KNOWLEDGE:value-pattern-actionable-advice-v1",
+                "KNOWLEDGE:value-good-case-step-by-step-v1",
+                "KNOWLEDGE:value-rule-specificity-v1"
+              ],
+              "confidence": 0.9,
+              "targetScore": 3.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            }
+          ],
+          "abstained": [],
+          "attempts": [
+            {
+              "dimension": "HOOK",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "confidence": 0.88,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1",
+                "KNOWLEDGE:hook-platform-short-feed-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-good-case-authority-fast-v1",
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-bad-case-empty-suspense-v1"
+              ],
+              "reason": "",
+              "observation": "目标在前 3 秒内就给出了清晰的收益承诺：第 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，同时第 0~4 秒屏幕文字「5分钟早餐 3个技巧」与口播同步强化，观众在首屏即可知道能获得“3 个技巧 / 5 分钟做完早餐”。首屏没有出现「大家好今天分享一下」这类缺少对象与收益的泛泛开场（对照 KNOWLEDGE:hook-bad-case-generic-opening-v1）；开场也未停留在空泛悬念上（对照 KNOWLEDGE:hook-bad-case-empty-suspense-v1）。不足在于只给了收益、没有明说痛点（如“早上没时间”），且口播从 0.5 秒才开始，第 0~0.5 秒仅有屏幕文字支撑。"
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "GAP",
+              "findingType": "no_cta",
+              "confidence": 0.9,
+              "targetScore": 3.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:01:20",
+                  "text": "好了，今天就到这里"
+                },
+                {
+                  "ref": "ASR:R1@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                },
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:T@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:value-rule-call-to-action-fit-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:value-rule-call-to-action-fit-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1",
+                "KNOWLEDGE:value-bad-case-scattered-benefits-v1",
+                "KNOWLEDGE:value-pattern-actionable-advice-v1",
+                "KNOWLEDGE:value-good-case-step-by-step-v1",
+                "KNOWLEDGE:value-rule-specificity-v1"
+              ],
+              "reason": "",
+              "observation": "目标视频的价值交付大部分是成立的：第 0.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，同时屏幕文字 0-4 秒同步打出「5分钟早餐 3个技巧」，观众收益（三个技巧 + 5 分钟完成早餐）在第一句就出现；第 12/30/50 秒依次给出「第一步/第二步/第三步」的可执行步骤（OCR:第一步 提前煮蛋、第二步 隔夜燕麦、第三步 面包机定时）；第 65 秒给结果证明，口播「我每天早上只花五分钟，比以前省了二十分钟」，屏幕文字「以前25分钟 → 现在5分钟」形成前后对比。问题出在结尾：第 80-84 秒口播「好了，今天就到这里」，没有任何关注/收藏/下期的引导，86 秒视频到此结束，价值交付没有收束动作。"
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "confidence": 0.85,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                },
+                {
+                  "ref": "ASR:R1@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-topic-list-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-topic-list-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1",
+                "KNOWLEDGE:structure-bad-case-static-talking-v1",
+                "KNOWLEDGE:structure-good-case-example-driven-v1",
+                "KNOWLEDGE:structure-bad-case-topic-jump-v1"
+              ],
+              "reason": "",
+              "observation": "目标的段落结构清晰：METADATA:T 显示全片共 15 个镜头，平均镜头时长 5.7 秒，中位镜头时长 6.0 秒，最长镜头 6.0 秒，2 秒内短镜头 0 个，每 30 秒切换次数依次为 4、5、5 次，全片节奏均匀。步骤标记明确：OCR:T@00:00:12「第一步 提前煮蛋」、OCR:T@00:00:30「第二步 隔夜燕麦」、OCR:T@00:00:50「第三步 面包机定时」，口播同步说「第一步，前一天晚上把鸡蛋煮好放冰箱」（12-18 秒）、「第二步，燕麦用牛奶提前泡一晚」（30-37 秒）、「第三步，面包机定时，早上起来直接拿」（50-57 秒），形成三点列表式结构；第 65-73 秒屏幕文字「以前25分钟 → 现在5分钟」加上口播「比以前省了二十分钟」，构成前后对比收尾。每条用户要求「每一步都要有字幕标题」均在屏幕上得到满足。全片没有段落跳跃，也没有主题跳跃，只有第 80-84 秒「好了，今天就到这里」收尾较平淡，但这属于价值收束，不影响结构判断。"
+            }
+          ],
+          "evaluatorReasons": [
+            []
+          ],
+          "specialistErrors": [],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在前 3 秒收益承诺和三点式结构节奏上与参考视频基本相当，开场直接给出「三个技巧，让你的早餐五分钟就能做好」，并保持相同的步骤标题和切换密度，这些是优势。最关键的差距在结尾：目标第 80-84 秒只说「好了，今天就到这里」，缺少参考视频同位置「觉得有用就关注我，下期教你做便当」式的行动号召，导致价值交付没有收束。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "no_cta",
+                "suggestedAction": "把第 80-84 秒的「好了，今天就到这里」替换成与收益一致的引导，例如「觉得这 3 个技巧有用就关注我，下期教你 5 分钟便当」，与参考 R1 的第 80-85 秒同样的口播位置对齐；同时在 78-85 秒的画面加上大字幕「关注我，下期：5分钟便当」，让结尾 CTA 有口播 + 屏幕文字双通道。",
+                "confidence": 0.9,
+                "rationale": "唯一需要补齐的实质差距是结尾没有把已交付的省时早餐价值转成关注/下期引导，而参考视频在同一位置完成了 CTA。"
+              }
+            ],
+            "mergedActions": [
+              "将第 80-84 秒口播「好了，今天就到这里」替换为与收益一致的引导，例如「觉得这 3 个技巧有用就关注我，下期教你 5 分钟便当」，并在 78-85 秒画面同步加上大字幕「关注我，下期：5分钟便当」，形成口播加屏幕文字双通道的结尾 CTA。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标在前 3 秒内就给出了清晰的收益承诺：第 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，同时第 0~4 秒屏幕文字「5分钟早餐 3个技巧」与口播同步强化，观众在首屏即可知道能获得“3 个技巧 / 5 分钟做完早餐”。首屏没有出现「大家好今天分享一下」这类缺少对象与收益的泛泛开场（对照 KNOWLEDGE:hook-bad-case-generic-opening-v1）；开场也未停留在空泛悬念上（对照 KNOWLEDGE:hook-bad-case-empty-suspense-v1）。不足在于只给了收益、没有明说痛点（如“早上没时间”），且口播从 0.5 秒才开始，第 0~0.5 秒仅有屏幕文字支撑。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "ASR:R1@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  }
+                ],
+                "downgraded": null
+              },
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "observation": "目标的段落结构清晰：METADATA:T 显示全片共 15 个镜头，平均镜头时长 5.7 秒，中位镜头时长 6.0 秒，最长镜头 6.0 秒，2 秒内短镜头 0 个，每 30 秒切换次数依次为 4、5、5 次，全片节奏均匀。步骤标记明确：OCR:T@00:00:12「第一步 提前煮蛋」、OCR:T@00:00:30「第二步 隔夜燕麦」、OCR:T@00:00:50「第三步 面包机定时」，口播同步说「第一步，前一天晚上把鸡蛋煮好放冰箱」（12-18 秒）、「第二步，燕麦用牛奶提前泡一晚」（30-37 秒）、「第三步，面包机定时，早上起来直接拿」（50-57 秒），形成三点列表式结构；第 65-73 秒屏幕文字「以前25分钟 → 现在5分钟」加上口播「比以前省了二十分钟」，构成前后对比收尾。每条用户要求「每一步都要有字幕标题」均在屏幕上得到满足。全片没有段落跳跃，也没有主题跳跃，只有第 80-84 秒「好了，今天就到这里」收尾较平淡，但这属于价值收束，不影响结构判断。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:12",
+                    "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                  },
+                  {
+                    "ref": "ASR:R1@00:00:12",
+                    "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                  }
+                ],
+                "downgraded": null
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED",
+            "criteria": [
+              {
+                "text": "开头3秒内要说出观众能得到什么",
+                "section": "",
+                "id": "U1",
+                "dimension": "HOOK",
+                "check": "开头 3 秒内说出观众能得到什么",
+                "classifiedBy": "llm",
+                "dimensionLabel": "开场钩子"
+              },
+              {
+                "text": "结尾必须引导关注",
+                "section": "",
+                "id": "U2",
+                "dimension": "VALUE_DELIVERY",
+                "check": "结尾有引导关注的行动号召",
+                "classifiedBy": "llm",
+                "dimensionLabel": "价值传递"
+              },
+              {
+                "text": "不能出现竞品品牌的名字",
+                "section": "",
+                "id": "U3",
+                "dimension": "OTHER",
+                "check": "全片不出现竞品品牌的名字",
+                "classifiedBy": "llm",
+                "dimensionLabel": "补充分析"
+              },
+              {
+                "text": "每一步都要有字幕标题",
+                "section": "",
+                "id": "U4",
+                "dimension": "STRUCTURE_RHYTHM",
+                "check": "每一个步骤都配有字幕标题",
+                "classifiedBy": "llm",
+                "dimensionLabel": "结构节奏"
+              }
+            ],
+            "criteriaReport": [
+              {
+                "id": "U1",
+                "text": "开头3秒内要说出观众能得到什么",
+                "check": "开头 3 秒内说出观众能得到什么",
+                "dimension": "HOOK",
+                "dimensionLabel": "开场钩子",
+                "verdict": "MET",
+                "verdictLabel": "满足",
+                "reason": "第 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」明确说出观众能得到“3 个技巧、5 分钟完成早餐”；第 0~4 秒屏幕文字「5分钟早餐 3个技巧」同步出现，收益在 3 秒内已清晰传达。",
+                "evidence": [
+                  "ASR:T@00:00:00",
+                  "OCR:T@00:00:00"
+                ],
+                "answeredBy": "hook_analysis"
+              },
+              {
+                "id": "U2",
+                "text": "结尾必须引导关注",
+                "check": "结尾有引导关注的行动号召",
+                "dimension": "VALUE_DELIVERY",
+                "dimensionLabel": "价值传递",
+                "verdict": "NOT_MET",
+                "verdictLabel": "不满足",
+                "reason": "目标视频最后一段口播是第 80-84 秒「好了，今天就到这里」，86 秒视频结束，全片没有任何引导关注的话术或屏幕文字；参考 R1 在同一位置第 80-85 秒说「觉得有用就关注我，下期教你做便当」，可见这是目标缺失的部分。",
+                "evidence": [
+                  "ASR:T@00:01:20",
+                  "OCR:T@00:01:05"
+                ],
+                "answeredBy": "value_delivery_analysis"
+              },
+              {
+                "id": "U3",
+                "text": "不能出现竞品品牌的名字",
+                "check": "全片不出现竞品品牌的名字",
+                "dimension": "OTHER",
+                "dimensionLabel": "补充分析",
+                "verdict": "MET",
+                "verdictLabel": "满足",
+                "reason": "全片可核查的口播与屏幕文字中均未出现任何品牌名。产品/食材只以品类泛称出现：第 12~18 秒口播「第一步，前一天晚上把鸡蛋煮好放冰箱」，第 30~37 秒「第二步，燕麦用牛奶提前泡一晚」（OCR 同步为「第二步 隔夜燕麦」），第 50~57 秒「第三步，面包机定时，早上起来直接拿」（OCR 同步为「第三步 面包机定时」），其中「鸡蛋」「燕麦」「牛奶」「面包机」都是品类词，都不是品牌名；第 0~4 秒屏幕文字「5分钟早餐 3个技巧」、第 65~73 秒「以前25分钟 → 现在5分钟」以及第 0.5~3.5 秒、65~72 秒、80~84 秒口播也都没有出现品牌或竞品商标。",
+                "evidence": [
+                  "ASR:T@00:00:12",
+                  "ASR:T@00:00:30",
+                  "ASR:T@00:00:50",
+                  "OCR:T@00:00:12",
+                  "OCR:T@00:00:30",
+                  "OCR:T@00:00:50",
+                  "OCR:T@00:00:00",
+                  "ASR:T@00:00:00"
+                ],
+                "answeredBy": "supplementary_analysis"
+              },
+              {
+                "id": "U4",
+                "text": "每一步都要有字幕标题",
+                "check": "每一个步骤都配有字幕标题",
+                "dimension": "STRUCTURE_RHYTHM",
+                "dimensionLabel": "结构节奏",
+                "verdict": "MET",
+                "verdictLabel": "满足",
+                "reason": "三个步骤都配有字幕标题：第 12 秒「第一步 提前煮蛋」、第 30 秒「第二步 隔夜燕麦」、第 50 秒「第三步 面包机定时」，与口播的「第一步/第二步/第三步」逐一对齐。",
+                "evidence": [
+                  "OCR:T@00:00:12",
+                  "OCR:T@00:00:30",
+                  "OCR:T@00:00:50",
+                  "ASR:T@00:00:12"
+                ],
+                "answeredBy": "structure_rhythm_analysis"
+              }
+            ],
+            "supplementary": {
+              "mode": "criteria_only",
+              "criteriaIds": [
+                "U3"
+              ],
+              "verdicts": [
+                {
+                  "id": "U3",
+                  "verdict": "MET",
+                  "reason": "全片可核查的口播与屏幕文字中均未出现任何品牌名。产品/食材只以品类泛称出现：第 12~18 秒口播「第一步，前一天晚上把鸡蛋煮好放冰箱」，第 30~37 秒「第二步，燕麦用牛奶提前泡一晚」（OCR 同步为「第二步 隔夜燕麦」），第 50~57 秒「第三步，面包机定时，早上起来直接拿」（OCR 同步为「第三步 面包机定时」），其中「鸡蛋」「燕麦」「牛奶」「面包机」都是品类词，都不是品牌名；第 0~4 秒屏幕文字「5分钟早餐 3个技巧」、第 65~73 秒「以前25分钟 → 现在5分钟」以及第 0.5~3.5 秒、65~72 秒、80~84 秒口播也都没有出现品牌或竞品商标。",
+                  "evidence": [
+                    "ASR:T@00:00:12",
+                    "ASR:T@00:00:30",
+                    "ASR:T@00:00:50",
+                    "OCR:T@00:00:12",
+                    "OCR:T@00:00:30",
+                    "OCR:T@00:00:50",
+                    "OCR:T@00:00:00",
+                    "ASR:T@00:00:00"
+                  ]
+                }
+              ],
+              "missingCriteriaIds": [],
+              "notes": [],
+              "droppedNotes": 0,
+              "attempts": 1
+            },
+            "reportMarkdown": "# 短视频对比诊断报告\n\n## 总结\n\n目标视频在前 3 秒收益承诺和三点式结构节奏上与参考视频基本相当，开场直接给出「三个技巧，让你的早餐五分钟就能做好」，并保持相同的步骤标题和切换密度，这些是优势。最关键的差距在结尾：目标第 80-84 秒只说「好了，今天就到这里」，缺少参考视频同位置「觉得有用就关注我，下期教你做便当」式的行动号召，导致价值交付没有收束。\n\n## 解析出的评分标准\n\n| 编号 | 原文 | 归属 | 检查口径 |\n|---|---|---|---|\n| U1 | 开头3秒内要说出观众能得到什么 | 开场钩子 | 开头 3 秒内说出观众能得到什么 |\n| U2 | 结尾必须引导关注 | 价值传递 | 结尾有引导关注的行动号召 |\n| U3 | 不能出现竞品品牌的名字 | 补充分析 | 全片不出现竞品品牌的名字 |\n| U4 | 每一步都要有字幕标题 | 结构节奏 | 每一个步骤都配有字幕标题 |\n\n## 逐条对照\n\n| 编号 | 标准 | 结果 | 依据 |\n|---|---|---|---|\n| U1 | 开头3秒内要说出观众能得到什么 | 满足 | 第 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」明确说出观众能得到“3 个技巧、5 分钟完成早餐”；第 0~4 秒屏幕文字「5分钟早餐 3个技巧」同步出现，收益在 3 秒内已清晰传达。 |\n| U2 | 结尾必须引导关注 | 不满足 | 目标视频最后一段口播是第 80-84 秒「好了，今天就到这里」，86 秒视频结束，全片没有任何引导关注的话术或屏幕文字；参考 R1 在同一位置第 80-85 秒说「觉得有用就关注我，下期教你做便当」，可见这是目标缺失的部分。 |\n| U3 | 不能出现竞品品牌的名字 | 满足 | 全片可核查的口播与屏幕文字中均未出现任何品牌名。产品/食材只以品类泛称出现：第 12~18 秒口播「第一步，前一天晚上把鸡蛋煮好放冰箱」，第 30~37 秒「第二步，燕麦用牛奶提前泡一晚」（OCR 同步为「第二步 隔夜燕麦」），第 50~57 秒「第三步，面包机定时，早上起来直接拿」（OCR 同步为「第三步 面包机定时」），其中「鸡蛋」「燕麦」「牛奶」「面包机」都是品类词，都不是品牌名；第 0~4 秒屏幕文字「5分钟早餐 3个技巧」、第 65~73 秒「以前25分钟 → 现在5分钟」以及第 0.5~3.5 秒、65~72 秒、80~84 秒口播也都没有出现品牌或竞品商标。 |\n| U4 | 每一步都要有字幕标题 | 满足 | 三个步骤都配有字幕标题：第 12 秒「第一步 提前煮蛋」、第 30 秒「第二步 隔夜燕麦」、第 50 秒「第三步 面包机定时」，与口播的「第一步/第二步/第三步」逐一对齐。 |\n\n合计：满足 3，不满足 1\n\n## 改进优先级\n\n1. 【价值传递】把第 80-84 秒的「好了，今天就到这里」替换成与收益一致的引导，例如「觉得这 3 个技巧有用就关注我，下期教你 5 分钟便当」，与参考 R1 的第 80-85 秒同样的口播位置对齐；同时在 78-85 秒的画面加上大字幕「关注我，下期：5分钟便当」，让结尾 CTA 有口播 + 屏幕文字双通道。\n\n## 三个维度的结论\n\n### 开场钩子（相当）\n- **观察**：目标在前 3 秒内就给出了清晰的收益承诺：第 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，同时第 0~4 秒屏幕文字「5分钟早餐 3个技巧」与口播同步强化，观众在首屏即可知道能获得“3 个技巧 / 5 分钟做完早餐”。首屏没有出现「大家好今天分享一下」这类缺少对象与收益的泛泛开场（对照 KNOWLEDGE:hook-bad-case-generic-opening-v1）；开场也未停留在空泛悬念上（对照 KNOWLEDGE:hook-bad-case-empty-suspense-v1）。不足在于只给了收益、没有明说痛点（如“早上没时间”），且口播从 0.5 秒才开始，第 0~0.5 秒仅有屏幕文字支撑。\n- **与参考的差异**：目标与参考在开场环节几乎逐字一致：R1 同样是第 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，第 0~4 秒屏幕文字「5分钟早餐 3个技巧」，两者首次给出收益的时间同为 0.5 秒，开场镜头结构也同为 3 个 6 秒镜头（METADATA:T / METADATA:R1）。因此两者在“前三秒信息承诺”上满足程度相同，没有可归因于目标的差距。\n- **建议**：保持现有开场：第 0.5 秒的口播「三个技巧，让你的早餐五分钟就能做好」与第 0~4 秒屏幕文字「5分钟早餐 3个技巧」同步的写法继续沿用，无需改动。\n\n### 结构节奏（相当）\n- **观察**：目标的段落结构清晰：METADATA:T 显示全片共 15 个镜头，平均镜头时长 5.7 秒，中位镜头时长 6.0 秒，最长镜头 6.0 秒，2 秒内短镜头 0 个，每 30 秒切换次数依次为 4、5、5 次，全片节奏均匀。步骤标记明确：OCR:T@00:00:12「第一步 提前煮蛋」、OCR:T@00:00:30「第二步 隔夜燕麦」、OCR:T@00:00:50「第三步 面包机定时」，口播同步说「第一步，前一天晚上把鸡蛋煮好放冰箱」（12-18 秒）、「第二步，燕麦用牛奶提前泡一晚」（30-37 秒）、「第三步，面包机定时，早上起来直接拿」（50-57 秒），形成三点列表式结构；第 65-73 秒屏幕文字「以前25分钟 → 现在5分钟」加上口播「比以前省了二十分钟」，构成前后对比收尾。每条用户要求「每一步都要有字幕标题」均在屏幕上得到满足。全片没有段落跳跃，也没有主题跳跃，只有第 80-84 秒「好了，今天就到这里」收尾较平淡，但这属于价值收束，不影响结构判断。\n- **与参考的差异**：参考与目标在结构与节奏的数字上几乎一致：METADATA:R1 显示 15 个镜头、平均镜头时长 5.9 秒、中位 6.0 秒、最长镜头 6.0 秒、2 秒内短镜头 0 个、每 30 秒切换次数依次为 4、5、5 次；同样在第 12、30、50 秒出现「第一步」「第二步」「第三步」字幕与口播（ASR:R1@00:00:12 等），第 65 秒出现「以前25分钟 → 现在5分钟」对比字幕。两者段落划分、步骤标记和切换节奏基本重合，没有可识别的结构或节奏差距（唯一差别在结尾口播内容，属于价值交付维度，不属于本维度）。\n- **建议**：保持现有结构：继续沿用 12、30、50 秒的「第一步/第二步/第三步」字幕标题，保持 15 个镜头、平均 5.7 秒、每 30 秒 4~5 次的切换密度；若要进一步优化，可在第 65 秒对比字幕处插入一个约 1.5 秒的短镜头来强化结果瞬间，而非整体提速。\n\n### 价值传递（差距）\n- **观察**：目标视频的价值交付大部分是成立的：第 0.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，同时屏幕文字 0-4 秒同步打出「5分钟早餐 3个技巧」，观众收益（三个技巧 + 5 分钟完成早餐）在第一句就出现；第 12/30/50 秒依次给出「第一步/第二步/第三步」的可执行步骤（OCR:第一步 提前煮蛋、第二步 隔夜燕麦、第三步 面包机定时）；第 65 秒给结果证明，口播「我每天早上只花五分钟，比以前省了二十分钟」，屏幕文字「以前25分钟 → 现在5分钟」形成前后对比。问题出在结尾：第 80-84 秒口播「好了，今天就到这里」，没有任何关注/收藏/下期的引导，86 秒视频到此结束，价值交付没有收束动作。\n- **与参考的差异**：参考视频 R1 与目标在价值承诺、三步结构、比较证明上高度一致（同样在 0.5 秒说「三个技巧，让你的早餐五分钟就能做好」，65 秒说「比以前省了二十分钟」，OCR「以前25分钟 → 现在5分钟」），唯一实质差异在结尾：R1 第 80-85 秒说「觉得有用就关注我，下期教你做便当」，把上文「省时早餐」的价值直接转成关注理由并预告下期；目标第 80-84 秒只说「好了，今天就到这里」，同一个位置少了一次引导关注的行动号召。\n- **建议**：把第 80-84 秒的「好了，今天就到这里」替换成与收益一致的引导，例如「觉得这 3 个技巧有用就关注我，下期教你 5 分钟便当」，与参考 R1 的第 80-85 秒同样的口播位置对齐；同时在 78-85 秒的画面加上大字幕「关注我，下期：5分钟便当」，让结尾 CTA 有口播 + 屏幕文字双通道。\n"
+          },
+          "score": {
+            "expected": [
+              "no_cta"
+            ],
+            "hits": [
+              "no_cta"
+            ],
+            "forbidden": [
+              "hook_no_value_promise",
+              "hook_slow_start",
+              "value_late"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 1,
+            "quotedFindings": 3,
+            "typedFindings": 3,
+            "citedRefs": 37,
+            "invalidRefs": 0,
+            "matchModes": {
+              "type": 1
+            },
+            "abstained": [],
+            "criteria": {
+              "expectedCount": 4,
+              "parsedCount": 4,
+              "dimensionCorrect": 4,
+              "verdictCorrect": 4,
+              "covered": 4,
+              "rows": [
+                {
+                  "id": "U1",
+                  "text": "开头3秒内要说出观众能得到什么",
+                  "dimension": "HOOK",
+                  "verdict": "MET",
+                  "covered": true,
+                  "expectedDimension": "HOOK",
+                  "expectedVerdict": "MET"
+                },
+                {
+                  "id": "U2",
+                  "text": "结尾必须引导关注",
+                  "dimension": "VALUE_DELIVERY",
+                  "verdict": "NOT_MET",
+                  "covered": true,
+                  "expectedDimension": "VALUE_DELIVERY",
+                  "expectedVerdict": "NOT_MET"
+                },
+                {
+                  "id": "U3",
+                  "text": "不能出现竞品品牌的名字",
+                  "dimension": "OTHER",
+                  "verdict": "MET",
+                  "covered": true,
+                  "expectedDimension": "OTHER",
+                  "expectedVerdict": "MET"
+                },
+                {
+                  "id": "U4",
+                  "text": "每一步都要有字幕标题",
+                  "dimension": "STRUCTURE_RHYTHM",
+                  "verdict": "MET",
+                  "covered": true,
+                  "expectedDimension": "STRUCTURE_RHYTHM",
+                  "expectedVerdict": "MET"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "caseId": "cc1_criteria_no_cta",
+          "status": "success",
+          "stopReason": "completed",
+          "error": "",
+          "latencySeconds": 24.0,
+          "usage": {
+            "modelCalls": 6,
+            "inputTokens": 28712,
+            "outputTokens": 7440,
+            "totalTokens": 36152
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标开场第 0.5 秒即进入价值承诺：口播「三个技巧，让你的早餐五分钟就能做好」（0.5-3.5 秒），同时屏幕文字「5分钟早餐 3个技巧」覆盖 0-4 秒（OCR:T@00:00:00），首屏同时给出「对象=早餐」「收益=5 分钟做好」「方法量=3 个技巧」，停留理由成立；开口前 0.5 秒的空白不构成铺垫。镜头层面前 18 秒仅 3 个镜头、平均 6.0 秒/镜（METADATA:T），节奏平缓但不影响首屏信息成立。",
+              "differenceText": "参考视频 R1 的开场数据与目标完全一致：口播同为「三个技巧，让你的早餐五分钟就能做好」（0.5-3.5 秒，ASR:R1@00:00:00），屏幕文字同为「5分钟早餐 3个技巧」（0-4 秒，OCR:R1@00:00:00），镜头统计同样为 3 个镜头、平均 6.0 秒（METADATA:R1）。两者在 HOOK 维度没有可辨差异。",
+              "suggestedAction": "保持现有开场：0.5 秒起的口播「三个技巧，让你的早餐五分钟就能做好」与 0-4 秒的屏幕文字「5分钟早餐 3个技巧」已满足前三秒信息承诺，无需改动。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:02",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:02",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00",
+                "ASR:R1@00:00:00",
+                "OCR:R1@00:00:00",
+                "METADATA:T",
+                "METADATA:R1"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-platform-short-feed-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1",
+                "KNOWLEDGE:hook-platform-short-feed-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-good-case-authority-fast-v1",
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-bad-case-empty-suspense-v1"
+              ],
+              "confidence": 0.86,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "METADATA:T 显示目标共 15 个镜头、平均 5.7 秒、中位 6.0 秒、最长镜头 6.0 秒（SCENE:T#1）、2 秒内短镜头 0 个，每 30 秒切换次数依次为 4/5/5，节奏均匀无突变也无拖沓。段落结构清晰：0-4 秒屏幕文字「5分钟早餐 3个技巧」定主题；12 秒起口播「第一步，前一天晚上把鸡蛋煮好放冰箱」并配字幕「第一步 提前煮蛋」（12-20 秒）；30 秒「第二步，燕麦用牛奶提前泡一晚」配「第二步 隔夜燕麦」；50 秒「第三步，面包机定时」配「第三步 面包机定时」；65 秒出现「以前25分钟 → 现在5分钟」作为收束段。三个步骤都带有字幕标题，时间点分别为 12 / 30 / 50 秒，符合列表式分层推进。",
+              "differenceText": "参考 R1 的节奏数据与目标几乎逐项一致：METADATA:R1 为 15 个镜头、平均 5.9 秒、中位 6.0 秒、最长 6.0 秒（SCENE:R1#1）、2 秒内短镜头 0 个、每 30 秒切换 4/5/5；段落标记也完全同构——ASR:R1@00:00:12「第一步，前一天晚上把鸡蛋煮好放冰箱」、30 秒「第二步…」、50 秒「第三步…」，OCR:R1@00:01:05「以前25分钟 → 现在5分钟」。唯一差别出现在片尾：R1 在 80 秒说「觉得有用就关注我，下期教你做便当」，而目标 80 秒只说「好了，今天就到这里」；这属于结尾行动号召的差异，本身不改变段落结构与切换节奏，因此本维度两条视频结构节奏相当。",
+              "suggestedAction": "保持现有分段结构（12/30/50 秒三步字幕标题 + 平均 5.7 秒/镜头、每 30 秒 4-5 次切换的节奏），无需加密或放慢。若还想再强化进度感，可在当前没有分段标记的中段 36-48 秒和 72-78 秒各插一条「三步做完，还剩 X」的小结字幕，把每 30 秒切换次数从 4-5 提高到 6-7 次，但保持当前节奏即可。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                },
+                {
+                  "ref": "ASR:R1@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                },
+                {
+                  "ref": "OCR:T@00:00:30",
+                  "text": "第二步 隔夜燕麦"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:12",
+                "FRAME:T@00:00:30",
+                "FRAME:T@00:00:50",
+                "FRAME:R1@00:00:12",
+                "FRAME:R1@00:00:30",
+                "METADATA:T",
+                "METADATA:R1",
+                "SCENE:T#1",
+                "OCR:T@00:00:12",
+                "OCR:T@00:00:30",
+                "OCR:T@00:00:50",
+                "ASR:T@00:01:20"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-topic-list-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-topic-list-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1",
+                "KNOWLEDGE:structure-bad-case-static-talking-v1",
+                "KNOWLEDGE:structure-good-case-example-driven-v1",
+                "KNOWLEDGE:structure-bad-case-topic-jump-v1"
+              ],
+              "confidence": 0.88,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "no_cta",
+              "observation": "目标视频的收益出现得很早也很具体：第 0.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，同时第 0-4 秒有屏幕文字「5分钟早餐 3个技巧」，价值承诺在 3 秒内成立。中段按第 12 秒「第一步，前一天晚上把鸡蛋煮好放冰箱」、第 30 秒「第二步，燕麦用牛奶提前泡一晚」、第 50 秒「第三步，面包机定时，早上起来直接拿」逐步给出可执行步骤，屏幕文字同步出现「第一步/第二步/第三步」标题。第 65 秒给出结果证明：「这样做之后我每天早上只花五分钟，比以前省了二十分钟」，屏幕文字「以前25分钟 → 现在5分钟」做前后对比，收益具体化、可感知。问题出在结尾：第 80-84 秒只说「好了，今天就到这里」，视频总长 86 秒，之后没有任何口播收束语或行动号召，也没有引导关注/收藏/评论的屏幕文字。",
+              "differenceText": "参考视频 R1 的价值承诺（第 0.5 秒「三个技巧，让你的早餐五分钟就能做好」）、三步结构（第 12、30、50 秒）、结果证明（第 65 秒「这样做之后我每天早上只花五分钟，比以前省了二十分钟」及屏幕文字「以前25分钟 → 现在5分钟」）与目标几乎逐字一致，唯一明显差异在结尾：R1 第 80-85 秒说「觉得有用就关注我，下期教你做便当」，把行动号召与前文的省时价值绑定（有用→关注→下期便当），并且视频持续到 88 秒，留出了完整收尾；目标在第 84 秒说完「好了，今天就到这里」后还有约 2 秒没有内容，既没有关注引导，也没有为下一步内容做承接。",
+              "suggestedAction": "把第 80-84 秒的「好了，今天就到这里」改成与前文省时价值一致的行动号召，例如「觉得有用就点个关注，下期教你十分钟备好一周早餐」，并在第 80-86 秒配上「关注我 → 下期：10分钟备好一周早餐」的大字字幕，填补第 84-86 秒现在的空白；前半段（0.5 秒收益承诺、第 65 秒前后对比）保持不变。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:T@00:01:20",
+                  "text": "好了，今天就到这里"
+                },
+                {
+                  "ref": "ASR:R1@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                },
+                {
+                  "ref": "OCR:T@00:01:05",
+                  "text": "以前25分钟 → 现在5分钟"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:01:23",
+                "FRAME:T@00:01:25",
+                "FRAME:R1@00:01:23",
+                "FRAME:R1@00:01:27",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "OCR:T@00:01:05",
+                "ASR:T@00:01:20",
+                "ASR:R1@00:01:20"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:value-rule-call-to-action-fit-v1",
+                "KNOWLEDGE:value-rule-specificity-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:value-rule-call-to-action-fit-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1",
+                "KNOWLEDGE:value-bad-case-scattered-benefits-v1",
+                "KNOWLEDGE:value-pattern-actionable-advice-v1",
+                "KNOWLEDGE:value-good-case-step-by-step-v1",
+                "KNOWLEDGE:value-rule-specificity-v1"
+              ],
+              "confidence": 0.88,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 5.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            }
+          ],
+          "abstained": [],
+          "attempts": [
+            {
+              "dimension": "HOOK",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "confidence": 0.86,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-platform-short-feed-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1",
+                "KNOWLEDGE:hook-platform-short-feed-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-good-case-authority-fast-v1",
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-bad-case-empty-suspense-v1"
+              ],
+              "reason": "",
+              "observation": "目标开场第 0.5 秒即进入价值承诺：口播「三个技巧，让你的早餐五分钟就能做好」（0.5-3.5 秒），同时屏幕文字「5分钟早餐 3个技巧」覆盖 0-4 秒（OCR:T@00:00:00），首屏同时给出「对象=早餐」「收益=5 分钟做好」「方法量=3 个技巧」，停留理由成立；开口前 0.5 秒的空白不构成铺垫。镜头层面前 18 秒仅 3 个镜头、平均 6.0 秒/镜（METADATA:T），节奏平缓但不影响首屏信息成立。"
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "confidence": 0.88,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                },
+                {
+                  "ref": "ASR:R1@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                },
+                {
+                  "ref": "OCR:T@00:00:30",
+                  "text": "第二步 隔夜燕麦"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-topic-list-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-topic-list-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1",
+                "KNOWLEDGE:structure-bad-case-static-talking-v1",
+                "KNOWLEDGE:structure-good-case-example-driven-v1",
+                "KNOWLEDGE:structure-bad-case-topic-jump-v1"
+              ],
+              "reason": "",
+              "observation": "METADATA:T 显示目标共 15 个镜头、平均 5.7 秒、中位 6.0 秒、最长镜头 6.0 秒（SCENE:T#1）、2 秒内短镜头 0 个，每 30 秒切换次数依次为 4/5/5，节奏均匀无突变也无拖沓。段落结构清晰：0-4 秒屏幕文字「5分钟早餐 3个技巧」定主题；12 秒起口播「第一步，前一天晚上把鸡蛋煮好放冰箱」并配字幕「第一步 提前煮蛋」（12-20 秒）；30 秒「第二步，燕麦用牛奶提前泡一晚」配「第二步 隔夜燕麦」；50 秒「第三步，面包机定时」配「第三步 面包机定时」；65 秒出现「以前25分钟 → 现在5分钟」作为收束段。三个步骤都带有字幕标题，时间点分别为 12 / 30 / 50 秒，符合列表式分层推进。"
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "GAP",
+              "findingType": "no_cta",
+              "confidence": 0.88,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 5.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:T@00:01:20",
+                  "text": "好了，今天就到这里"
+                },
+                {
+                  "ref": "ASR:R1@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                },
+                {
+                  "ref": "OCR:T@00:01:05",
+                  "text": "以前25分钟 → 现在5分钟"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:value-rule-call-to-action-fit-v1",
+                "KNOWLEDGE:value-rule-specificity-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:value-rule-call-to-action-fit-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1",
+                "KNOWLEDGE:value-bad-case-scattered-benefits-v1",
+                "KNOWLEDGE:value-pattern-actionable-advice-v1",
+                "KNOWLEDGE:value-good-case-step-by-step-v1",
+                "KNOWLEDGE:value-rule-specificity-v1"
+              ],
+              "reason": "",
+              "observation": "目标视频的收益出现得很早也很具体：第 0.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，同时第 0-4 秒有屏幕文字「5分钟早餐 3个技巧」，价值承诺在 3 秒内成立。中段按第 12 秒「第一步，前一天晚上把鸡蛋煮好放冰箱」、第 30 秒「第二步，燕麦用牛奶提前泡一晚」、第 50 秒「第三步，面包机定时，早上起来直接拿」逐步给出可执行步骤，屏幕文字同步出现「第一步/第二步/第三步」标题。第 65 秒给出结果证明：「这样做之后我每天早上只花五分钟，比以前省了二十分钟」，屏幕文字「以前25分钟 → 现在5分钟」做前后对比，收益具体化、可感知。问题出在结尾：第 80-84 秒只说「好了，今天就到这里」，视频总长 86 秒，之后没有任何口播收束语或行动号召，也没有引导关注/收藏/评论的屏幕文字。"
+            }
+          ],
+          "evaluatorReasons": [
+            []
+          ],
+          "specialistErrors": [],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频的前三秒信息承诺与参考视频完全一致——0.5 秒口播「三个技巧，让你的早餐五分钟就能做好」、0-4 秒屏幕文字「5分钟早餐 3个技巧」，且第 12、30、50 秒的三步字幕标题、65 秒的前后对比「以前25分钟 → 现在5分钟」与 15 个镜头、平均 5.7 秒/镜的节奏也与参考基本一致，开场和结构节奏是它的既有优势。最关键的差距只在片尾：参考在第 80-85 秒用「觉得有用就关注我，下期教你做便当」把行动号召与前文的省时价值绑定，而目标只说「好了，今天就到这里」，84-86 秒约 2 秒没有内容承接，既没有引导关注，也没有为下一步内容做预告，导致前 65 秒积累的价值没有被转化。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "no_cta",
+                "suggestedAction": "把第 80-84 秒的「好了，今天就到这里」改成与前文省时价值一致的行动号召，例如「觉得有用就点个关注，下期教你十分钟备好一周早餐」，并在第 80-86 秒配上「关注我 → 下期：10分钟备好一周早餐」的大字字幕，填补第 84-86 秒现在的空白；前半段（0.5 秒收益承诺、第 65 秒前后对比）保持不变。",
+                "confidence": 0.88,
+                "rationale": "唯一明确的差距维度：前段收益承诺、三步执行和 65 秒前后对比都成立，只有 80-84 秒的结尾既没有行动号召，也没有下期承接，84-86 秒还空着约 2 秒，直接损失转化。"
+              }
+            ],
+            "mergedActions": [
+              "把第 80-84 秒的口播「好了，今天就到这里」替换为与前文省时价值绑定的行动号召，参照参考视频「有用→关注→下期预告」的结构，例如「觉得有用就点个关注，下期教你十分钟备好一周早餐」，让「有用」明确指向第 65 秒的省时收益。",
+              "在第 80-86 秒同步叠加「关注我 → 下期：10分钟备好一周早餐」的大字字幕，并让该字卡持续到视频结束（约 86-88 秒），填补第 84-86 秒现在的空白，避免口播说完即静默，也让片尾有承接。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标开场第 0.5 秒即进入价值承诺：口播「三个技巧，让你的早餐五分钟就能做好」（0.5-3.5 秒），同时屏幕文字「5分钟早餐 3个技巧」覆盖 0-4 秒（OCR:T@00:00:00），首屏同时给出「对象=早餐」「收益=5 分钟做好」「方法量=3 个技巧」，停留理由成立；开口前 0.5 秒的空白不构成铺垫。镜头层面前 18 秒仅 3 个镜头、平均 6.0 秒/镜（METADATA:T），节奏平缓但不影响首屏信息成立。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "ASR:R1@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  }
+                ],
+                "downgraded": null
+              },
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "observation": "METADATA:T 显示目标共 15 个镜头、平均 5.7 秒、中位 6.0 秒、最长镜头 6.0 秒（SCENE:T#1）、2 秒内短镜头 0 个，每 30 秒切换次数依次为 4/5/5，节奏均匀无突变也无拖沓。段落结构清晰：0-4 秒屏幕文字「5分钟早餐 3个技巧」定主题；12 秒起口播「第一步，前一天晚上把鸡蛋煮好放冰箱」并配字幕「第一步 提前煮蛋」（12-20 秒）；30 秒「第二步，燕麦用牛奶提前泡一晚」配「第二步 隔夜燕麦」；50 秒「第三步，面包机定时」配「第三步 面包机定时」；65 秒出现「以前25分钟 → 现在5分钟」作为收束段。三个步骤都带有字幕标题，时间点分别为 12 / 30 / 50 秒，符合列表式分层推进。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:12",
+                    "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                  },
+                  {
+                    "ref": "ASR:R1@00:00:12",
+                    "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                  }
+                ],
+                "downgraded": null
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED",
+            "criteria": [
+              {
+                "text": "开头3秒内要说出观众能得到什么",
+                "section": "",
+                "id": "U1",
+                "dimension": "HOOK",
+                "check": "开头 3 秒内，口播或字幕要说出观众能得到什么",
+                "classifiedBy": "llm",
+                "dimensionLabel": "开场钩子"
+              },
+              {
+                "text": "结尾必须引导关注",
+                "section": "",
+                "id": "U2",
+                "dimension": "VALUE_DELIVERY",
+                "check": "结尾要有引导观众关注的行动号召",
+                "classifiedBy": "llm",
+                "dimensionLabel": "价值传递"
+              },
+              {
+                "text": "不能出现竞品品牌的名字",
+                "section": "",
+                "id": "U3",
+                "dimension": "OTHER",
+                "check": "全片不能出现竞品品牌的名字",
+                "classifiedBy": "llm",
+                "dimensionLabel": "补充分析"
+              },
+              {
+                "text": "每一步都要有字幕标题",
+                "section": "",
+                "id": "U4",
+                "dimension": "STRUCTURE_RHYTHM",
+                "check": "每一步都要配有字幕标题",
+                "classifiedBy": "llm",
+                "dimensionLabel": "结构节奏"
+              }
+            ],
+            "criteriaReport": [
+              {
+                "id": "U1",
+                "text": "开头3秒内要说出观众能得到什么",
+                "check": "开头 3 秒内，口播或字幕要说出观众能得到什么",
+                "dimension": "HOOK",
+                "dimensionLabel": "开场钩子",
+                "verdict": "MET",
+                "verdictLabel": "满足",
+                "reason": "第 0.5 秒口播即说出「三个技巧，让你的早餐五分钟就能做好」，明确告诉观众能得到「5 分钟做好早餐的 3 个技巧」；同时 0-4 秒屏幕文字「5分钟早餐 3个技巧」同步强化，落在 3 秒窗口内。",
+                "evidence": [
+                  "ASR:T@00:00:00",
+                  "OCR:T@00:00:00"
+                ],
+                "answeredBy": "hook_analysis"
+              },
+              {
+                "id": "U2",
+                "text": "结尾必须引导关注",
+                "check": "结尾要有引导观众关注的行动号召",
+                "dimension": "VALUE_DELIVERY",
+                "dimensionLabel": "价值传递",
+                "verdict": "NOT_MET",
+                "verdictLabel": "不满足",
+                "reason": "目标视频在第 80-84 秒只说「好了，今天就到这里」，之后直到第 86 秒结束都没有关注引导，也没有「关注/收藏/下期」类屏幕文字；参考视频同一位置第 80-85 秒说了「觉得有用就关注我，下期教你做便当」，说明目标缺的正是这一句。",
+                "evidence": [
+                  "ASR:T@00:01:20",
+                  "ASR:R1@00:01:20"
+                ],
+                "answeredBy": "value_delivery_analysis"
+              },
+              {
+                "id": "U3",
+                "text": "不能出现竞品品牌的名字",
+                "check": "全片不能出现竞品品牌的名字",
+                "dimension": "OTHER",
+                "dimensionLabel": "补充分析",
+                "verdict": "MET",
+                "verdictLabel": "满足",
+                "reason": "通读全片口播与屏幕文字，未出现任何竞品品牌名。涉及器具处第 50-57 秒口播只说「第三步，面包机定时，早上起来直接拿」，屏幕文字同步为「第三步 面包机定时」（50-58 秒），「面包机」是品类通称而非品牌；其余口播均为食材与动作的通用描述（第 12 秒「鸡蛋」、第 30 秒「燕麦」「牛奶」、第 65 秒「比以前省了二十分钟」），全片 5 条屏幕文字也没有出现品牌字样。",
+                "evidence": [
+                  "ASR:T@00:00:50",
+                  "OCR:T@00:00:50",
+                  "ASR:T@00:00:30",
+                  "ASR:T@00:00:12",
+                  "OCR:T@00:01:05"
+                ],
+                "answeredBy": "supplementary_analysis"
+              },
+              {
+                "id": "U4",
+                "text": "每一步都要有字幕标题",
+                "check": "每一步都要配有字幕标题",
+                "dimension": "STRUCTURE_RHYTHM",
+                "dimensionLabel": "结构节奏",
+                "verdict": "MET",
+                "verdictLabel": "满足",
+                "reason": "目标每一步都有对应的字幕标题：第 12 秒起屏幕文字「第一步 提前煮蛋」、第 30 秒起「第二步 隔夜燕麦」、第 50 秒起「第三步 面包机定时」，与口播的「第一步/第二步/第三步」同步出现；第 65 秒还有「以前25分钟 → 现在5分钟」的结果段字幕。",
+                "evidence": [
+                  "OCR:T@00:00:12",
+                  "OCR:T@00:00:30",
+                  "OCR:T@00:00:50",
+                  "OCR:T@00:01:05"
+                ],
+                "answeredBy": "structure_rhythm_analysis"
+              }
+            ],
+            "supplementary": {
+              "mode": "criteria_only",
+              "criteriaIds": [
+                "U3"
+              ],
+              "verdicts": [
+                {
+                  "id": "U3",
+                  "verdict": "MET",
+                  "reason": "通读全片口播与屏幕文字，未出现任何竞品品牌名。涉及器具处第 50-57 秒口播只说「第三步，面包机定时，早上起来直接拿」，屏幕文字同步为「第三步 面包机定时」（50-58 秒），「面包机」是品类通称而非品牌；其余口播均为食材与动作的通用描述（第 12 秒「鸡蛋」、第 30 秒「燕麦」「牛奶」、第 65 秒「比以前省了二十分钟」），全片 5 条屏幕文字也没有出现品牌字样。",
+                  "evidence": [
+                    "ASR:T@00:00:50",
+                    "OCR:T@00:00:50",
+                    "ASR:T@00:00:30",
+                    "ASR:T@00:00:12",
+                    "OCR:T@00:01:05"
+                  ]
+                }
+              ],
+              "missingCriteriaIds": [],
+              "notes": [],
+              "droppedNotes": 0,
+              "attempts": 1
+            },
+            "reportMarkdown": "# 短视频对比诊断报告\n\n## 总结\n\n目标视频的前三秒信息承诺与参考视频完全一致——0.5 秒口播「三个技巧，让你的早餐五分钟就能做好」、0-4 秒屏幕文字「5分钟早餐 3个技巧」，且第 12、30、50 秒的三步字幕标题、65 秒的前后对比「以前25分钟 → 现在5分钟」与 15 个镜头、平均 5.7 秒/镜的节奏也与参考基本一致，开场和结构节奏是它的既有优势。最关键的差距只在片尾：参考在第 80-85 秒用「觉得有用就关注我，下期教你做便当」把行动号召与前文的省时价值绑定，而目标只说「好了，今天就到这里」，84-86 秒约 2 秒没有内容承接，既没有引导关注，也没有为下一步内容做预告，导致前 65 秒积累的价值没有被转化。\n\n## 解析出的评分标准\n\n| 编号 | 原文 | 归属 | 检查口径 |\n|---|---|---|---|\n| U1 | 开头3秒内要说出观众能得到什么 | 开场钩子 | 开头 3 秒内，口播或字幕要说出观众能得到什么 |\n| U2 | 结尾必须引导关注 | 价值传递 | 结尾要有引导观众关注的行动号召 |\n| U3 | 不能出现竞品品牌的名字 | 补充分析 | 全片不能出现竞品品牌的名字 |\n| U4 | 每一步都要有字幕标题 | 结构节奏 | 每一步都要配有字幕标题 |\n\n## 逐条对照\n\n| 编号 | 标准 | 结果 | 依据 |\n|---|---|---|---|\n| U1 | 开头3秒内要说出观众能得到什么 | 满足 | 第 0.5 秒口播即说出「三个技巧，让你的早餐五分钟就能做好」，明确告诉观众能得到「5 分钟做好早餐的 3 个技巧」；同时 0-4 秒屏幕文字「5分钟早餐 3个技巧」同步强化，落在 3 秒窗口内。 |\n| U2 | 结尾必须引导关注 | 不满足 | 目标视频在第 80-84 秒只说「好了，今天就到这里」，之后直到第 86 秒结束都没有关注引导，也没有「关注/收藏/下期」类屏幕文字；参考视频同一位置第 80-85 秒说了「觉得有用就关注我，下期教你做便当」，说明目标缺的正是这一句。 |\n| U3 | 不能出现竞品品牌的名字 | 满足 | 通读全片口播与屏幕文字，未出现任何竞品品牌名。涉及器具处第 50-57 秒口播只说「第三步，面包机定时，早上起来直接拿」，屏幕文字同步为「第三步 面包机定时」（50-58 秒），「面包机」是品类通称而非品牌；其余口播均为食材与动作的通用描述（第 12 秒「鸡蛋」、第 30 秒「燕麦」「牛奶」、第 65 秒「比以前省了二十分钟」），全片 5 条屏幕文字也没有出现品牌字样。 |\n| U4 | 每一步都要有字幕标题 | 满足 | 目标每一步都有对应的字幕标题：第 12 秒起屏幕文字「第一步 提前煮蛋」、第 30 秒起「第二步 隔夜燕麦」、第 50 秒起「第三步 面包机定时」，与口播的「第一步/第二步/第三步」同步出现；第 65 秒还有「以前25分钟 → 现在5分钟」的结果段字幕。 |\n\n合计：满足 3，不满足 1\n\n## 改进优先级\n\n1. 【价值传递】把第 80-84 秒的「好了，今天就到这里」改成与前文省时价值一致的行动号召，例如「觉得有用就点个关注，下期教你十分钟备好一周早餐」，并在第 80-86 秒配上「关注我 → 下期：10分钟备好一周早餐」的大字字幕，填补第 84-86 秒现在的空白；前半段（0.5 秒收益承诺、第 65 秒前后对比）保持不变。\n\n## 三个维度的结论\n\n### 开场钩子（相当）\n- **观察**：目标开场第 0.5 秒即进入价值承诺：口播「三个技巧，让你的早餐五分钟就能做好」（0.5-3.5 秒），同时屏幕文字「5分钟早餐 3个技巧」覆盖 0-4 秒（OCR:T@00:00:00），首屏同时给出「对象=早餐」「收益=5 分钟做好」「方法量=3 个技巧」，停留理由成立；开口前 0.5 秒的空白不构成铺垫。镜头层面前 18 秒仅 3 个镜头、平均 6.0 秒/镜（METADATA:T），节奏平缓但不影响首屏信息成立。\n- **与参考的差异**：参考视频 R1 的开场数据与目标完全一致：口播同为「三个技巧，让你的早餐五分钟就能做好」（0.5-3.5 秒，ASR:R1@00:00:00），屏幕文字同为「5分钟早餐 3个技巧」（0-4 秒，OCR:R1@00:00:00），镜头统计同样为 3 个镜头、平均 6.0 秒（METADATA:R1）。两者在 HOOK 维度没有可辨差异。\n- **建议**：保持现有开场：0.5 秒起的口播「三个技巧，让你的早餐五分钟就能做好」与 0-4 秒的屏幕文字「5分钟早餐 3个技巧」已满足前三秒信息承诺，无需改动。\n\n### 结构节奏（相当）\n- **观察**：METADATA:T 显示目标共 15 个镜头、平均 5.7 秒、中位 6.0 秒、最长镜头 6.0 秒（SCENE:T#1）、2 秒内短镜头 0 个，每 30 秒切换次数依次为 4/5/5，节奏均匀无突变也无拖沓。段落结构清晰：0-4 秒屏幕文字「5分钟早餐 3个技巧」定主题；12 秒起口播「第一步，前一天晚上把鸡蛋煮好放冰箱」并配字幕「第一步 提前煮蛋」（12-20 秒）；30 秒「第二步，燕麦用牛奶提前泡一晚」配「第二步 隔夜燕麦」；50 秒「第三步，面包机定时」配「第三步 面包机定时」；65 秒出现「以前25分钟 → 现在5分钟」作为收束段。三个步骤都带有字幕标题，时间点分别为 12 / 30 / 50 秒，符合列表式分层推进。\n- **与参考的差异**：参考 R1 的节奏数据与目标几乎逐项一致：METADATA:R1 为 15 个镜头、平均 5.9 秒、中位 6.0 秒、最长 6.0 秒（SCENE:R1#1）、2 秒内短镜头 0 个、每 30 秒切换 4/5/5；段落标记也完全同构——ASR:R1@00:00:12「第一步，前一天晚上把鸡蛋煮好放冰箱」、30 秒「第二步…」、50 秒「第三步…」，OCR:R1@00:01:05「以前25分钟 → 现在5分钟」。唯一差别出现在片尾：R1 在 80 秒说「觉得有用就关注我，下期教你做便当」，而目标 80 秒只说「好了，今天就到这里」；这属于结尾行动号召的差异，本身不改变段落结构与切换节奏，因此本维度两条视频结构节奏相当。\n- **建议**：保持现有分段结构（12/30/50 秒三步字幕标题 + 平均 5.7 秒/镜头、每 30 秒 4-5 次切换的节奏），无需加密或放慢。若还想再强化进度感，可在当前没有分段标记的中段 36-48 秒和 72-78 秒各插一条「三步做完，还剩 X」的小结字幕，把每 30 秒切换次数从 4-5 提高到 6-7 次，但保持当前节奏即可。\n\n### 价值传递（差距）\n- **观察**：目标视频的收益出现得很早也很具体：第 0.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，同时第 0-4 秒有屏幕文字「5分钟早餐 3个技巧」，价值承诺在 3 秒内成立。中段按第 12 秒「第一步，前一天晚上把鸡蛋煮好放冰箱」、第 30 秒「第二步，燕麦用牛奶提前泡一晚」、第 50 秒「第三步，面包机定时，早上起来直接拿」逐步给出可执行步骤，屏幕文字同步出现「第一步/第二步/第三步」标题。第 65 秒给出结果证明：「这样做之后我每天早上只花五分钟，比以前省了二十分钟」，屏幕文字「以前25分钟 → 现在5分钟」做前后对比，收益具体化、可感知。问题出在结尾：第 80-84 秒只说「好了，今天就到这里」，视频总长 86 秒，之后没有任何口播收束语或行动号召，也没有引导关注/收藏/评论的屏幕文字。\n- **与参考的差异**：参考视频 R1 的价值承诺（第 0.5 秒「三个技巧，让你的早餐五分钟就能做好」）、三步结构（第 12、30、50 秒）、结果证明（第 65 秒「这样做之后我每天早上只花五分钟，比以前省了二十分钟」及屏幕文字「以前25分钟 → 现在5分钟」）与目标几乎逐字一致，唯一明显差异在结尾：R1 第 80-85 秒说「觉得有用就关注我，下期教你做便当」，把行动号召与前文的省时价值绑定（有用→关注→下期便当），并且视频持续到 88 秒，留出了完整收尾；目标在第 84 秒说完「好了，今天就到这里」后还有约 2 秒没有内容，既没有关注引导，也没有为下一步内容做承接。\n- **建议**：把第 80-84 秒的「好了，今天就到这里」改成与前文省时价值一致的行动号召，例如「觉得有用就点个关注，下期教你十分钟备好一周早餐」，并在第 80-86 秒配上「关注我 → 下期：10分钟备好一周早餐」的大字字幕，填补第 84-86 秒现在的空白；前半段（0.5 秒收益承诺、第 65 秒前后对比）保持不变。\n"
+          },
+          "score": {
+            "expected": [
+              "no_cta"
+            ],
+            "hits": [
+              "no_cta"
+            ],
+            "forbidden": [
+              "hook_no_value_promise",
+              "hook_slow_start",
+              "value_late"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 1,
+            "quotedFindings": 3,
+            "typedFindings": 3,
+            "citedRefs": 47,
+            "invalidRefs": 0,
+            "matchModes": {
+              "type": 1
+            },
+            "abstained": [],
+            "criteria": {
+              "expectedCount": 4,
+              "parsedCount": 4,
+              "dimensionCorrect": 4,
+              "verdictCorrect": 4,
+              "covered": 4,
+              "rows": [
+                {
+                  "id": "U1",
+                  "text": "开头3秒内要说出观众能得到什么",
+                  "dimension": "HOOK",
+                  "verdict": "MET",
+                  "covered": true,
+                  "expectedDimension": "HOOK",
+                  "expectedVerdict": "MET"
+                },
+                {
+                  "id": "U2",
+                  "text": "结尾必须引导关注",
+                  "dimension": "VALUE_DELIVERY",
+                  "verdict": "NOT_MET",
+                  "covered": true,
+                  "expectedDimension": "VALUE_DELIVERY",
+                  "expectedVerdict": "NOT_MET"
+                },
+                {
+                  "id": "U3",
+                  "text": "不能出现竞品品牌的名字",
+                  "dimension": "OTHER",
+                  "verdict": "MET",
+                  "covered": true,
+                  "expectedDimension": "OTHER",
+                  "expectedVerdict": "MET"
+                },
+                {
+                  "id": "U4",
+                  "text": "每一步都要有字幕标题",
+                  "dimension": "STRUCTURE_RHYTHM",
+                  "verdict": "MET",
+                  "covered": true,
+                  "expectedDimension": "STRUCTURE_RHYTHM",
+                  "expectedVerdict": "MET"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "caseId": "cc2_criteria_overall",
+          "status": "success",
+          "stopReason": "completed",
+          "error": "",
+          "latencySeconds": 41.7,
+          "usage": {
+            "modelCalls": 6,
+            "inputTokens": 28335,
+            "outputTokens": 10771,
+            "totalTokens": 39106
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标开场 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，第一句就给出了明确结果（3 个技巧、5 分钟做好早餐）；同时 0~4 秒屏幕文字「5分钟早餐 3个技巧」与之同步强化。两者在首屏即形成可感知的收益承诺，符合前三秒信息承诺。开场镜头为 3 个 6 秒长镜（METADATA:T，平均 6.0 秒、2 秒内短镜头 0 个），画面变化不快，但口播与文字信息足够支撑停留理由，未构成泛泛开场或空泛悬念。",
+              "differenceText": "参考 R1 开场 0.5~3.5 秒口播与目标逐字相同「三个技巧，让你的早餐五分钟就能做好」，0~4 秒屏幕文字也同为「5分钟早餐 3个技巧」，首屏收益承诺的时间点与表述完全一致；唯一差别在 12 秒之后 R1 出现「第一步 提前煮蛋」的分段字幕，这属于结构与节奏维度，不影响 HOOK 判断。因此在 HOOK 维度目标与参考持平。",
+              "suggestedAction": "保持开场 0.5~3.5 秒的「三个技巧，让你的早餐五分钟就能做好」口播与 0~4 秒「5分钟早餐 3个技巧」大字幕不变，收益承诺已在前 1 秒完成，不需要再前移或重写。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:02",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00",
+                "ASR:R1@00:00:00",
+                "METADATA:T"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-platform-short-feed-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1",
+                "KNOWLEDGE:hook-platform-short-feed-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-good-case-authority-fast-v1",
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-bad-case-empty-suspense-v1"
+              ],
+              "confidence": 0.9,
+              "targetScore": 5.0,
+              "referenceScores": {
+                "R1": 5.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "structure_unclear",
+              "observation": "目标镜头节奏本身不拖：METADATA:T 显示 15 个镜头、平均 5.9 秒、中位 6.0 秒、最长 6.0 秒（SCENE:T#1）、2 秒内短镜头 0 个、每 30 秒切换 4/5/5 次，镜头切分几乎完全均匀。问题出在段落标记：0.5-3.5 秒说「三个技巧，让你的早餐五分钟就能做好」，但随后 12-40 秒只有一条长达 28 秒的口播段落「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」，三个技巧被塞进一句话里，没有“第一步/第二步/第三步”的口播或字幕，屏幕文字只有 0-4 秒「5分钟早餐 3个技巧」和 65-73 秒「以前25分钟 → 现在5分钟」，中段 12-65 秒之间没有任何小节标记。观众听不出内容走到第几步。",
+              "differenceText": "参考视频 R1 的镜头数据与目标完全一致（METADATA:R1：15 个镜头、平均 5.9 秒、2 秒内短镜头 0 个、每 30 秒 4/5/5 次），差别在于它把同样的节奏填进了明确的段落骨架：12-18 秒口播「第一步，前一天晚上把鸡蛋煮好放冰箱」并且 12-20 秒同步出现字幕「第一步 提前煮蛋」；30-37 秒「第二步，燕麦用牛奶提前泡一晚」对应 30-38 秒字幕「第二步 隔夜燕麦」；50-57 秒「第三步，面包机定时，早上起来直接拿」对应 50-58 秒字幕「第三步 面包机定时」。三个步骤各占一个 6 秒镜头（SCENE:R1#3、#6、#9），口播、字幕、镜头切换三者对齐，观众随时知道进度。",
+              "suggestedAction": "保持现有 15 个镜头、平均 5.9 秒的节奏不动（这个节奏和参考一致），只补段落标记：把 12-40 秒那条 28 秒口播拆成三段，分别对齐镜头边界——12-18 秒（SCENE:T#3）口播改为「第一步，前一天晚上把鸡蛋煮好放冰箱」并叠加大字幕「第一步 提前煮蛋」；30-36 秒（SCENE:T#6）改为「第二步，燕麦用牛奶提前泡一晚」+ 字幕「第二步 隔夜燕麦」；48-54 秒（SCENE:T#9）改为「第三步，面包机定时，早上起来直接拿」+ 字幕「第三步 面包机定时」。这样在不增加镜头数的前提下让每 6 秒切换对应一步，与参考的 12/30/50 秒三处标记对齐。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:12",
+                  "text": "鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的"
+                },
+                {
+                  "ref": "ASR:R1@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:12",
+                "FRAME:T@00:00:30",
+                "FRAME:R1@00:00:12",
+                "FRAME:R1@00:00:30",
+                "FRAME:R1@00:00:50",
+                "METADATA:T",
+                "METADATA:R1",
+                "ASR:T@00:00:12",
+                "ASR:R1@00:00:12",
+                "OCR:R1@00:00:12",
+                "OCR:R1@00:00:30",
+                "OCR:R1@00:00:50",
+                "SCENE:T#3",
+                "SCENE:R1#3"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-rule-opening-transition-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:structure-bad-case-topic-jump-v1",
+                "KNOWLEDGE:structure-rule-slow-burn-exception-v1",
+                "KNOWLEDGE:structure-good-case-example-driven-v1",
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1",
+                "KNOWLEDGE:structure-rule-opening-transition-v1"
+              ],
+              "confidence": 0.88,
+              "targetScore": 2.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标的价值表达链完整：第0.5秒口播即给出收益承诺「三个技巧，让你的早餐五分钟就能做好」，同时0-4秒屏幕文字「5分钟早餐 3个技巧」强化；第65-72秒给出带数字的结果证明「这样做之后我每天早上只花五分钟，比以前省了二十分钟」，并配合65-73秒屏幕文字前后对比「以前25分钟 → 现在5分钟」；第80-85秒结尾行动号召「觉得有用就关注我，下期教你做便当」。收益具体（有数字、有前后对比），不属于空泛主张。中段12-40秒「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」把三个技巧合并成一句罗列，并落回「都挺方便的」这一收益表述。",
+              "differenceText": "与参考R1逐项对照几乎一致：R1同样在第0.5秒口播「三个技巧，让你的早餐五分钟就能做好」，同样在第65-72秒说「这样做之后我每天早上只花五分钟，比以前省了二十分钟」，同样在80-85秒说「觉得有用就关注我，下期教你做便当」，同样有65-73秒「以前25分钟 → 现在5分钟」屏幕文字。唯一差别在中间段：R1以「第一步，前一天晚上把鸡蛋煮好放冰箱」「第二步，燕麦用牛奶提前泡一晚」「第三步，面包机定时，早上起来直接拿」分三步讲清，目标则把三点压成一句长句（12-40秒），且没有出现「第一步」「第二步」「第三步」的屏幕文字或口播标记。",
+              "suggestedAction": "保持第0.5秒口播收益承诺「五分钟就能做好」+同步大字幕「5分钟早餐 3个技巧」、第65秒数字结果证明「以前25分钟 → 现在5分钟」、第80秒「关注我，下期教你做便当」的收束结构即可；用户标准中要求的分步骤标识与品牌「小王早餐」提及不属于本维度评分点，见 criteria_verdicts。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:T@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:01:05",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:01:05",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "OCR:T@00:01:05",
+                "ASR:T@00:01:20",
+                "ASR:R1@00:00:12"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:value-rule-specificity-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1",
+                "KNOWLEDGE:value-bad-case-vague-claim-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:value-bad-case-vague-claim-v1",
+                "KNOWLEDGE:value-bad-case-scattered-benefits-v1",
+                "KNOWLEDGE:value-rule-specificity-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1",
+                "KNOWLEDGE:value-bad-case-feature-without-benefit-v1",
+                "KNOWLEDGE:value-pattern-use-scenario-v1"
+              ],
+              "confidence": 0.82,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            }
+          ],
+          "abstained": [],
+          "attempts": [
+            {
+              "dimension": "HOOK",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "confidence": 0.9,
+              "targetScore": 5.0,
+              "referenceScores": {
+                "R1": 5.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-platform-short-feed-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1",
+                "KNOWLEDGE:hook-platform-short-feed-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-good-case-authority-fast-v1",
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-bad-case-empty-suspense-v1"
+              ],
+              "reason": "",
+              "observation": "目标开场 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，第一句就给出了明确结果（3 个技巧、5 分钟做好早餐）；同时 0~4 秒屏幕文字「5分钟早餐 3个技巧」与之同步强化。两者在首屏即形成可感知的收益承诺，符合前三秒信息承诺。开场镜头为 3 个 6 秒长镜（METADATA:T，平均 6.0 秒、2 秒内短镜头 0 个），画面变化不快，但口播与文字信息足够支撑停留理由，未构成泛泛开场或空泛悬念。"
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "GAP",
+              "findingType": "structure_unclear",
+              "confidence": 0.88,
+              "targetScore": 2.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:12",
+                  "text": "鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的"
+                },
+                {
+                  "ref": "ASR:R1@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-rule-opening-transition-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:structure-bad-case-topic-jump-v1",
+                "KNOWLEDGE:structure-rule-slow-burn-exception-v1",
+                "KNOWLEDGE:structure-good-case-example-driven-v1",
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1",
+                "KNOWLEDGE:structure-rule-opening-transition-v1"
+              ],
+              "reason": "",
+              "observation": "目标镜头节奏本身不拖：METADATA:T 显示 15 个镜头、平均 5.9 秒、中位 6.0 秒、最长 6.0 秒（SCENE:T#1）、2 秒内短镜头 0 个、每 30 秒切换 4/5/5 次，镜头切分几乎完全均匀。问题出在段落标记：0.5-3.5 秒说「三个技巧，让你的早餐五分钟就能做好」，但随后 12-40 秒只有一条长达 28 秒的口播段落「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」，三个技巧被塞进一句话里，没有“第一步/第二步/第三步”的口播或字幕，屏幕文字只有 0-4 秒「5分钟早餐 3个技巧」和 65-73 秒「以前25分钟 → 现在5分钟」，中段 12-65 秒之间没有任何小节标记。观众听不出内容走到第几步。"
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "confidence": 0.82,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:T@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:value-rule-specificity-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1",
+                "KNOWLEDGE:value-bad-case-vague-claim-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:value-bad-case-vague-claim-v1",
+                "KNOWLEDGE:value-bad-case-scattered-benefits-v1",
+                "KNOWLEDGE:value-rule-specificity-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1",
+                "KNOWLEDGE:value-bad-case-feature-without-benefit-v1",
+                "KNOWLEDGE:value-pattern-use-scenario-v1"
+              ],
+              "reason": "",
+              "observation": "目标的价值表达链完整：第0.5秒口播即给出收益承诺「三个技巧，让你的早餐五分钟就能做好」，同时0-4秒屏幕文字「5分钟早餐 3个技巧」强化；第65-72秒给出带数字的结果证明「这样做之后我每天早上只花五分钟，比以前省了二十分钟」，并配合65-73秒屏幕文字前后对比「以前25分钟 → 现在5分钟」；第80-85秒结尾行动号召「觉得有用就关注我，下期教你做便当」。收益具体（有数字、有前后对比），不属于空泛主张。中段12-40秒「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」把三个技巧合并成一句罗列，并落回「都挺方便的」这一收益表述。"
+            }
+          ],
+          "evaluatorReasons": [
+            []
+          ],
+          "specialistErrors": [],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场收益承诺与价值证明上与参考基本持平：0.5 秒即口播「三个技巧，让你的早餐五分钟就能做好」，并用「5分钟早餐 3个技巧」字幕强化，结尾也有「以前25分钟 → 现在5分钟」的数字对比和关注引导。最关键的差距在结构节奏：目标中段 12-40 秒把三个技巧压进一条 28 秒长口播，缺少参考中「第一步/第二步/第三步」的口播与字幕标记，观众无法感知内容进度。镜头节奏本身并不拖，15 个镜头、平均 5.9 秒，与参考一致，问题只在段落骨架缺失。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "structure_unclear",
+                "suggestedAction": "保持现有 15 个镜头、平均 5.9 秒的节奏不动（这个节奏和参考一致），只补段落标记：把 12-40 秒那条 28 秒口播拆成三段，分别对齐镜头边界——12-18 秒（SCENE:T#3）口播改为「第一步，前一天晚上把鸡蛋煮好放冰箱」并叠加大字幕「第一步 提前煮蛋」；30-36 秒（SCENE:T#6）改为「第二步，燕麦用牛奶提前泡一晚」+ 字幕「第二步 隔夜燕麦」；48-54 秒（SCENE:T#9）改为「第三步，面包机定时，早上起来直接拿」+ 字幕「第三步 面包机定时」。这样在不增加镜头数的前提下让每 6 秒切换对应一步，与参考的 12/30/50 秒三处标记对齐。",
+                "confidence": 0.88,
+                "rationale": "镜头节奏已与参考一致，唯一明显差距是中段缺少分步骤的口播与字幕标记，导致三个技巧被压成一条 28 秒长句、观众听不出进度。"
+              }
+            ],
+            "mergedActions": [
+              "保持现有 15 个镜头、平均 5.9 秒的节奏不变，只补段落标记：把 12-40 秒的 28 秒口播拆成三段并对齐镜头边界——12-18 秒（SCENE:T#3）改为「第一步，前一天晚上把鸡蛋煮好放冰箱」并叠加大字幕「第一步 提前煮蛋」；30-36 秒（SCENE:T#6）改为「第二步，燕麦用牛奶提前泡一晚」并叠加字幕「第二步 隔夜燕麦」；48-54 秒（SCENE:T#9）改为「第三步，面包机定时，早上起来直接拿」并叠加字幕「第三步 面包机定时」，在不增加镜头数的前提下让每 6 秒切换对应一步。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标开场 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，第一句就给出了明确结果（3 个技巧、5 分钟做好早餐）；同时 0~4 秒屏幕文字「5分钟早餐 3个技巧」与之同步强化。两者在首屏即形成可感知的收益承诺，符合前三秒信息承诺。开场镜头为 3 个 6 秒长镜（METADATA:T，平均 6.0 秒、2 秒内短镜头 0 个），画面变化不快，但口播与文字信息足够支撑停留理由，未构成泛泛开场或空泛悬念。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:T@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ],
+                "downgraded": null
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "observation": "目标的价值表达链完整：第0.5秒口播即给出收益承诺「三个技巧，让你的早餐五分钟就能做好」，同时0-4秒屏幕文字「5分钟早餐 3个技巧」强化；第65-72秒给出带数字的结果证明「这样做之后我每天早上只花五分钟，比以前省了二十分钟」，并配合65-73秒屏幕文字前后对比「以前25分钟 → 现在5分钟」；第80-85秒结尾行动号召「觉得有用就关注我，下期教你做便当」。收益具体（有数字、有前后对比），不属于空泛主张。中段12-40秒「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」把三个技巧合并成一句罗列，并落回「都挺方便的」这一收益表述。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "ASR:T@00:01:05",
+                    "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                  }
+                ],
+                "downgraded": null
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED",
+            "criteria": [
+              {
+                "text": "第一句话就说出能得到的结果",
+                "section": "开场",
+                "id": "U1",
+                "dimension": "HOOK",
+                "check": "视频第一句话就说出用户能得到的结果",
+                "classifiedBy": "llm",
+                "dimensionLabel": "开场钩子"
+              },
+              {
+                "text": "每个步骤要用“第一步、第二步”标出来",
+                "section": "节奏",
+                "id": "U2",
+                "dimension": "STRUCTURE_RHYTHM",
+                "check": "视频中每个步骤都用“第一步、第二步”标出",
+                "classifiedBy": "llm",
+                "dimensionLabel": "结构节奏"
+              },
+              {
+                "text": "视频里要提到品牌“小王早餐”",
+                "section": "其他",
+                "id": "U3",
+                "dimension": "OTHER",
+                "check": "视频里提到品牌“小王早餐”",
+                "classifiedBy": "llm",
+                "dimensionLabel": "补充分析"
+              }
+            ],
+            "criteriaReport": [
+              {
+                "id": "U1",
+                "text": "第一句话就说出能得到的结果",
+                "check": "视频第一句话就说出用户能得到的结果",
+                "dimension": "HOOK",
+                "dimensionLabel": "开场钩子",
+                "verdict": "MET",
+                "verdictLabel": "满足",
+                "reason": "目标第一句口播（0.5~3.5 秒）即「三个技巧，让你的早餐五分钟就能做好」，直接说出用户能得到的结果（3 个技巧 / 5 分钟做好早餐）；0~4 秒屏幕文字「5分钟早餐 3个技巧」同步强化。",
+                "evidence": [
+                  "ASR:T@00:00:00",
+                  "OCR:T@00:00:00"
+                ],
+                "answeredBy": "hook_analysis"
+              },
+              {
+                "id": "U2",
+                "text": "每个步骤要用“第一步、第二步”标出来",
+                "check": "视频中每个步骤都用“第一步、第二步”标出",
+                "dimension": "STRUCTURE_RHYTHM",
+                "dimensionLabel": "结构节奏",
+                "verdict": "NOT_MET",
+                "verdictLabel": "不满足",
+                "reason": "目标全程没有出现“第一步/第二步”的口播或字幕。0.5-3.5 秒只承诺「三个技巧」，12-40 秒把三个技巧合并成一句「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」，屏幕文字也只有 0-4 秒「5分钟早餐 3个技巧」和 65-73 秒「以前25分钟 → 现在5分钟」，没有任何步骤序号标记。",
+                "evidence": [
+                  "ASR:T@00:00:12",
+                  "ASR:T@00:00:00",
+                  "OCR:T@00:00:00",
+                  "OCR:T@00:01:05"
+                ],
+                "answeredBy": "structure_rhythm_analysis"
+              },
+              {
+                "id": "U3",
+                "text": "视频里要提到品牌“小王早餐”",
+                "check": "视频里提到品牌“小王早餐”",
+                "dimension": "OTHER",
+                "dimensionLabel": "补充分析",
+                "verdict": "NOT_MET",
+                "verdictLabel": "不满足",
+                "reason": "逐条核对全片 88 秒的 4 段口播与 2 条屏幕文字，均未出现品牌名「小王早餐」：第 0.5-3.5 秒只说了「三个技巧，让你的早餐五分钟就能做好」，并未说出品牌；12-40 秒是「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」；65-72 秒是「这样做之后我每天早上只花五分钟，比以前省了二十分钟」；80-85 秒是「觉得有用就关注我，下期教你做便当」，结尾号召只说「关注我」，没有报出账号或品牌。屏幕文字同样只有 0-4 秒「5分钟早餐 3个技巧」和 65-73 秒「以前25分钟 → 现在5分钟」，全程缺少品牌词「小王早餐」。",
+                "evidence": [
+                  "ASR:T@00:00:00",
+                  "ASR:T@00:00:12",
+                  "ASR:T@00:01:05",
+                  "ASR:T@00:01:20",
+                  "OCR:T@00:00:00",
+                  "OCR:T@00:01:05"
+                ],
+                "answeredBy": "supplementary_analysis"
+              }
+            ],
+            "supplementary": {
+              "mode": "overall",
+              "criteriaIds": [
+                "U3"
+              ],
+              "verdicts": [
+                {
+                  "id": "U3",
+                  "verdict": "NOT_MET",
+                  "reason": "逐条核对全片 88 秒的 4 段口播与 2 条屏幕文字，均未出现品牌名「小王早餐」：第 0.5-3.5 秒只说了「三个技巧，让你的早餐五分钟就能做好」，并未说出品牌；12-40 秒是「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」；65-72 秒是「这样做之后我每天早上只花五分钟，比以前省了二十分钟」；80-85 秒是「觉得有用就关注我，下期教你做便当」，结尾号召只说「关注我」，没有报出账号或品牌。屏幕文字同样只有 0-4 秒「5分钟早餐 3个技巧」和 65-73 秒「以前25分钟 → 现在5分钟」，全程缺少品牌词「小王早餐」。",
+                  "evidence": [
+                    "ASR:T@00:00:00",
+                    "ASR:T@00:00:12",
+                    "ASR:T@00:01:05",
+                    "ASR:T@00:01:20",
+                    "OCR:T@00:00:00",
+                    "OCR:T@00:01:05"
+                  ]
+                }
+              ],
+              "missingCriteriaIds": [],
+              "notes": [
+                {
+                  "title": "40-65 秒出现约 25 秒既无口播也无屏幕文字的空档",
+                  "observation": "目标的第 12-40 秒是一整段长达 28 秒的口播，直到第 65 秒才有下一句人声，中间的 40-65 秒（覆盖 SCENE:T#7 到 SCENE:T#10 四个镜头）既没有口播，也没有新的屏幕文字：全片屏幕文字只出现在 0-4 秒和 65-73 秒两处。参考视频在同样的中段保持每 18-20 秒一次口播（12-18、30-37、50-57），并在 50-58 秒有「第三步 面包机定时」字幕承接，最长静默只有约 12 秒，中段没有出现这么长的纯画面空档。",
+                  "quotes": [
+                    {
+                      "ref": "ASR:T@00:00:12",
+                      "text": "鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的"
+                    },
+                    {
+                      "ref": "ASR:T@00:01:05",
+                      "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                    },
+                    {
+                      "ref": "ASR:R1@00:00:50",
+                      "text": "第三步，面包机定时，早上起来直接拿"
+                    }
+                  ]
+                },
+                {
+                  "title": "口播段落与 6 秒等长镜头的切换点不对齐",
+                  "observation": "目标 15 个镜头几乎固定为 6 秒一次（METADATA:T 平均 5.9 秒、中位 6.0 秒、最长 6.0 秒，2 秒内短镜头 0 个），而第 12-40 秒那一整段口播横跨 SCENE:T#3（12-18）到 SCENE:T#7（36-42）共五个镜头，句子和画面切换点之间没有对应关系，任一处切片都听不到完整内容。参考视频的步骤口播则基本落在单个镜头区间内：12-18 秒的「第一步」正好对应 SCENE:R1#3 的 12-18，30-37 秒的「第二步」落在 SCENE:R1#6 的 30-36，切换点与步骤节点基本重合。",
+                  "quotes": [
+                    {
+                      "ref": "ASR:T@00:00:12",
+                      "text": "鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的"
+                    },
+                    {
+                      "ref": "ASR:R1@00:00:12",
+                      "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                    },
+                    {
+                      "ref": "ASR:R1@00:00:30",
+                      "text": "第二步，燕麦用牛奶提前泡一晚"
+                    }
+                  ]
+                }
+              ],
+              "droppedNotes": 0,
+              "attempts": 1
+            },
+            "reportMarkdown": "# 短视频对比诊断报告\n\n## 总结\n\n目标视频在开场收益承诺与价值证明上与参考基本持平：0.5 秒即口播「三个技巧，让你的早餐五分钟就能做好」，并用「5分钟早餐 3个技巧」字幕强化，结尾也有「以前25分钟 → 现在5分钟」的数字对比和关注引导。最关键的差距在结构节奏：目标中段 12-40 秒把三个技巧压进一条 28 秒长口播，缺少参考中「第一步/第二步/第三步」的口播与字幕标记，观众无法感知内容进度。镜头节奏本身并不拖，15 个镜头、平均 5.9 秒，与参考一致，问题只在段落骨架缺失。\n\n## 解析出的评分标准\n\n| 编号 | 原文 | 归属 | 检查口径 |\n|---|---|---|---|\n| U1 | 第一句话就说出能得到的结果 | 开场钩子 | 视频第一句话就说出用户能得到的结果 |\n| U2 | 每个步骤要用“第一步、第二步”标出来 | 结构节奏 | 视频中每个步骤都用“第一步、第二步”标出 |\n| U3 | 视频里要提到品牌“小王早餐” | 补充分析 | 视频里提到品牌“小王早餐” |\n\n## 逐条对照\n\n| 编号 | 标准 | 结果 | 依据 |\n|---|---|---|---|\n| U1 | 第一句话就说出能得到的结果 | 满足 | 目标第一句口播（0.5~3.5 秒）即「三个技巧，让你的早餐五分钟就能做好」，直接说出用户能得到的结果（3 个技巧 / 5 分钟做好早餐）；0~4 秒屏幕文字「5分钟早餐 3个技巧」同步强化。 |\n| U2 | 每个步骤要用“第一步、第二步”标出来 | 不满足 | 目标全程没有出现“第一步/第二步”的口播或字幕。0.5-3.5 秒只承诺「三个技巧」，12-40 秒把三个技巧合并成一句「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」，屏幕文字也只有 0-4 秒「5分钟早餐 3个技巧」和 65-73 秒「以前25分钟 → 现在5分钟」，没有任何步骤序号标记。 |\n| U3 | 视频里要提到品牌“小王早餐” | 不满足 | 逐条核对全片 88 秒的 4 段口播与 2 条屏幕文字，均未出现品牌名「小王早餐」：第 0.5-3.5 秒只说了「三个技巧，让你的早餐五分钟就能做好」，并未说出品牌；12-40 秒是「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」；65-72 秒是「这样做之后我每天早上只花五分钟，比以前省了二十分钟」；80-85 秒是「觉得有用就关注我，下期教你做便当」，结尾号召只说「关注我」，没有报出账号或品牌。屏幕文字同样只有 0-4 秒「5分钟早餐 3个技巧」和 65-73 秒「以前25分钟 → 现在5分钟」，全程缺少品牌词「小王早餐」。 |\n\n合计：满足 1，不满足 2\n\n## 改进优先级\n\n1. 【结构节奏】保持现有 15 个镜头、平均 5.9 秒的节奏不动（这个节奏和参考一致），只补段落标记：把 12-40 秒那条 28 秒口播拆成三段，分别对齐镜头边界——12-18 秒（SCENE:T#3）口播改为「第一步，前一天晚上把鸡蛋煮好放冰箱」并叠加大字幕「第一步 提前煮蛋」；30-36 秒（SCENE:T#6）改为「第二步，燕麦用牛奶提前泡一晚」+ 字幕「第二步 隔夜燕麦」；48-54 秒（SCENE:T#9）改为「第三步，面包机定时，早上起来直接拿」+ 字幕「第三步 面包机定时」。这样在不增加镜头数的前提下让每 6 秒切换对应一步，与参考的 12/30/50 秒三处标记对齐。\n\n## 三个维度的结论\n\n### 开场钩子（相当）\n- **观察**：目标开场 0.5~3.5 秒口播「三个技巧，让你的早餐五分钟就能做好」，第一句就给出了明确结果（3 个技巧、5 分钟做好早餐）；同时 0~4 秒屏幕文字「5分钟早餐 3个技巧」与之同步强化。两者在首屏即形成可感知的收益承诺，符合前三秒信息承诺。开场镜头为 3 个 6 秒长镜（METADATA:T，平均 6.0 秒、2 秒内短镜头 0 个），画面变化不快，但口播与文字信息足够支撑停留理由，未构成泛泛开场或空泛悬念。\n- **与参考的差异**：参考 R1 开场 0.5~3.5 秒口播与目标逐字相同「三个技巧，让你的早餐五分钟就能做好」，0~4 秒屏幕文字也同为「5分钟早餐 3个技巧」，首屏收益承诺的时间点与表述完全一致；唯一差别在 12 秒之后 R1 出现「第一步 提前煮蛋」的分段字幕，这属于结构与节奏维度，不影响 HOOK 判断。因此在 HOOK 维度目标与参考持平。\n- **建议**：保持开场 0.5~3.5 秒的「三个技巧，让你的早餐五分钟就能做好」口播与 0~4 秒「5分钟早餐 3个技巧」大字幕不变，收益承诺已在前 1 秒完成，不需要再前移或重写。\n\n### 结构节奏（差距）\n- **观察**：目标镜头节奏本身不拖：METADATA:T 显示 15 个镜头、平均 5.9 秒、中位 6.0 秒、最长 6.0 秒（SCENE:T#1）、2 秒内短镜头 0 个、每 30 秒切换 4/5/5 次，镜头切分几乎完全均匀。问题出在段落标记：0.5-3.5 秒说「三个技巧，让你的早餐五分钟就能做好」，但随后 12-40 秒只有一条长达 28 秒的口播段落「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」，三个技巧被塞进一句话里，没有“第一步/第二步/第三步”的口播或字幕，屏幕文字只有 0-4 秒「5分钟早餐 3个技巧」和 65-73 秒「以前25分钟 → 现在5分钟」，中段 12-65 秒之间没有任何小节标记。观众听不出内容走到第几步。\n- **与参考的差异**：参考视频 R1 的镜头数据与目标完全一致（METADATA:R1：15 个镜头、平均 5.9 秒、2 秒内短镜头 0 个、每 30 秒 4/5/5 次），差别在于它把同样的节奏填进了明确的段落骨架：12-18 秒口播「第一步，前一天晚上把鸡蛋煮好放冰箱」并且 12-20 秒同步出现字幕「第一步 提前煮蛋」；30-37 秒「第二步，燕麦用牛奶提前泡一晚」对应 30-38 秒字幕「第二步 隔夜燕麦」；50-57 秒「第三步，面包机定时，早上起来直接拿」对应 50-58 秒字幕「第三步 面包机定时」。三个步骤各占一个 6 秒镜头（SCENE:R1#3、#6、#9），口播、字幕、镜头切换三者对齐，观众随时知道进度。\n- **建议**：保持现有 15 个镜头、平均 5.9 秒的节奏不动（这个节奏和参考一致），只补段落标记：把 12-40 秒那条 28 秒口播拆成三段，分别对齐镜头边界——12-18 秒（SCENE:T#3）口播改为「第一步，前一天晚上把鸡蛋煮好放冰箱」并叠加大字幕「第一步 提前煮蛋」；30-36 秒（SCENE:T#6）改为「第二步，燕麦用牛奶提前泡一晚」+ 字幕「第二步 隔夜燕麦」；48-54 秒（SCENE:T#9）改为「第三步，面包机定时，早上起来直接拿」+ 字幕「第三步 面包机定时」。这样在不增加镜头数的前提下让每 6 秒切换对应一步，与参考的 12/30/50 秒三处标记对齐。\n\n### 价值传递（相当）\n- **观察**：目标的价值表达链完整：第0.5秒口播即给出收益承诺「三个技巧，让你的早餐五分钟就能做好」，同时0-4秒屏幕文字「5分钟早餐 3个技巧」强化；第65-72秒给出带数字的结果证明「这样做之后我每天早上只花五分钟，比以前省了二十分钟」，并配合65-73秒屏幕文字前后对比「以前25分钟 → 现在5分钟」；第80-85秒结尾行动号召「觉得有用就关注我，下期教你做便当」。收益具体（有数字、有前后对比），不属于空泛主张。中段12-40秒「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」把三个技巧合并成一句罗列，并落回「都挺方便的」这一收益表述。\n- **与参考的差异**：与参考R1逐项对照几乎一致：R1同样在第0.5秒口播「三个技巧，让你的早餐五分钟就能做好」，同样在第65-72秒说「这样做之后我每天早上只花五分钟，比以前省了二十分钟」，同样在80-85秒说「觉得有用就关注我，下期教你做便当」，同样有65-73秒「以前25分钟 → 现在5分钟」屏幕文字。唯一差别在中间段：R1以「第一步，前一天晚上把鸡蛋煮好放冰箱」「第二步，燕麦用牛奶提前泡一晚」「第三步，面包机定时，早上起来直接拿」分三步讲清，目标则把三点压成一句长句（12-40秒），且没有出现「第一步」「第二步」「第三步」的屏幕文字或口播标记。\n- **建议**：保持第0.5秒口播收益承诺「五分钟就能做好」+同步大字幕「5分钟早餐 3个技巧」、第65秒数字结果证明「以前25分钟 → 现在5分钟」、第80秒「关注我，下期教你做便当」的收束结构即可；用户标准中要求的分步骤标识与品牌「小王早餐」提及不属于本维度评分点，见 criteria_verdicts。\n\n## 补充分析\n\n- **40-65 秒出现约 25 秒既无口播也无屏幕文字的空档**：目标的第 12-40 秒是一整段长达 28 秒的口播，直到第 65 秒才有下一句人声，中间的 40-65 秒（覆盖 SCENE:T#7 到 SCENE:T#10 四个镜头）既没有口播，也没有新的屏幕文字：全片屏幕文字只出现在 0-4 秒和 65-73 秒两处。参考视频在同样的中段保持每 18-20 秒一次口播（12-18、30-37、50-57），并在 50-58 秒有「第三步 面包机定时」字幕承接，最长静默只有约 12 秒，中段没有出现这么长的纯画面空档。\n- **口播段落与 6 秒等长镜头的切换点不对齐**：目标 15 个镜头几乎固定为 6 秒一次（METADATA:T 平均 5.9 秒、中位 6.0 秒、最长 6.0 秒，2 秒内短镜头 0 个），而第 12-40 秒那一整段口播横跨 SCENE:T#3（12-18）到 SCENE:T#7（36-42）共五个镜头，句子和画面切换点之间没有对应关系，任一处切片都听不到完整内容。参考视频的步骤口播则基本落在单个镜头区间内：12-18 秒的「第一步」正好对应 SCENE:R1#3 的 12-18，30-37 秒的「第二步」落在 SCENE:R1#6 的 30-36，切换点与步骤节点基本重合。\n"
+          },
+          "score": {
+            "expected": [
+              "structure_unclear"
+            ],
+            "hits": [
+              "structure_unclear"
+            ],
+            "forbidden": [
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 1,
+            "quotedFindings": 3,
+            "typedFindings": 3,
+            "citedRefs": 47,
+            "invalidRefs": 0,
+            "matchModes": {
+              "type": 1
+            },
+            "abstained": [],
+            "criteria": {
+              "expectedCount": 3,
+              "parsedCount": 3,
+              "dimensionCorrect": 3,
+              "verdictCorrect": 3,
+              "covered": 3,
+              "rows": [
+                {
+                  "id": "U1",
+                  "text": "第一句话就说出能得到的结果",
+                  "dimension": "HOOK",
+                  "verdict": "MET",
+                  "covered": true,
+                  "expectedDimension": "HOOK",
+                  "expectedVerdict": "MET"
+                },
+                {
+                  "id": "U2",
+                  "text": "每个步骤要用“第一步、第二步”标出来",
+                  "dimension": "STRUCTURE_RHYTHM",
+                  "verdict": "NOT_MET",
+                  "covered": true,
+                  "expectedDimension": "STRUCTURE_RHYTHM",
+                  "expectedVerdict": "NOT_MET"
+                },
+                {
+                  "id": "U3",
+                  "text": "视频里要提到品牌“小王早餐”",
+                  "dimension": "OTHER",
+                  "verdict": "NOT_MET",
+                  "covered": true,
+                  "expectedDimension": "OTHER",
+                  "expectedVerdict": "NOT_MET"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "caseId": "cc2_criteria_overall",
+          "status": "success",
+          "stopReason": "completed",
+          "error": "",
+          "latencySeconds": 54.4,
+          "usage": {
+            "modelCalls": 6,
+            "inputTokens": 28447,
+            "outputTokens": 13341,
+            "totalTokens": 41788
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频开场第 0.5~3.5 秒口播第一句为「三个技巧，让你的早餐五分钟就能做好」，同时第 0~4 秒屏幕文字为「5分钟早餐 3个技巧」，在首屏就同时给出了可感知收益（5 分钟）与方法数量（3 个技巧），符合前三秒信息承诺。开场窗口内镜头数为 3，平均镜头时长 6.0 秒，无 2 秒内短镜头，首屏只有一段文字，没有额外铺垫或空泛悬念。",
+              "differenceText": "目标与参考在开场 15 秒窗口内的事实完全一致：口播第 0.5~3.5 秒均为「三个技巧，让你的早餐五分钟就能做好」，屏幕文字第 0~4 秒均为「5分钟早餐 3个技巧」，镜头统计均为 3 个镜头、平均 6.0 秒、最长镜头 6.0 秒、2 秒内短镜头 0 个。即两者在 HOOK 维度没有可辨识差异；R1 在第 12 秒出现的「第一步 提前煮蛋」属于段落结构环节，不计入开场钩子的对比。",
+              "suggestedAction": "保持现有开场：继续把「三个技巧，让你的早餐五分钟就能做好」放在第 0.5~3.5 秒口播，并让「5分钟早餐 3个技巧」大字幕覆盖第 0~4 秒；若后续想进一步强化，可在同一句前 1 秒补半句痛点（如「早上没时间做早餐？」），但当前与参考持平，不需要改动。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:02",
+                "FRAME:R1@00:00:02",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00",
+                "METADATA:T",
+                "ASR:R1@00:00:00",
+                "METADATA:R1"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1",
+                "KNOWLEDGE:hook-platform-short-feed-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-good-case-authority-fast-v1",
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-bad-case-empty-suspense-v1"
+              ],
+              "confidence": 0.9,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "structure_unclear",
+              "observation": "镜头节奏层面目标与参考完全一致：METADATA:T 显示 15 个镜头、平均 5.9 秒、中位 6.0 秒、最长镜头 SCENE:T#1 为 6.0 秒、2 秒内短镜头 0 个、每 30 秒切换 4/5/5 次，与 METADATA:R1 的数字一模一样，因此问题不在切换快慢。真正的差异在段落标记：目标的口播 ASR:T@00:00:12 从第 12 秒到第 40 秒是一整段 28 秒的长句「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」，把三个技巧连成一串，没有任何“第一步/第二步/第三步”一类的分段词；屏幕文字也只有 OCR:T@00:00:00（0-4 秒「5分钟早餐 3个技巧」）和 OCR:T@00:01:05（65-73 秒「以前25分钟 → 现在5分钟」），第 5~64 秒长达 60 秒没有屏幕文字，观众在中段拿不到进度提示。",
+              "differenceText": "参考在同一时间轴上给出了清晰的段落标记：OCR:R1@00:00:12（12-20 秒「第一步 提前煮蛋」）、OCR:R1@00:00:30（30-38 秒「第二步 隔夜燕麦」）、OCR:R1@00:00:50（50-58 秒「第三步 面包机定时」），口播也逐条对应，即 ASR:R1@00:00:12「第一步，前一天晚上把鸡蛋煮好放冰箱」、ASR:R1@00:00:30「第二步，燕麦用牛奶提前泡一晚」、ASR:R1@00:00:50「第三步，面包机定时，早上起来直接拿」。参考用字幕+口播双重标记把 88 秒切成可数段落，目标则把同样三个信息压缩进 12-40 秒一个不可拆分的句子，段落边界只能靠观众自己猜。",
+              "suggestedAction": "把 12-40 秒那段拆成三段并加步骤字幕：第 12 秒加“第一步 提前煮蛋”、第 22 秒加“第二步 隔夜燕麦”、第 32 秒加“第三步 面包机定时”，口播同步补上“第一步/第二步/第三步”；镜头层面保持 METADATA:T 的 15 个镜头、平均 5.9 秒、每 30 秒 4~5 次切换不变（已与 METADATA:R1 持平），不要为了加速而增加切镜。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:12",
+                  "text": "鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的"
+                },
+                {
+                  "ref": "ASR:R1@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                },
+                {
+                  "ref": "ASR:R1@00:00:30",
+                  "text": "第二步，燕麦用牛奶提前泡一晚"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:12",
+                "FRAME:T@00:01:05",
+                "FRAME:R1@00:00:12",
+                "FRAME:R1@00:00:30",
+                "METADATA:T",
+                "METADATA:R1",
+                "SCENE:T#1",
+                "ASR:T@00:00:12",
+                "OCR:T@00:00:00",
+                "OCR:R1@00:00:12",
+                "OCR:R1@00:00:30",
+                "OCR:R1@00:00:50"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-rule-opening-transition-v1",
+                "KNOWLEDGE:structure-bad-case-topic-jump-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:structure-bad-case-topic-jump-v1",
+                "KNOWLEDGE:structure-rule-slow-burn-exception-v1",
+                "KNOWLEDGE:structure-good-case-example-driven-v1",
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1",
+                "KNOWLEDGE:structure-rule-opening-transition-v1"
+              ],
+              "confidence": 0.86,
+              "targetScore": 2.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标在第 0.5~3.5 秒口播“三个技巧，让你的早餐五分钟就能做好”，第 0~4 秒屏幕文字“5分钟早餐 3个技巧”，观众收益在第 0.5 秒就出现；第 65~72 秒给出结果证明“这样做之后我每天早上只花五分钟，比以前省了二十分钟”，同步第 65~73 秒屏幕文字“以前25分钟 → 现在5分钟”形成前后对比；第 80~85 秒收尾并有行动号召“觉得有用就关注我，下期教你做便当”。收益首次出现、结果证明、结尾号召三项都齐全。中段第 12~40 秒把三个技巧压在一句口播里（“鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的”），没有逐步拆开的收益表述，结尾用“都挺方便的”这类模糊措辞，单个技巧的可操作性偏弱，但整体价值主线（5 分钟早餐）没有跑偏。",
+              "differenceText": "参考 R1 的价值结构与目标几乎一致：同样第 0.5~3.5 秒说“三个技巧，让你的早餐五分钟就能做好”、同样第 65~72 秒说“这样做之后我每天早上只花五分钟，比以前省了二十分钟”、同样第 80~85 秒说“觉得有用就关注我，下期教你做便当”，收益首次出现都在第 0.5 秒。差别在中段：R1 第 12~18 秒“第一步，前一天晚上把鸡蛋煮好放冰箱”、第 30~37 秒“第二步，燕麦用牛奶提前泡一晚”、第 50~57 秒“第三步，面包机定时，早上起来直接拿”，并配第 12~20/30~38/50~58 秒的“第一步/第二步/第三步”屏幕文字，每条技巧对应一个具体动作；目标第 12~40 秒是一条 28 秒的长句，三个技巧混在一起，没有分步字幕，也没有逐条落地的动作结果。就 VALUE_DELIVERY 的三个判定点（收益出现时间、结果证明、结尾号召）而言，两者等价，差异主要体现在段落组织而非价值本身。",
+              "suggestedAction": "保持第 0.5 秒“三个技巧，让你的早餐五分钟就能做好”的价值承诺、第 65 秒“以前25分钟 → 现在5分钟”的前后对比证明和第 80 秒“关注我，下期教你做便当”的号召不变；另外按用户标准补两点：把第 12~40 秒的长句拆成第 12 秒“第一步 提前煮蛋”、第 24 秒“第二步 隔夜燕麦”、第 36 秒“第三步 面包机定时”三句口播配大字幕，并在第 12 秒或第 80 秒口播/字幕带上“小王早餐”品牌名。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                },
+                {
+                  "ref": "OCR:T@00:01:05",
+                  "text": "以前25分钟 → 现在5分钟"
+                },
+                {
+                  "ref": "ASR:T@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:01:05",
+                "FRAME:R1@00:00:01",
+                "FRAME:R1@00:00:12",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "OCR:T@00:01:05",
+                "ASR:T@00:01:20",
+                "ASR:R1@00:00:12"
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:value-rule-specificity-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:value-bad-case-vague-claim-v1",
+                "KNOWLEDGE:value-bad-case-scattered-benefits-v1",
+                "KNOWLEDGE:value-rule-specificity-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1",
+                "KNOWLEDGE:value-bad-case-feature-without-benefit-v1",
+                "KNOWLEDGE:value-pattern-use-scenario-v1"
+              ],
+              "confidence": 0.72,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "polarityOverridden": null,
+              "typeCorrected": null,
+              "downgraded": null
+            }
+          ],
+          "abstained": [],
+          "attempts": [
+            {
+              "dimension": "HOOK",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "confidence": 0.9,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:hook-bad-case-generic-opening-v1",
+                "KNOWLEDGE:hook-platform-short-feed-v1",
+                "KNOWLEDGE:hook-pattern-pain-benefit-v2",
+                "KNOWLEDGE:hook-good-case-authority-fast-v1",
+                "KNOWLEDGE:hook-rule-first-three-seconds-v1",
+                "KNOWLEDGE:hook-bad-case-empty-suspense-v1"
+              ],
+              "reason": "",
+              "observation": "目标视频开场第 0.5~3.5 秒口播第一句为「三个技巧，让你的早餐五分钟就能做好」，同时第 0~4 秒屏幕文字为「5分钟早餐 3个技巧」，在首屏就同时给出了可感知收益（5 分钟）与方法数量（3 个技巧），符合前三秒信息承诺。开场窗口内镜头数为 3，平均镜头时长 6.0 秒，无 2 秒内短镜头，首屏只有一段文字，没有额外铺垫或空泛悬念。"
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "GAP",
+              "findingType": "structure_unclear",
+              "confidence": 0.86,
+              "targetScore": 2.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:12",
+                  "text": "鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的"
+                },
+                {
+                  "ref": "ASR:R1@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                },
+                {
+                  "ref": "ASR:R1@00:00:30",
+                  "text": "第二步，燕麦用牛奶提前泡一晚"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-rule-opening-transition-v1",
+                "KNOWLEDGE:structure-bad-case-topic-jump-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:structure-bad-case-topic-jump-v1",
+                "KNOWLEDGE:structure-rule-slow-burn-exception-v1",
+                "KNOWLEDGE:structure-good-case-example-driven-v1",
+                "KNOWLEDGE:structure-good-case-rhythm-marker-v1",
+                "KNOWLEDGE:structure-pattern-contrast-before-after-v1",
+                "KNOWLEDGE:structure-rule-opening-transition-v1"
+              ],
+              "reason": "",
+              "observation": "镜头节奏层面目标与参考完全一致：METADATA:T 显示 15 个镜头、平均 5.9 秒、中位 6.0 秒、最长镜头 SCENE:T#1 为 6.0 秒、2 秒内短镜头 0 个、每 30 秒切换 4/5/5 次，与 METADATA:R1 的数字一模一样，因此问题不在切换快慢。真正的差异在段落标记：目标的口播 ASR:T@00:00:12 从第 12 秒到第 40 秒是一整段 28 秒的长句「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」，把三个技巧连成一串，没有任何“第一步/第二步/第三步”一类的分段词；屏幕文字也只有 OCR:T@00:00:00（0-4 秒「5分钟早餐 3个技巧」）和 OCR:T@00:01:05（65-73 秒「以前25分钟 → 现在5分钟」），第 5~64 秒长达 60 秒没有屏幕文字，观众在中段拿不到进度提示。"
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "executionMode": "FULL_DIAGNOSIS",
+              "evaluatorFeedback": [],
+              "outcome": "FINDING",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "confidence": 0.72,
+              "targetScore": 4.0,
+              "referenceScores": {
+                "R1": 4.0
+              },
+              "firstBenefitSeconds": {
+                "T": 0.5,
+                "R1": 0.5
+              },
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:00:12",
+                  "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                },
+                {
+                  "ref": "OCR:T@00:01:05",
+                  "text": "以前25分钟 → 现在5分钟"
+                },
+                {
+                  "ref": "ASR:T@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                }
+              ],
+              "rubricRefs": [
+                "KNOWLEDGE:value-rule-specificity-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1"
+              ],
+              "retrievedRubricRefs": [
+                "KNOWLEDGE:value-bad-case-vague-claim-v1",
+                "KNOWLEDGE:value-bad-case-scattered-benefits-v1",
+                "KNOWLEDGE:value-rule-specificity-v1",
+                "KNOWLEDGE:value-rule-before-after-outcome-v1",
+                "KNOWLEDGE:value-bad-case-feature-without-benefit-v1",
+                "KNOWLEDGE:value-pattern-use-scenario-v1"
+              ],
+              "reason": "",
+              "observation": "目标在第 0.5~3.5 秒口播“三个技巧，让你的早餐五分钟就能做好”，第 0~4 秒屏幕文字“5分钟早餐 3个技巧”，观众收益在第 0.5 秒就出现；第 65~72 秒给出结果证明“这样做之后我每天早上只花五分钟，比以前省了二十分钟”，同步第 65~73 秒屏幕文字“以前25分钟 → 现在5分钟”形成前后对比；第 80~85 秒收尾并有行动号召“觉得有用就关注我，下期教你做便当”。收益首次出现、结果证明、结尾号召三项都齐全。中段第 12~40 秒把三个技巧压在一句口播里（“鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的”），没有逐步拆开的收益表述，结尾用“都挺方便的”这类模糊措辞，单个技巧的可操作性偏弱，但整体价值主线（5 分钟早餐）没有跑偏。"
+            }
+          ],
+          "evaluatorReasons": [
+            []
+          ],
+          "specialistErrors": [],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场钩子与价值交付主线上与参考持平：第 0.5 秒就给出「三个技巧，让你的早餐五分钟就能做好」的收益承诺，第 65 秒用「以前25分钟 → 现在5分钟」完成结果证明，第 80 秒以「关注我，下期教你做便当」收尾，这三项与参考完全对位；镜头节奏也一致（15 个镜头、平均 5.9 秒、每 30 秒 4~5 次切换），不是劣势。最关键的差距在段落标记：参考用「第一步/第二步/第三步」的字幕加口播把 88 秒切成三个可数段落，目标却把三个技巧压进第 12~40 秒一条 28 秒长句，且第 5~64 秒长达 60 秒没有屏幕文字，观众中段拿不到进度提示。因此改进只需集中在结构分段，而非加快切镜或重做价值主线。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "structure_unclear",
+                "suggestedAction": "把 12-40 秒那段拆成三段并加步骤字幕：第 12 秒加“第一步 提前煮蛋”、第 22 秒加“第二步 隔夜燕麦”、第 32 秒加“第三步 面包机定时”，口播同步补上“第一步/第二步/第三步”；镜头层面保持 METADATA:T 的 15 个镜头、平均 5.9 秒、每 30 秒 4~5 次切换不变（已与 METADATA:R1 持平），不要为了加速而增加切镜。",
+                "confidence": 0.86,
+                "rationale": "镜头节奏已与参考持平，唯一可辨识的差距是中段缺少「第一步/第二步/第三步」的字幕与口播分段标记，导致三个技巧连成一句、60 秒无屏幕文字，观众难以分段跟随，这是当前唯一需要改的 GAP 维度。"
+              }
+            ],
+            "mergedActions": [
+              "把第 12~40 秒那条 28 秒长句拆成三段口播，每段只讲一个技巧（提前煮蛋 / 隔夜燕麦 / 面包机定时），段间留出自然停顿，口播同步补上「第一步」「第二步」「第三步」分段词。",
+              "在第 12 秒加屏幕文字「第一步 提前煮蛋」、第 22 秒加「第二步 隔夜燕麦」、第 32 秒加「第三步 面包机定时」，用这三条字幕填上第 5~64 秒原本无屏幕文字的空白区，与口播分段逐条对齐。",
+              "镜头层面保持现状：15 个镜头、平均 5.9 秒、每 30 秒 4~5 次切换不变，不为了「更紧凑」而增加切镜，改动只发生在口播与字幕的段落标记上。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标视频开场第 0.5~3.5 秒口播第一句为「三个技巧，让你的早餐五分钟就能做好」，同时第 0~4 秒屏幕文字为「5分钟早餐 3个技巧」，在首屏就同时给出了可感知收益（5 分钟）与方法数量（3 个技巧），符合前三秒信息承诺。开场窗口内镜头数为 3，平均镜头时长 6.0 秒，无 2 秒内短镜头，首屏只有一段文字，没有额外铺垫或空泛悬念。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "ASR:R1@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  }
+                ],
+                "downgraded": null
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "observation": "目标在第 0.5~3.5 秒口播“三个技巧，让你的早餐五分钟就能做好”，第 0~4 秒屏幕文字“5分钟早餐 3个技巧”，观众收益在第 0.5 秒就出现；第 65~72 秒给出结果证明“这样做之后我每天早上只花五分钟，比以前省了二十分钟”，同步第 65~73 秒屏幕文字“以前25分钟 → 现在5分钟”形成前后对比；第 80~85 秒收尾并有行动号召“觉得有用就关注我，下期教你做便当”。收益首次出现、结果证明、结尾号召三项都齐全。中段第 12~40 秒把三个技巧压在一句口播里（“鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的”），没有逐步拆开的收益表述，结尾用“都挺方便的”这类模糊措辞，单个技巧的可操作性偏弱，但整体价值主线（5 分钟早餐）没有跑偏。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "ASR:R1@00:00:12",
+                    "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                  }
+                ],
+                "downgraded": null
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED",
+            "criteria": [
+              {
+                "text": "第一句话就说出能得到的结果",
+                "section": "开场",
+                "id": "U1",
+                "dimension": "HOOK",
+                "check": "视频第一句话就说出观众能得到的实际结果",
+                "classifiedBy": "llm",
+                "dimensionLabel": "开场钩子"
+              },
+              {
+                "text": "每个步骤要用“第一步、第二步”标出来",
+                "section": "节奏",
+                "id": "U2",
+                "dimension": "STRUCTURE_RHYTHM",
+                "check": "视频中每个步骤都用“第一步、第二步”这样的序号标出",
+                "classifiedBy": "llm",
+                "dimensionLabel": "结构节奏"
+              },
+              {
+                "text": "视频里要提到品牌“小王早餐”",
+                "section": "其他",
+                "id": "U3",
+                "dimension": "OTHER",
+                "check": "视频中提到品牌“小王早餐”",
+                "classifiedBy": "llm",
+                "dimensionLabel": "补充分析"
+              }
+            ],
+            "criteriaReport": [
+              {
+                "id": "U1",
+                "text": "第一句话就说出能得到的结果",
+                "check": "视频第一句话就说出观众能得到的实际结果",
+                "dimension": "HOOK",
+                "dimensionLabel": "开场钩子",
+                "verdict": "MET",
+                "verdictLabel": "满足",
+                "reason": "目标视频第一句话（第 0.5~3.5 秒）即说出「三个技巧，让你的早餐五分钟就能做好」，直接给出观众能得到的实际结果：5 分钟做完早餐的具体技巧；第 0~4 秒屏幕文字「5分钟早餐 3个技巧」同步强化该结果。",
+                "evidence": [
+                  "ASR:T@00:00:00",
+                  "OCR:T@00:00:00"
+                ],
+                "answeredBy": "hook_analysis"
+              },
+              {
+                "id": "U2",
+                "text": "每个步骤要用“第一步、第二步”标出来",
+                "check": "视频中每个步骤都用“第一步、第二步”这样的序号标出",
+                "dimension": "STRUCTURE_RHYTHM",
+                "dimensionLabel": "结构节奏",
+                "verdict": "NOT_MET",
+                "verdictLabel": "不满足",
+                "reason": "目标是第 12 秒起用一段 28 秒的长句「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」把三个步骤连在一起，口播和屏幕文字（只有 0-4 秒与 65-73 秒两条）都没有出现“第一步、第二步、第三步”这类序号标记；参考则在 12-20、30-38、50-58 秒三条字幕和口播里逐条标出。",
+                "evidence": [
+                  "ASR:T@00:00:12",
+                  "OCR:T@00:01:05",
+                  "OCR:R1@00:00:12",
+                  "OCR:R1@00:00:30",
+                  "OCR:R1@00:00:50"
+                ],
+                "answeredBy": "structure_rhythm_analysis"
+              },
+              {
+                "id": "U3",
+                "text": "视频里要提到品牌“小王早餐”",
+                "check": "视频中提到品牌“小王早餐”",
+                "dimension": "OTHER",
+                "dimensionLabel": "补充分析",
+                "verdict": "NOT_MET",
+                "verdictLabel": "不满足",
+                "reason": "目标全片 88 秒内，4 段口播（0.5~3.5、12~40、65~72、80~85 秒）与 2 段屏幕文字（0~4、65~73 秒）均未出现品牌“小王早餐”或“小王”“早餐”的品牌组合：开场只讲“三个技巧，让你的早餐五分钟就能做好”，中段只讲鸡蛋/燕麦/面包机，结尾只号召关注，没有任何品牌名。",
+                "evidence": [
+                  "ASR:T@00:00:00",
+                  "ASR:T@00:00:12",
+                  "ASR:T@00:01:05",
+                  "ASR:T@00:01:20",
+                  "OCR:T@00:00:00",
+                  "OCR:T@00:01:05"
+                ],
+                "answeredBy": "supplementary_analysis"
+              }
+            ],
+            "supplementary": {
+              "mode": "overall",
+              "criteriaIds": [
+                "U3"
+              ],
+              "verdicts": [
+                {
+                  "id": "U3",
+                  "verdict": "NOT_MET",
+                  "reason": "目标全片 88 秒内，4 段口播（0.5~3.5、12~40、65~72、80~85 秒）与 2 段屏幕文字（0~4、65~73 秒）均未出现品牌“小王早餐”或“小王”“早餐”的品牌组合：开场只讲“三个技巧，让你的早餐五分钟就能做好”，中段只讲鸡蛋/燕麦/面包机，结尾只号召关注，没有任何品牌名。",
+                  "evidence": [
+                    "ASR:T@00:00:00",
+                    "ASR:T@00:00:12",
+                    "ASR:T@00:01:05",
+                    "ASR:T@00:01:20",
+                    "OCR:T@00:00:00",
+                    "OCR:T@00:01:05"
+                  ]
+                }
+              ],
+              "missingCriteriaIds": [],
+              "notes": [
+                {
+                  "title": "中段出现 25 秒无口播空窗",
+                  "observation": "目标第 12~40 秒的长句结束后，下一段口播直到第 65 秒才出现，40~65 秒整整 25 秒没有口播推进；参考在 30~37 秒和 50~57 秒仍持续有步骤口播，最大空窗约 13 秒。镜头仍在每 6 秒切换，但听觉信息断档。",
+                  "quotes": [
+                    {
+                      "ref": "ASR:T@00:00:12",
+                      "text": "鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的"
+                    },
+                    {
+                      "ref": "ASR:T@00:01:05",
+                      "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                    },
+                    {
+                      "ref": "ASR:R1@00:00:30",
+                      "text": "第二步，燕麦用牛奶提前泡一晚"
+                    },
+                    {
+                      "ref": "ASR:R1@00:00:50",
+                      "text": "第三步，面包机定时，早上起来直接拿"
+                    }
+                  ]
+                },
+                {
+                  "title": "中段操作细节不及参考具体",
+                  "observation": "目标在 12~40 秒只列出鸡蛋、燕麦、面包机三个动作，没有给出参考中的冰箱保存、牛奶浸泡、早上直接拿等可执行细节；观众知道“可以提前做”，但不知道具体怎么做。",
+                  "quotes": [
+                    {
+                      "ref": "ASR:T@00:00:12",
+                      "text": "鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的"
+                    },
+                    {
+                      "ref": "ASR:R1@00:00:12",
+                      "text": "第一步，前一天晚上把鸡蛋煮好放冰箱"
+                    },
+                    {
+                      "ref": "ASR:R1@00:00:30",
+                      "text": "第二步，燕麦用牛奶提前泡一晚"
+                    },
+                    {
+                      "ref": "ASR:R1@00:00:50",
+                      "text": "第三步，面包机定时，早上起来直接拿"
+                    }
+                  ]
+                }
+              ],
+              "droppedNotes": 0,
+              "attempts": 1
+            },
+            "reportMarkdown": "# 短视频对比诊断报告\n\n## 总结\n\n目标视频在开场钩子与价值交付主线上与参考持平：第 0.5 秒就给出「三个技巧，让你的早餐五分钟就能做好」的收益承诺，第 65 秒用「以前25分钟 → 现在5分钟」完成结果证明，第 80 秒以「关注我，下期教你做便当」收尾，这三项与参考完全对位；镜头节奏也一致（15 个镜头、平均 5.9 秒、每 30 秒 4~5 次切换），不是劣势。最关键的差距在段落标记：参考用「第一步/第二步/第三步」的字幕加口播把 88 秒切成三个可数段落，目标却把三个技巧压进第 12~40 秒一条 28 秒长句，且第 5~64 秒长达 60 秒没有屏幕文字，观众中段拿不到进度提示。因此改进只需集中在结构分段，而非加快切镜或重做价值主线。\n\n## 解析出的评分标准\n\n| 编号 | 原文 | 归属 | 检查口径 |\n|---|---|---|---|\n| U1 | 第一句话就说出能得到的结果 | 开场钩子 | 视频第一句话就说出观众能得到的实际结果 |\n| U2 | 每个步骤要用“第一步、第二步”标出来 | 结构节奏 | 视频中每个步骤都用“第一步、第二步”这样的序号标出 |\n| U3 | 视频里要提到品牌“小王早餐” | 补充分析 | 视频中提到品牌“小王早餐” |\n\n## 逐条对照\n\n| 编号 | 标准 | 结果 | 依据 |\n|---|---|---|---|\n| U1 | 第一句话就说出能得到的结果 | 满足 | 目标视频第一句话（第 0.5~3.5 秒）即说出「三个技巧，让你的早餐五分钟就能做好」，直接给出观众能得到的实际结果：5 分钟做完早餐的具体技巧；第 0~4 秒屏幕文字「5分钟早餐 3个技巧」同步强化该结果。 |\n| U2 | 每个步骤要用“第一步、第二步”标出来 | 不满足 | 目标是第 12 秒起用一段 28 秒的长句「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」把三个步骤连在一起，口播和屏幕文字（只有 0-4 秒与 65-73 秒两条）都没有出现“第一步、第二步、第三步”这类序号标记；参考则在 12-20、30-38、50-58 秒三条字幕和口播里逐条标出。 |\n| U3 | 视频里要提到品牌“小王早餐” | 不满足 | 目标全片 88 秒内，4 段口播（0.5~3.5、12~40、65~72、80~85 秒）与 2 段屏幕文字（0~4、65~73 秒）均未出现品牌“小王早餐”或“小王”“早餐”的品牌组合：开场只讲“三个技巧，让你的早餐五分钟就能做好”，中段只讲鸡蛋/燕麦/面包机，结尾只号召关注，没有任何品牌名。 |\n\n合计：满足 1，不满足 2\n\n## 改进优先级\n\n1. 【结构节奏】把 12-40 秒那段拆成三段并加步骤字幕：第 12 秒加“第一步 提前煮蛋”、第 22 秒加“第二步 隔夜燕麦”、第 32 秒加“第三步 面包机定时”，口播同步补上“第一步/第二步/第三步”；镜头层面保持 METADATA:T 的 15 个镜头、平均 5.9 秒、每 30 秒 4~5 次切换不变（已与 METADATA:R1 持平），不要为了加速而增加切镜。\n\n## 三个维度的结论\n\n### 开场钩子（相当）\n- **观察**：目标视频开场第 0.5~3.5 秒口播第一句为「三个技巧，让你的早餐五分钟就能做好」，同时第 0~4 秒屏幕文字为「5分钟早餐 3个技巧」，在首屏就同时给出了可感知收益（5 分钟）与方法数量（3 个技巧），符合前三秒信息承诺。开场窗口内镜头数为 3，平均镜头时长 6.0 秒，无 2 秒内短镜头，首屏只有一段文字，没有额外铺垫或空泛悬念。\n- **与参考的差异**：目标与参考在开场 15 秒窗口内的事实完全一致：口播第 0.5~3.5 秒均为「三个技巧，让你的早餐五分钟就能做好」，屏幕文字第 0~4 秒均为「5分钟早餐 3个技巧」，镜头统计均为 3 个镜头、平均 6.0 秒、最长镜头 6.0 秒、2 秒内短镜头 0 个。即两者在 HOOK 维度没有可辨识差异；R1 在第 12 秒出现的「第一步 提前煮蛋」属于段落结构环节，不计入开场钩子的对比。\n- **建议**：保持现有开场：继续把「三个技巧，让你的早餐五分钟就能做好」放在第 0.5~3.5 秒口播，并让「5分钟早餐 3个技巧」大字幕覆盖第 0~4 秒；若后续想进一步强化，可在同一句前 1 秒补半句痛点（如「早上没时间做早餐？」），但当前与参考持平，不需要改动。\n\n### 结构节奏（差距）\n- **观察**：镜头节奏层面目标与参考完全一致：METADATA:T 显示 15 个镜头、平均 5.9 秒、中位 6.0 秒、最长镜头 SCENE:T#1 为 6.0 秒、2 秒内短镜头 0 个、每 30 秒切换 4/5/5 次，与 METADATA:R1 的数字一模一样，因此问题不在切换快慢。真正的差异在段落标记：目标的口播 ASR:T@00:00:12 从第 12 秒到第 40 秒是一整段 28 秒的长句「鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的」，把三个技巧连成一串，没有任何“第一步/第二步/第三步”一类的分段词；屏幕文字也只有 OCR:T@00:00:00（0-4 秒「5分钟早餐 3个技巧」）和 OCR:T@00:01:05（65-73 秒「以前25分钟 → 现在5分钟」），第 5~64 秒长达 60 秒没有屏幕文字，观众在中段拿不到进度提示。\n- **与参考的差异**：参考在同一时间轴上给出了清晰的段落标记：OCR:R1@00:00:12（12-20 秒「第一步 提前煮蛋」）、OCR:R1@00:00:30（30-38 秒「第二步 隔夜燕麦」）、OCR:R1@00:00:50（50-58 秒「第三步 面包机定时」），口播也逐条对应，即 ASR:R1@00:00:12「第一步，前一天晚上把鸡蛋煮好放冰箱」、ASR:R1@00:00:30「第二步，燕麦用牛奶提前泡一晚」、ASR:R1@00:00:50「第三步，面包机定时，早上起来直接拿」。参考用字幕+口播双重标记把 88 秒切成可数段落，目标则把同样三个信息压缩进 12-40 秒一个不可拆分的句子，段落边界只能靠观众自己猜。\n- **建议**：把 12-40 秒那段拆成三段并加步骤字幕：第 12 秒加“第一步 提前煮蛋”、第 22 秒加“第二步 隔夜燕麦”、第 32 秒加“第三步 面包机定时”，口播同步补上“第一步/第二步/第三步”；镜头层面保持 METADATA:T 的 15 个镜头、平均 5.9 秒、每 30 秒 4~5 次切换不变（已与 METADATA:R1 持平），不要为了加速而增加切镜。\n\n### 价值传递（相当）\n- **观察**：目标在第 0.5~3.5 秒口播“三个技巧，让你的早餐五分钟就能做好”，第 0~4 秒屏幕文字“5分钟早餐 3个技巧”，观众收益在第 0.5 秒就出现；第 65~72 秒给出结果证明“这样做之后我每天早上只花五分钟，比以前省了二十分钟”，同步第 65~73 秒屏幕文字“以前25分钟 → 现在5分钟”形成前后对比；第 80~85 秒收尾并有行动号召“觉得有用就关注我，下期教你做便当”。收益首次出现、结果证明、结尾号召三项都齐全。中段第 12~40 秒把三个技巧压在一句口播里（“鸡蛋可以前一天煮好然后燕麦也可以泡着其实面包机也能定时都挺方便的”），没有逐步拆开的收益表述，结尾用“都挺方便的”这类模糊措辞，单个技巧的可操作性偏弱，但整体价值主线（5 分钟早餐）没有跑偏。\n- **与参考的差异**：参考 R1 的价值结构与目标几乎一致：同样第 0.5~3.5 秒说“三个技巧，让你的早餐五分钟就能做好”、同样第 65~72 秒说“这样做之后我每天早上只花五分钟，比以前省了二十分钟”、同样第 80~85 秒说“觉得有用就关注我，下期教你做便当”，收益首次出现都在第 0.5 秒。差别在中段：R1 第 12~18 秒“第一步，前一天晚上把鸡蛋煮好放冰箱”、第 30~37 秒“第二步，燕麦用牛奶提前泡一晚”、第 50~57 秒“第三步，面包机定时，早上起来直接拿”，并配第 12~20/30~38/50~58 秒的“第一步/第二步/第三步”屏幕文字，每条技巧对应一个具体动作；目标第 12~40 秒是一条 28 秒的长句，三个技巧混在一起，没有分步字幕，也没有逐条落地的动作结果。就 VALUE_DELIVERY 的三个判定点（收益出现时间、结果证明、结尾号召）而言，两者等价，差异主要体现在段落组织而非价值本身。\n- **建议**：保持第 0.5 秒“三个技巧，让你的早餐五分钟就能做好”的价值承诺、第 65 秒“以前25分钟 → 现在5分钟”的前后对比证明和第 80 秒“关注我，下期教你做便当”的号召不变；另外按用户标准补两点：把第 12~40 秒的长句拆成第 12 秒“第一步 提前煮蛋”、第 24 秒“第二步 隔夜燕麦”、第 36 秒“第三步 面包机定时”三句口播配大字幕，并在第 12 秒或第 80 秒口播/字幕带上“小王早餐”品牌名。\n\n## 补充分析\n\n- **中段出现 25 秒无口播空窗**：目标第 12~40 秒的长句结束后，下一段口播直到第 65 秒才出现，40~65 秒整整 25 秒没有口播推进；参考在 30~37 秒和 50~57 秒仍持续有步骤口播，最大空窗约 13 秒。镜头仍在每 6 秒切换，但听觉信息断档。\n- **中段操作细节不及参考具体**：目标在 12~40 秒只列出鸡蛋、燕麦、面包机三个动作，没有给出参考中的冰箱保存、牛奶浸泡、早上直接拿等可执行细节；观众知道“可以提前做”，但不知道具体怎么做。\n"
+          },
+          "score": {
+            "expected": [
+              "structure_unclear"
+            ],
+            "hits": [
+              "structure_unclear"
+            ],
+            "forbidden": [
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 1,
+            "quotedFindings": 3,
+            "typedFindings": 3,
+            "citedRefs": 39,
+            "invalidRefs": 0,
+            "matchModes": {
+              "type": 1
+            },
+            "abstained": [],
+            "criteria": {
+              "expectedCount": 3,
+              "parsedCount": 3,
+              "dimensionCorrect": 3,
+              "verdictCorrect": 3,
+              "covered": 3,
+              "rows": [
+                {
+                  "id": "U1",
+                  "text": "第一句话就说出能得到的结果",
+                  "dimension": "HOOK",
+                  "verdict": "MET",
+                  "covered": true,
+                  "expectedDimension": "HOOK",
+                  "expectedVerdict": "MET"
+                },
+                {
+                  "id": "U2",
+                  "text": "每个步骤要用“第一步、第二步”标出来",
+                  "dimension": "STRUCTURE_RHYTHM",
+                  "verdict": "NOT_MET",
+                  "covered": true,
+                  "expectedDimension": "STRUCTURE_RHYTHM",
+                  "expectedVerdict": "NOT_MET"
+                },
+                {
+                  "id": "U3",
+                  "text": "视频里要提到品牌“小王早餐”",
+                  "dimension": "OTHER",
+                  "verdict": "NOT_MET",
+                  "covered": true,
+                  "expectedDimension": "OTHER",
+                  "expectedVerdict": "NOT_MET"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

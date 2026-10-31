@@ -1,0 +1,1173 @@
+{
+  "datasetVersion": "video-diagnosis-rag-candidates-v0.3",
+  "corpusVersion": "v0.3",
+  "annotationPolicy": "All generated candidates are PENDING_REVIEW. Change annotationStatus to VERIFIED only after human review.",
+  "cases": [
+    {
+      "queryId": "v03-hook-001",
+      "query": "开头一直讲自己做账号三年，第四秒才说粉丝能少踩什么坑",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "HOOK_PATTERN",
+      "expectedKnowledgeIds": [
+        "hook-pattern-self-intro-delay-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-good-case-authority-fast-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-002",
+      "query": "第一句说自己是营养师，下一句马上告诉宝妈怎么避开配料表陷阱",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-authority-fast-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-self-intro-delay-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "HARD",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-003",
+      "query": "前三秒同时点出上班族的痛点和马上能看到的改善结果",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "HOOK_PATTERN",
+      "expectedKnowledgeIds": [
+        "hook-pattern-pain-benefit-v2"
+      ],
+      "acceptableKnowledgeIds": [
+        "hook-rule-first-three-seconds-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-audience-outcome-v1"
+      ],
+      "matchType": "EXACT",
+      "difficulty": "EASY",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-004",
+      "query": "开头说“别急着买这个”，但立刻给出一个具体踩坑场景",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "HOOK_PATTERN",
+      "expectedKnowledgeIds": [
+        "hook-pattern-curiosity-gap-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-empty-suspense-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "HARD",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-005",
+      "query": "文案只说看到最后你就明白，没有说对象、问题或结果",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "hook-bad-case-empty-suspense-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "value-bad-case-vague-claim-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-curiosity-gap-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-006",
+      "query": "首屏没有明确谁该看、为什么看，也没有冲突点",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "hook-rule-first-three-seconds-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "structure-rule-opening-transition-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-generic-opening-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "HARD",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-007",
+      "query": "封面和第一帧直接露出改造前后效果，先让人停住再解释过程",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-visual-proof-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "structure-pattern-contrast-before-after-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-008",
+      "query": "开场第一句话点名新手妈妈，但后面还要马上接具体困扰",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "HOOK_PATTERN",
+      "expectedKnowledgeIds": [
+        "hook-pattern-target-audience-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-use-scenario-v1"
+      ],
+      "matchType": "EXACT",
+      "difficulty": "EASY",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-009",
+      "query": "视频从“大家好今天来聊聊”开始，用户完全不知道和自己有什么关系",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "hook-bad-case-generic-opening-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-pattern-topic-list-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-010",
+      "query": "第六秒才出现省钱结果，前面也没有情绪张力或悬念支撑",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "hook-rule-avoid-late-payoff-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-rule-slow-burn-exception-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "HARD",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-011",
+      "query": "信息流里用户只看到第一屏时，需要先判断开场是否给出停留理由",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "PLATFORM_GUIDELINE",
+      "expectedKnowledgeIds": [
+        "hook-platform-short-feed-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-rule-first-three-seconds-v1"
+      ],
+      "matchType": "EXACT",
+      "difficulty": "EASY",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-012",
+      "query": "一上来念参数和成分，但没说这些跟用户痛点有什么关系",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "hook-bad-case-feature-first-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-bad-case-feature-without-benefit-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "HARD",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-013",
+      "query": "开头说“这三个错误很多人都在犯”，随后马上展示第一个具体错误",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "HOOK_PATTERN",
+      "expectedKnowledgeIds": [
+        "hook-pattern-curiosity-gap-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "hook-bad-case-empty-suspense-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "hook-rule-first-three-seconds-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-014",
+      "query": "老师先报职称又马上承诺三分钟帮你判断孩子问题，这种开场不算拖沓",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-authority-fast-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-self-intro-delay-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-015",
+      "query": "第一屏给了价格对比截图，真正要判断的是能不能抓住滑走用户",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-visual-proof-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-016",
+      "query": "开头先讲产品有五种模式，但没告诉观众能解决什么麻烦",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "hook-bad-case-feature-first-v1",
+        "hook-pattern-pain-benefit-v2"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-bad-case-feature-without-benefit-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-017",
+      "query": "前三秒已经点名租房党和霉味问题，但没有展开解决步骤",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "HOOK_PATTERN",
+      "expectedKnowledgeIds": [
+        "hook-pattern-target-audience-v1",
+        "hook-rule-first-three-seconds-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-use-scenario-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-018",
+      "query": "“今天给大家分享一下我的经验”之后还在寒暄，没有任何结果承诺",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "hook-bad-case-generic-opening-v1",
+        "hook-pattern-self-intro-delay-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "hook-good-case-authority-fast-v1"
+      ],
+      "hardNegativeKnowledgeIds": [],
+      "matchType": "SEMANTIC",
+      "difficulty": "HARD",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-019",
+      "query": "短视频不是没有价值，而是收益点藏得太晚，首屏没人等到后面",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "hook-rule-avoid-late-payoff-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "structure-rule-slow-burn-exception-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-audience-outcome-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-hook-020",
+      "query": "开场用一句身份建立信任，但如果后续没有马上接用户结果就会变成铺垫",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-authority-fast-v1",
+        "hook-pattern-self-intro-delay-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [],
+      "matchType": "MIXED",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-001",
+      "query": "脚本先抛问题，再解释原因，最后给一个收尾动作",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "STRUCTURE_PATTERN",
+      "expectedKnowledgeIds": [
+        "structure-pattern-problem-expand-close-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-actionable-advice-v1"
+      ],
+      "matchType": "EXACT",
+      "difficulty": "EASY",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-002",
+      "query": "三个要点并列讲，但每一点之间没有递进关系，像清单又不像清单",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "STRUCTURE_PATTERN",
+      "expectedKnowledgeIds": [
+        "structure-pattern-topic-list-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-generic-opening-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-003",
+      "query": "钩子承诺避坑，正文却突然开始介绍品牌历史，连接断了",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-opening-transition-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-rule-first-three-seconds-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "HARD",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-004",
+      "query": "全程一个机位也可以，但要靠字幕分段和例子把注意力托住",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-scene-change-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-bad-case-static-talking-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "HARD",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-005",
+      "query": "同一个画面同一个语速讲到底，也没有字幕或例子推进",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "structure-bad-case-static-talking-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-rule-density-scene-change-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-006",
+      "query": "用第一点第二点第三点和屏幕小标题让观众知道讲到哪了",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "structure-good-case-rhythm-marker-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-good-case-step-by-step-v1"
+      ],
+      "matchType": "EXACT",
+      "difficulty": "EASY",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-007",
+      "query": "故事开头收益不明显，但人物冲突一直在升级，所以不一定要立刻收束",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-slow-burn-exception-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-rule-avoid-late-payoff-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "HARD",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-008",
+      "query": "先展示改变前，再讲怎么变，最后回到改变后的状态",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "STRUCTURE_PATTERN",
+      "expectedKnowledgeIds": [
+        "structure-pattern-contrast-before-after-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-rule-before-after-outcome-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "HARD",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-009",
+      "query": "上一句还在讲痛点，下一句突然跳到购买链接，中间没有过渡",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "structure-bad-case-topic-jump-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-bad-case-scattered-benefits-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-010",
+      "query": "中段反复解释同一句话，没有新例子、反转或步骤往前推",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-midpoint-retention-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-rule-specificity-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "HARD",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-011",
+      "query": "用一个客户案例带着解释概念，让抽象说法更容易跟上",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "structure-good-case-example-driven-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-012",
+      "query": "开头承诺解决收纳混乱，正文按原因、方法、检查动作一路推进",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "STRUCTURE_PATTERN",
+      "expectedKnowledgeIds": [
+        "structure-pattern-problem-expand-close-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-actionable-advice-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-013",
+      "query": "视频有五个技巧，但没有编号和转场词，观众不知道进度",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "structure-good-case-rhythm-marker-v1",
+        "structure-pattern-topic-list-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "value-good-case-step-by-step-v1"
+      ],
+      "hardNegativeKnowledgeIds": [],
+      "matchType": "MIXED",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-014",
+      "query": "画面变化很多，但信息只是重复口号，没有真正向下一段推进",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-midpoint-retention-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-rule-density-scene-change-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-015",
+      "query": "前后对比是为了安排讲述顺序，不是为了证明产品一定有效",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "STRUCTURE_PATTERN",
+      "expectedKnowledgeIds": [
+        "structure-pattern-contrast-before-after-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-rule-before-after-outcome-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "EASY",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-016",
+      "query": "静态口播问题不是不能用同一镜头，而是没有任何补偿性的段落变化",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "structure-bad-case-static-talking-v1",
+        "structure-rule-density-scene-change-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [],
+      "matchType": "MIXED",
+      "difficulty": "EASY",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-017",
+      "query": "第一段钩子很好，但第二段没有接上承诺，像换了一个话题",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-opening-transition-v1",
+        "structure-bad-case-topic-jump-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-rule-first-three-seconds-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-018",
+      "query": "这个视频不是缺收益，而是从背景到卖点的段落顺序让人跟不上",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "structure-bad-case-topic-jump-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-bad-case-scattered-benefits-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "HARD",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-019",
+      "query": "慢热故事可以成立的关键，是前半段一直有关系张力在推着走",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-slow-burn-exception-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "hook-rule-avoid-late-payoff-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-curiosity-gap-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-structure-020",
+      "query": "讲理论时穿插一个真实场景，是为了把段落解释清楚，不是拿它当成交证明",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "structure-good-case-example-driven-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-001",
+      "query": "观众看完能得到什么结果、适合谁、在哪个场景用，都需要说清楚",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "VALUE_DELIVERY_PATTERN",
+      "expectedKnowledgeIds": [
+        "value-pattern-audience-outcome-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-pain-benefit-v2"
+      ],
+      "matchType": "EXACT",
+      "difficulty": "EASY",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-002",
+      "query": "不是只说方法好，而是说明通勤、带娃、租房这种场景里怎么解决问题",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "VALUE_DELIVERY_PATTERN",
+      "expectedKnowledgeIds": [
+        "value-pattern-use-scenario-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-target-audience-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-003",
+      "query": "讲完问题后要让用户知道下一步怎么检查或尝试",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "VALUE_DELIVERY_PATTERN",
+      "expectedKnowledgeIds": [
+        "value-pattern-actionable-advice-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "structure-pattern-problem-expand-close-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "value-rule-call-to-action-fit-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "HARD",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-004",
+      "query": "“更省事”太空，需要换成具体省几步、少花多少时间或体验变化",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "value-rule-specificity-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-rule-midpoint-retention-v1"
+      ],
+      "matchType": "EXACT",
+      "difficulty": "EASY",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-005",
+      "query": "整条都在讲配置参数，没有把参数翻译成用户能感受到的好处",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-feature-without-benefit-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-feature-first-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "HARD",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-006",
+      "query": "文案反复说很好用很值得，但没有对象、场景、结果或证据",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-claim-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-empty-suspense-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-007",
+      "query": "先放用户反馈和对比数据，再说这个方案更可信",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "structure-good-case-example-driven-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "hook-good-case-visual-proof-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "HARD",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-008",
+      "query": "把清洁步骤拆成先喷、等三分钟、再擦，用户能直接照做",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "value-good-case-step-by-step-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-good-case-rhythm-marker-v1"
+      ],
+      "matchType": "EXACT",
+      "difficulty": "EASY",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-009",
+      "query": "前面是避坑科普，结尾却突然让人直接下单，动作和价值承诺不匹配",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "value-rule-call-to-action-fit-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-actionable-advice-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "HARD",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-010",
+      "query": "省钱、省心、变好看都提了，但没有一个主结果贯穿全片",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-scattered-benefits-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-bad-case-topic-jump-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-011",
+      "query": "用使用前后的状态变化说明观众收益，而不是只按时间顺序讲过程",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "value-rule-before-after-outcome-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-pattern-contrast-before-after-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "HARD",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-012",
+      "query": "开头有痛点，但整条视频没有回答这个人最后能获得什么改变",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "VALUE_DELIVERY_PATTERN",
+      "expectedKnowledgeIds": [
+        "value-pattern-audience-outcome-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-pain-benefit-v2"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "HARD",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-013",
+      "query": "场景是厨房油污，不是泛泛说产品适合所有家庭",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "VALUE_DELIVERY_PATTERN",
+      "expectedKnowledgeIds": [
+        "value-pattern-use-scenario-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-rule-specificity-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-014",
+      "query": "最后让用户收藏检查清单，比突然引导购买更符合这条内容",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "value-rule-call-to-action-fit-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-actionable-advice-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "EASY",
+      "hardNegativeScope": "INTRA_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-015",
+      "query": "案例不是为了让结构更顺，而是为了先证明结论可信",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "GOOD_CASE",
+      "expectedKnowledgeIds": [
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-good-case-example-driven-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-016",
+      "query": "讲了三个步骤但每步只是标题，没有让用户知道怎么执行",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "VALUE_DELIVERY_PATTERN",
+      "expectedKnowledgeIds": [
+        "value-pattern-actionable-advice-v1",
+        "value-good-case-step-by-step-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-good-case-rhythm-marker-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-017",
+      "query": "参数出现在开头不一定错，问题是整条都没把功能转成收益",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-feature-without-benefit-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-feature-first-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "EASY",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-018",
+      "query": "中段不是没推进，而是每个收益都停留在好用、划算这种空话",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "value-rule-specificity-v1",
+        "value-bad-case-vague-claim-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "structure-rule-midpoint-retention-v1"
+      ],
+      "hardNegativeKnowledgeIds": [],
+      "matchType": "MIXED",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-019",
+      "query": "前后对比图如果服务于证明省时效果，应归到价值可信而非段落顺序",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "value-rule-before-after-outcome-v1",
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-pattern-contrast-before-after-v1"
+      ],
+      "matchType": "MIXED",
+      "difficulty": "ADVERSARIAL",
+      "hardNegativeScope": "CROSS_SKILL",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    },
+    {
+      "queryId": "v03-value-020",
+      "query": "卖点到处都是，用户最后记不住主线，也不知道主要改善什么",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "BAD_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-scattered-benefits-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "value-pattern-audience-outcome-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "structure-bad-case-topic-jump-v1"
+      ],
+      "matchType": "SEMANTIC",
+      "difficulty": "MEDIUM",
+      "hardNegativeScope": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "v0.3 generated candidate. Human review required before formal benchmark use."
+    }
+  ]
+}

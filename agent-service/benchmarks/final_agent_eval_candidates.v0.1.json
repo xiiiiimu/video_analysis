@@ -1,0 +1,915 @@
+{
+  "dataset_version": "video-diagnosis-agent-final-heldout-candidates-v0.1",
+  "dataset_role": "FINAL_HELDOUT_CANDIDATE",
+  "source": "NEW_FINAL_HELDOUT",
+  "annotation_policy": "All cases are candidate-only. Human review is required before any case can be used as VERIFIED final held-out evaluation data.",
+  "generation_constraints": {
+    "runtime_predictions_used": false,
+    "llm_runtime_called": false,
+    "benchmark_run": false,
+    "old_verified_cases_copied": false
+  },
+  "cases": [
+    {
+      "case_id": "final-heldout-hook-normal-001",
+      "case_type": "NORMAL",
+      "primary_skill": "hook_analysis",
+      "video_evidence": {
+        "asr": "别再把孩子早餐做成甜点了，这三个配料表词看到就要避开。",
+        "ocr": "早餐避坑 / 3个配料词",
+        "metadata": "duration=21s; first_spoken_benefit_start=0.4s; target_audience=parents; opening_frame_contains_text=true",
+        "frames": [
+          "FRAME:fh-hook-001:00-03"
+        ],
+        "evidence_refs": [
+          "ASR:fh-hook-001",
+          "OCR:fh-hook-001",
+          "META:fh-hook-001",
+          "FRAME:fh-hook-001:00-03"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "strong_opening_hook",
+          "statement": "开头直接点名父母场景、早餐风险和可执行避坑点，前三秒具备明确停留理由。",
+          "supporting_evidence_refs": [
+            "ASR:fh-hook-001",
+            "OCR:fh-hook-001",
+            "FRAME:fh-hook-001:00-03"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal hook-positive case. Evidence explicitly supports audience, risk, and immediate promise.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-hook-normal-002",
+      "case_type": "NORMAL",
+      "primary_skill": "hook_analysis",
+      "video_evidence": {
+        "asr": "大家好我是做家电评测八年的老周，今天先讲讲我这些年测过多少台洗烘套装。",
+        "ocr": "老周家电评测 / 8年经验",
+        "metadata": "duration=30s; user_problem_first_mentioned=8.6s; opening_identity_duration=5.2s",
+        "frames": [
+          "FRAME:fh-hook-002:00-03",
+          "FRAME:fh-hook-002:03-06"
+        ],
+        "evidence_refs": [
+          "ASR:fh-hook-002",
+          "OCR:fh-hook-002",
+          "META:fh-hook-002",
+          "FRAME:fh-hook-002:00-03",
+          "FRAME:fh-hook-002:03-06"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "self_intro_delay",
+          "statement": "开头主要停留在创作者资历介绍，用户问题和观看收益延后到约 8.6 秒才出现。",
+          "supporting_evidence_refs": [
+            "ASR:fh-hook-002",
+            "META:fh-hook-002",
+            "FRAME:fh-hook-002:00-03"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal hook-negative case. Finding is about delayed opening value, not authority itself.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-hook-normal-003",
+      "case_type": "NORMAL",
+      "primary_skill": "hook_analysis",
+      "video_evidence": {
+        "asr": "同样一件白衬衫，为什么你穿像工服？先看这张对比图。",
+        "ocr": "同款白衬衫 / 左右对比",
+        "metadata": "duration=19s; visual_before_after_visible=0.2s; explanation_start=3.8s",
+        "frames": [
+          "FRAME:fh-hook-003:00-03"
+        ],
+        "evidence_refs": [
+          "ASR:fh-hook-003",
+          "OCR:fh-hook-003",
+          "META:fh-hook-003",
+          "FRAME:fh-hook-003:00-03"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "visual_result_hook",
+          "statement": "首屏通过同款白衬衫的视觉对比制造停留点，并把用户困惑放在开头。",
+          "supporting_evidence_refs": [
+            "ASR:fh-hook-003",
+            "OCR:fh-hook-003",
+            "FRAME:fh-hook-003:00-03"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal visual hook case. Finding should not require value handoff because the issue is first-screen attention.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-hook-normal-004",
+      "case_type": "NORMAL",
+      "primary_skill": "hook_analysis",
+      "video_evidence": {
+        "asr": "看到最后你就知道为什么了，很多人都猜不到答案。",
+        "ocr": "答案在最后",
+        "metadata": "duration=17s; concrete_object_absent_in_opening=true; target_audience_absent=true; payoff_hint_only=true",
+        "frames": [
+          "FRAME:fh-hook-004:00-03"
+        ],
+        "evidence_refs": [
+          "ASR:fh-hook-004",
+          "OCR:fh-hook-004",
+          "META:fh-hook-004",
+          "FRAME:fh-hook-004:00-03"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "empty_suspense",
+          "statement": "开头只要求用户看到最后，没有交代对象、冲突或具体问题，悬念缺少可判断的信息锚点。",
+          "supporting_evidence_refs": [
+            "ASR:fh-hook-004",
+            "OCR:fh-hook-004",
+            "META:fh-hook-004"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal empty-suspense case. Evidence is specific enough to decide within hook skill.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-structure-normal-001",
+      "case_type": "NORMAL",
+      "primary_skill": "structure_rhythm_analysis",
+      "video_evidence": {
+        "asr": "先说你为什么一到下午就困，再讲两个常见原因，最后给一个午后十分钟调整法。",
+        "ocr": "原因1 / 原因2 / 10分钟调整",
+        "metadata": "duration=36s; segments=problem:0-5,cause1:5-14,cause2:14-24,solution:24-36; scene_count=5",
+        "frames": [
+          "FRAME:fh-structure-001:00-05",
+          "FRAME:fh-structure-001:24-36"
+        ],
+        "evidence_refs": [
+          "ASR:fh-structure-001",
+          "OCR:fh-structure-001",
+          "META:fh-structure-001",
+          "FRAME:fh-structure-001:00-05",
+          "FRAME:fh-structure-001:24-36"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "structure_opening_pattern_difference",
+          "statement": "内容按问题、原因拆解、解决动作推进，结构顺序清楚，段落边界可由字幕和时间段识别。",
+          "supporting_evidence_refs": [
+            "ASR:fh-structure-001",
+            "OCR:fh-structure-001",
+            "META:fh-structure-001"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal structure-positive case. Finding concerns organization flow, not value proof.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-structure-normal-002",
+      "case_type": "NORMAL",
+      "primary_skill": "structure_rhythm_analysis",
+      "video_evidence": {
+        "asr": "第一个技巧是收纳盒，第二个是灯光，第三个是门口地垫，然后又回到收纳盒颜色。",
+        "ocr": "技巧1 / 技巧2 / 技巧3",
+        "metadata": "duration=28s; topic_order=storage,lighting,mat,storage_color; transition_explanation_absent=true",
+        "frames": [
+          "FRAME:fh-structure-002:00-08",
+          "FRAME:fh-structure-002:18-28"
+        ],
+        "evidence_refs": [
+          "ASR:fh-structure-002",
+          "OCR:fh-structure-002",
+          "META:fh-structure-002",
+          "FRAME:fh-structure-002:00-08",
+          "FRAME:fh-structure-002:18-28"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "topic_jump",
+          "statement": "视频在多个家居建议之间跳转，后段又回到收纳盒细节，缺少清晰递进或过渡解释。",
+          "supporting_evidence_refs": [
+            "ASR:fh-structure-002",
+            "META:fh-structure-002"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal structure-negative case. Evidence supports topic jump without needing value judgment.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-structure-normal-003",
+      "case_type": "NORMAL",
+      "primary_skill": "structure_rhythm_analysis",
+      "video_evidence": {
+        "asr": "这个动作很简单，这个动作真的很简单，很多人都忽略这个动作。",
+        "ocr": "动作很简单",
+        "metadata": "duration=24s; single_camera=true; scene_count=1; repeated_sentence_count=3; no_step_marker=true",
+        "frames": [
+          "FRAME:fh-structure-003:00-12",
+          "FRAME:fh-structure-003:12-24"
+        ],
+        "evidence_refs": [
+          "ASR:fh-structure-003",
+          "OCR:fh-structure-003",
+          "META:fh-structure-003",
+          "FRAME:fh-structure-003:00-12",
+          "FRAME:fh-structure-003:12-24"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "static_talking_low_density",
+          "statement": "全程单机位且话术重复，没有字幕分段、步骤推进或画面变化，信息密度偏低。",
+          "supporting_evidence_refs": [
+            "ASR:fh-structure-003",
+            "META:fh-structure-003",
+            "FRAME:fh-structure-003:00-12"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal low-density rhythm case.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-structure-normal-004",
+      "case_type": "NORMAL",
+      "primary_skill": "structure_rhythm_analysis",
+      "video_evidence": {
+        "asr": "先别急着下单，第一步看接口，第二步看噪音，第三步看安装位置。",
+        "ocr": "1接口 / 2噪音 / 3安装",
+        "metadata": "duration=32s; visible_step_labels=true; segment_markers_at=0s,9s,18s; scene_count=4",
+        "frames": [
+          "FRAME:fh-structure-004:00-09",
+          "FRAME:fh-structure-004:09-18",
+          "FRAME:fh-structure-004:18-32"
+        ],
+        "evidence_refs": [
+          "ASR:fh-structure-004",
+          "OCR:fh-structure-004",
+          "META:fh-structure-004",
+          "FRAME:fh-structure-004:00-09",
+          "FRAME:fh-structure-004:09-18",
+          "FRAME:fh-structure-004:18-32"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "rhythm_marker_missing",
+          "statement": "该视频没有缺少节奏标记，反而通过第一步、第二步、第三步和屏幕字幕明确提示结构进度。",
+          "supporting_evidence_refs": [
+            "ASR:fh-structure-004",
+            "OCR:fh-structure-004",
+            "META:fh-structure-004"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Hard-negative style normal case: expected finding should recognize marker presence, despite finding_type taxonomy naming a missing-marker category.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-value-normal-001",
+      "case_type": "NORMAL",
+      "primary_skill": "value_delivery_analysis",
+      "video_evidence": {
+        "asr": "如果你是刚租房的人，照这个清单买，三百块以内把卫生间防霉、防滑和收纳一次解决。",
+        "ocr": "租房卫生间清单 / 300元以内",
+        "metadata": "duration=27s; audience_named=true; outcome_named=true; budget_constraint_named=true",
+        "frames": [
+          "FRAME:fh-value-001:00-05"
+        ],
+        "evidence_refs": [
+          "ASR:fh-value-001",
+          "OCR:fh-value-001",
+          "META:fh-value-001",
+          "FRAME:fh-value-001:00-05"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "clear_steps_missing_audience_outcome",
+          "statement": "视频明确点出租房人群、预算约束和防霉防滑收纳结果，用户收益表达具体。",
+          "supporting_evidence_refs": [
+            "ASR:fh-value-001",
+            "OCR:fh-value-001",
+            "META:fh-value-001"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal value-positive case. Taxonomy lacks explicit positive type; use closest allowed type while statement is precise.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-value-normal-002",
+      "case_type": "NORMAL",
+      "primary_skill": "value_delivery_analysis",
+      "video_evidence": {
+        "asr": "这款耳机用了新一代芯片，蓝牙版本升级，腔体也重新设计，参数比上一代更强。",
+        "ocr": "新芯片 / 新腔体 / 蓝牙升级",
+        "metadata": "duration=23s; explicit_user_outcome_absent=true; feature_terms_count=4; use_case_absent=true",
+        "frames": [
+          "FRAME:fh-value-002:00-08"
+        ],
+        "evidence_refs": [
+          "ASR:fh-value-002",
+          "OCR:fh-value-002",
+          "META:fh-value-002",
+          "FRAME:fh-value-002:00-08"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "value_framing_gap_pain_vs_benefit",
+          "statement": "内容集中罗列芯片、蓝牙和腔体参数，但没有把这些功能翻译成用户能感知的使用收益。",
+          "supporting_evidence_refs": [
+            "ASR:fh-value-002",
+            "OCR:fh-value-002",
+            "META:fh-value-002"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal value-negative case.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-value-normal-003",
+      "case_type": "NORMAL",
+      "primary_skill": "value_delivery_analysis",
+      "video_evidence": {
+        "asr": "先看实测，纸巾擦三次以后桌面还没有水痕，所以它适合厨房台面这种高频清洁区。",
+        "ocr": "实测擦拭3次 / 无水痕",
+        "metadata": "duration=26s; proof_before_claim=true; explicit_use_case=kitchen_counter",
+        "frames": [
+          "FRAME:fh-value-003:00-06",
+          "FRAME:fh-value-003:06-12"
+        ],
+        "evidence_refs": [
+          "ASR:fh-value-003",
+          "OCR:fh-value-003",
+          "META:fh-value-003",
+          "FRAME:fh-value-003:00-06",
+          "FRAME:fh-value-003:06-12"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "proof_before_claim",
+          "statement": "视频先给出擦拭实测证据，再推导厨房台面适用场景，价值主张有证据支撑。",
+          "supporting_evidence_refs": [
+            "ASR:fh-value-003",
+            "OCR:fh-value-003",
+            "FRAME:fh-value-003:00-06",
+            "META:fh-value-003"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal value proof-positive case.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-value-normal-004",
+      "case_type": "NORMAL",
+      "primary_skill": "value_delivery_analysis",
+      "video_evidence": {
+        "asr": "前面都讲完了，最后提醒一句，如果想让阳台少积灰，可以从门缝密封条开始。",
+        "ocr": "最后提醒 / 门缝密封条",
+        "metadata": "duration=34s; actionable_advice_start=30.5s; benefit_statement_start=31.0s; main_body_features_only=true",
+        "frames": [
+          "FRAME:fh-value-004:00-10",
+          "FRAME:fh-value-004:30-34"
+        ],
+        "evidence_refs": [
+          "ASR:fh-value-004",
+          "OCR:fh-value-004",
+          "META:fh-value-004",
+          "FRAME:fh-value-004:00-10",
+          "FRAME:fh-value-004:30-34"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "delayed_value_delivery",
+          "statement": "可执行建议和减少积灰的用户收益直到约 30 秒后才出现，主体部分价值交付过晚。",
+          "supporting_evidence_refs": [
+            "ASR:fh-value-004",
+            "META:fh-value-004",
+            "FRAME:fh-value-004:30-34"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Normal delayed value case.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-cross-001",
+      "case_type": "CROSS_SKILL",
+      "primary_skill": "hook_analysis",
+      "video_evidence": {
+        "asr": "开头说三步把简历改到能约面，第一步先删掉所有空泛形容词。",
+        "ocr": "3步改简历 / 删掉空泛词",
+        "metadata": "duration=31s; opening_claim=3 steps resume improvement; step1_visible=2.2s; outcome_metric_absent_in_opening=true",
+        "frames": [
+          "FRAME:fh-cross-001:00-03",
+          "FRAME:fh-cross-001:03-10"
+        ],
+        "evidence_refs": [
+          "ASR:fh-cross-001",
+          "OCR:fh-cross-001",
+          "META:fh-cross-001",
+          "FRAME:fh-cross-001:00-03",
+          "FRAME:fh-cross-001:03-10"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "opening_value_boundary",
+          "statement": "开头承诺简历能约面并立即进入步骤，但是否构成明确价值需要确认后续步骤是否真的交付可执行结果。",
+          "supporting_evidence_refs": [
+            "ASR:fh-cross-001",
+            "OCR:fh-cross-001",
+            "META:fh-cross-001"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": "value_delivery",
+      "handoff_required": true,
+      "review_status": "PENDING",
+      "review_notes": "Cross Hook->Value. Routing ground truth separated from finding text.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-cross-002",
+      "case_type": "CROSS_SKILL",
+      "primary_skill": "hook_analysis",
+      "video_evidence": {
+        "asr": "你以为收纳只是买盒子？先看这个抽屉前后变化，然后我按区域拆给你看。",
+        "ocr": "前后变化 / 按区域拆",
+        "metadata": "duration=29s; visual_contrast_start=0.3s; structure_promise=by_area_breakdown; segment_markers_later=true",
+        "frames": [
+          "FRAME:fh-cross-002:00-03",
+          "FRAME:fh-cross-002:06-15"
+        ],
+        "evidence_refs": [
+          "ASR:fh-cross-002",
+          "OCR:fh-cross-002",
+          "META:fh-cross-002",
+          "FRAME:fh-cross-002:00-03",
+          "FRAME:fh-cross-002:06-15"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "visual_result_hook",
+          "statement": "首屏以前后变化制造视觉停留，但开头同时承诺按区域拆解，最终钩子成立程度依赖后续结构是否兑现该拆解顺序。",
+          "supporting_evidence_refs": [
+            "ASR:fh-cross-002",
+            "OCR:fh-cross-002",
+            "FRAME:fh-cross-002:00-03"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": "structure_rhythm_analysis",
+      "handoff_required": true,
+      "review_status": "PENDING",
+      "review_notes": "Cross Hook->Structure. Handoff is needed because opening promise depends on structure fulfillment.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-cross-003",
+      "case_type": "CROSS_SKILL",
+      "primary_skill": "structure_rhythm_analysis",
+      "video_evidence": {
+        "asr": "先讲三个挑选标准，再把每个标准对应到学生宿舍、出租屋和自住房三个场景。",
+        "ocr": "标准 / 宿舍 / 出租屋 / 自住房",
+        "metadata": "duration=42s; section_order=criteria_then_scenarios; audience_segments_present=true; explicit_final_recommendation_absent=true",
+        "frames": [
+          "FRAME:fh-cross-003:00-12",
+          "FRAME:fh-cross-003:24-42"
+        ],
+        "evidence_refs": [
+          "ASR:fh-cross-003",
+          "OCR:fh-cross-003",
+          "META:fh-cross-003",
+          "FRAME:fh-cross-003:00-12",
+          "FRAME:fh-cross-003:24-42"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "structure_rhythm_opening_order_gap",
+          "statement": "视频结构先讲标准再映射场景，组织顺序清楚，但是否完成价值交付取决于各场景是否给出明确选择结果。",
+          "supporting_evidence_refs": [
+            "ASR:fh-cross-003",
+            "OCR:fh-cross-003",
+            "META:fh-cross-003"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": "value_delivery",
+      "handoff_required": true,
+      "review_status": "PENDING",
+      "review_notes": "Cross Structure->Value. Structure is clear, but value completion needs outcome check.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-cross-004",
+      "case_type": "CROSS_SKILL",
+      "primary_skill": "value_delivery_analysis",
+      "video_evidence": {
+        "asr": "这套拉伸能缓解久坐腰酸，但动作顺序是先坐姿扭转，再站姿前屈，最后才讲注意事项。",
+        "ocr": "缓解腰酸 / 坐姿 / 站姿 / 注意事项",
+        "metadata": "duration=38s; benefit_named=true; safety_note_at=32s; action_sequence_present=true",
+        "frames": [
+          "FRAME:fh-cross-004:00-06",
+          "FRAME:fh-cross-004:20-38"
+        ],
+        "evidence_refs": [
+          "ASR:fh-cross-004",
+          "OCR:fh-cross-004",
+          "META:fh-cross-004",
+          "FRAME:fh-cross-004:00-06",
+          "FRAME:fh-cross-004:20-38"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "clear_steps_missing_audience_outcome",
+          "statement": "视频明确给出久坐腰酸人群和缓解结果，但该价值是否可靠还依赖动作顺序与注意事项是否组织得足够安全清楚。",
+          "supporting_evidence_refs": [
+            "ASR:fh-cross-004",
+            "OCR:fh-cross-004",
+            "META:fh-cross-004"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": "structure_rhythm_analysis",
+      "handoff_required": true,
+      "review_status": "PENDING",
+      "review_notes": "Cross Value->Structure. Value is stated, but structure/order affects diagnosis.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-cross-005",
+      "case_type": "CROSS_SKILL",
+      "primary_skill": "hook_analysis",
+      "video_evidence": {
+        "asr": "别买贵的猫砂盆，先看你家猫砂飞溅是不是这两个位置造成的。",
+        "ocr": "猫砂飞溅 / 两个位置",
+        "metadata": "duration=25s; opening_problem_specific=true; cause_analysis_promised=true; concrete_solution_visible_after_12s=false",
+        "frames": [
+          "FRAME:fh-cross-005:00-03",
+          "FRAME:fh-cross-005:12-20"
+        ],
+        "evidence_refs": [
+          "ASR:fh-cross-005",
+          "OCR:fh-cross-005",
+          "META:fh-cross-005",
+          "FRAME:fh-cross-005:00-03",
+          "FRAME:fh-cross-005:12-20"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "pain_point_opening_vs_benefit_opening",
+          "statement": "开头用具体痛点建立停留理由，但是否形成完整用户收益取决于后文是否把两个位置转化为可执行解决方案。",
+          "supporting_evidence_refs": [
+            "ASR:fh-cross-005",
+            "OCR:fh-cross-005",
+            "META:fh-cross-005"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": "value_delivery",
+      "handoff_required": true,
+      "review_status": "PENDING",
+      "review_notes": "Cross Hook->Value. Opening pain is clear, value delivery remains dependent.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-cross-006",
+      "case_type": "CROSS_SKILL",
+      "primary_skill": "structure_rhythm_analysis",
+      "video_evidence": {
+        "asr": "前十秒讲咖啡机清洁误区，中段突然展示一组水垢测试，最后回到清洁步骤。",
+        "ocr": "清洁误区 / 水垢测试 / 步骤",
+        "metadata": "duration=40s; topic_shift_at=12s; proof_segment=12-24s; returns_to_steps_at=25s",
+        "frames": [
+          "FRAME:fh-cross-006:00-10",
+          "FRAME:fh-cross-006:12-24",
+          "FRAME:fh-cross-006:25-40"
+        ],
+        "evidence_refs": [
+          "ASR:fh-cross-006",
+          "OCR:fh-cross-006",
+          "META:fh-cross-006",
+          "FRAME:fh-cross-006:00-10",
+          "FRAME:fh-cross-006:12-24",
+          "FRAME:fh-cross-006:25-40"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "topic_jump",
+          "statement": "中段从清洁误区跳到水垢测试再回到步骤，是否属于结构跳跃取决于测试片段是否为后续清洁步骤提供必要证明。",
+          "supporting_evidence_refs": [
+            "ASR:fh-cross-006",
+            "OCR:fh-cross-006",
+            "META:fh-cross-006"
+          ]
+        }
+      ],
+      "expected_outcome": "FINDING",
+      "expected_handoff_capability": "value_delivery",
+      "handoff_required": true,
+      "review_status": "PENDING",
+      "review_notes": "Cross Structure->Value. Proof value determines whether topic shift is justified.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-abstain-001",
+      "case_type": "ABSTENTION",
+      "primary_skill": "hook_analysis",
+      "video_evidence": {
+        "asr": "",
+        "ocr": "",
+        "metadata": "duration=18s; transcript_missing=true; ocr_missing=true; only_mid_video_frame_available=true",
+        "frames": [
+          "FRAME:fh-abstain-001:08-10"
+        ],
+        "evidence_refs": [
+          "META:fh-abstain-001",
+          "FRAME:fh-abstain-001:08-10"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "evidence_gap",
+          "statement": "缺少前三秒 ASR、OCR 和首屏关键帧，无法可靠判断开头钩子是否成立。",
+          "supporting_evidence_refs": [
+            "META:fh-abstain-001",
+            "FRAME:fh-abstain-001:08-10"
+          ]
+        }
+      ],
+      "expected_outcome": "ABSTAIN",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Abstention case. Available frame is mid-video, not opening evidence.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-abstain-002",
+      "case_type": "ABSTENTION",
+      "primary_skill": "hook_analysis",
+      "video_evidence": {
+        "asr": "今天这个方法真的很有用，很多人试过都说不错。",
+        "ocr": "",
+        "metadata": "duration=20s; opening_frame_missing=true; target_object_unknown=true; transcript_has_generic_claim_only=true",
+        "frames": [],
+        "evidence_refs": [
+          "ASR:fh-abstain-002",
+          "META:fh-abstain-002"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "hook_analysis",
+          "finding_type": "evidence_gap",
+          "statement": "只有泛化口播，没有首屏画面和具体对象，不能稳定判断开头是有效钩子还是空泛表达。",
+          "supporting_evidence_refs": [
+            "ASR:fh-abstain-002",
+            "META:fh-abstain-002"
+          ]
+        }
+      ],
+      "expected_outcome": "ABSTAIN",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Abstention case. Generic claim alone is insufficient for hook diagnosis.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-abstain-003",
+      "case_type": "ABSTENTION",
+      "primary_skill": "structure_rhythm_analysis",
+      "video_evidence": {
+        "asr": "先看第一个问题。后面这个也很关键。最后你照着做就行。",
+        "ocr": "",
+        "metadata": "duration=44s; scene_boundaries_missing=true; frame_samples_missing=true; transcript_timestamps_missing=true",
+        "frames": [],
+        "evidence_refs": [
+          "ASR:fh-abstain-003",
+          "META:fh-abstain-003"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "evidence_gap",
+          "statement": "缺少关键帧、场景边界和 ASR 时间戳，无法判断结构段落、节奏变化和中段推进是否成立。",
+          "supporting_evidence_refs": [
+            "ASR:fh-abstain-003",
+            "META:fh-abstain-003"
+          ]
+        }
+      ],
+      "expected_outcome": "ABSTAIN",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Abstention case for structure. Transcript is too underspecified without timing/frames.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-abstain-004",
+      "case_type": "ABSTENTION",
+      "primary_skill": "structure_rhythm_analysis",
+      "video_evidence": {
+        "asr": "",
+        "ocr": "步骤一 / 步骤二",
+        "metadata": "duration_unknown=true; scene_count_unknown=true; only_cover_frame_available=true",
+        "frames": [
+          "FRAME:fh-abstain-004:cover"
+        ],
+        "evidence_refs": [
+          "OCR:fh-abstain-004",
+          "META:fh-abstain-004",
+          "FRAME:fh-abstain-004:cover"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "structure_rhythm_analysis",
+          "finding_type": "evidence_gap",
+          "statement": "只有封面文字和未知时长元数据，无法判断步骤是否在视频中真实展开或节奏是否清晰。",
+          "supporting_evidence_refs": [
+            "OCR:fh-abstain-004",
+            "META:fh-abstain-004",
+            "FRAME:fh-abstain-004:cover"
+          ]
+        }
+      ],
+      "expected_outcome": "ABSTAIN",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Abstention case. Cover text cannot prove runtime structure.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-abstain-005",
+      "case_type": "ABSTENTION",
+      "primary_skill": "value_delivery_analysis",
+      "video_evidence": {
+        "asr": "这个真的很适合你，效果也挺明显的。",
+        "ocr": "",
+        "metadata": "duration=16s; product_category_unknown=true; use_case_unknown=true; proof_missing=true",
+        "frames": [
+          "FRAME:fh-abstain-005:00-03"
+        ],
+        "evidence_refs": [
+          "ASR:fh-abstain-005",
+          "META:fh-abstain-005",
+          "FRAME:fh-abstain-005:00-03"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "evidence_gap",
+          "statement": "口播只说适合和效果明显，但缺少对象、产品类别、使用场景和证明，无法可靠判断价值交付质量。",
+          "supporting_evidence_refs": [
+            "ASR:fh-abstain-005",
+            "META:fh-abstain-005"
+          ]
+        }
+      ],
+      "expected_outcome": "ABSTAIN",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Abstention case for value. Generic benefit claim is not enough.",
+      "source": "NEW_FINAL_HELDOUT"
+    },
+    {
+      "case_id": "final-heldout-abstain-006",
+      "case_type": "ABSTENTION",
+      "primary_skill": "value_delivery_analysis",
+      "video_evidence": {
+        "asr": "",
+        "ocr": "省心 / 高效 / 专业",
+        "metadata": "duration=12s; transcript_missing=true; concrete_action_missing=true; supporting_demo_missing=true",
+        "frames": [
+          "FRAME:fh-abstain-006:00-03"
+        ],
+        "evidence_refs": [
+          "OCR:fh-abstain-006",
+          "META:fh-abstain-006",
+          "FRAME:fh-abstain-006:00-03"
+        ]
+      },
+      "expected_findings": [
+        {
+          "skill_code": "value_delivery_analysis",
+          "finding_type": "evidence_gap",
+          "statement": "画面只有抽象价值词，缺少具体行动、场景或实测证据，无法判断用户收益是否被真正交付。",
+          "supporting_evidence_refs": [
+            "OCR:fh-abstain-006",
+            "META:fh-abstain-006",
+            "FRAME:fh-abstain-006:00-03"
+          ]
+        }
+      ],
+      "expected_outcome": "ABSTAIN",
+      "expected_handoff_capability": null,
+      "handoff_required": false,
+      "review_status": "PENDING",
+      "review_notes": "Abstention case. OCR adjectives alone are insufficient for value diagnosis.",
+      "source": "NEW_FINAL_HELDOUT"
+    }
+  ]
+}

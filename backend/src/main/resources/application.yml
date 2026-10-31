@@ -1,0 +1,97 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: video-diagnosis
+  datasource:
+    url: jdbc:h2:mem:video_diagnosis;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: false
+  h2:
+    console:
+      enabled: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2s
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+
+app:
+  internal:
+    api-key: change-me-in-production
+  agent-service:
+    base-url: http://localhost:8090
+  agent-job:
+    max-retry-count: 3
+    agent-timeout: 30m
+    # @Scheduled(fixedDelayString) 在 Spring 6.1 只认毫秒数或 ISO-8601（PT5S），不认 5s
+    dispatch-scan-interval: PT5S
+    timeout-scan-interval: PT30S
+    dispatch-batch-size: 20
+    retry-backoff-first: 10s
+    retry-backoff-second: 30s
+    retry-backoff-third: 60s
+    scheduler:
+      enabled: true
+  diagnosis:
+    default-skill-version: "0.1.0"
+    running-timeout-minutes: 30
+    timeout-scan-interval-ms: 60000
+  media:
+    ffmpeg-path: ffmpeg
+    ffprobe-path: ffprobe
+    tesseract-path: tesseract
+    tesseract-languages: chi_sim+eng
+    ocr-enabled: true
+    # v0.2：分析前 120 秒。开场 0~5 秒每秒一帧，之后每 3 秒一帧，另补镜头切换帧，单视频最多 60 帧
+    analysis-window-seconds: 120
+    hook-dense-seconds: 5
+    hook-frame-interval-seconds: 1
+    frame-interval-seconds: 3
+    scene-threshold: 0.3
+    scene-merge-seconds: 1
+    max-keyframes: 60
+    frame-width: 1280
+    ocr-parallelism: 4
+  asr:
+    # OpenAI 兼容的 /audio/transcriptions；api-key 为空时自动关闭转写
+    enabled: true
+    api-key: ""
+    base-url: https://api.openai.com/v1
+    model: whisper-1
+    language: ""
+    mode: auto
+    chunk-seconds: 15
+    connect-timeout-ms: 10000
+    read-timeout-ms: 120000
+  storage:
+    endpoint: http://localhost:9000
+    access-key: minioadmin
+    secret-key: minioadmin
+    bucket: video-assets
+    public-base-url: http://localhost:9000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  pattern:
+    # 每行日志带 traceId / jobId（MDC，见 TraceContext）。agent 链路的 traceId = agentRunId，和 agent-service 日志一致
+    level: "%5p [trace=%X{traceId:-} job=%X{jobId:-}]"

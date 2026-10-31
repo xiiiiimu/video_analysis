@@ -1,0 +1,2476 @@
+{
+  "datasetVersion": "video-diagnosis-rag-dev-v0.5",
+  "corpusVersion": "v0.3",
+  "benchmarkMode": "GLOBAL",
+  "rows": [
+    {
+      "queryId": "v03-hook-003",
+      "skillCode": "hook_analysis",
+      "difficulty": "EASY",
+      "matchType": "EXACT",
+      "query": "前三秒同时点出上班族的痛点和马上能看到的改善结果",
+      "expectedKnowledgeIds": [
+        "hook-pattern-pain-benefit-v2"
+      ],
+      "acceptableKnowledgeIds": [
+        "hook-rule-first-three-seconds-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-audience-outcome-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-good-case-authority-fast-v1",
+          "hook-pattern-pain-benefit-v2",
+          "hook-rule-avoid-late-payoff-v1",
+          "structure-bad-case-topic-jump-v1",
+          "hook-rule-first-three-seconds-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-pattern-pain-benefit-v2",
+          "hook-rule-first-three-seconds-v1",
+          "value-rule-before-after-outcome-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-pattern-target-audience-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-pattern-pain-benefit-v2",
+          "hook-rule-first-three-seconds-v1",
+          "value-rule-before-after-outcome-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-rule-avoid-late-payoff-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-good-case-authority-fast-v1",
+          "hook-pattern-pain-benefit-v2",
+          "hook-rule-avoid-late-payoff-v1",
+          "hook-rule-first-three-seconds-v1",
+          "value-rule-before-after-outcome-v1"
+        ]
+      },
+      "highestHardNegativeRank": 10,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "RERANK_INVERSION"
+    },
+    {
+      "queryId": "v03-hook-004",
+      "skillCode": "hook_analysis",
+      "difficulty": "HARD",
+      "matchType": "SEMANTIC",
+      "query": "开头说“别急着买这个”，但立刻给出一个具体踩坑场景",
+      "expectedKnowledgeIds": [
+        "hook-pattern-curiosity-gap-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-empty-suspense-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-good-case-authority-fast-v1",
+          "value-bad-case-vague-claim-v1",
+          "hook-pattern-pain-benefit-v2"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-rule-first-three-seconds-v1",
+          "hook-pattern-self-intro-delay-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-rule-first-three-seconds-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "hook-bad-case-empty-suspense-v1",
+          "hook-good-case-authority-fast-v1",
+          "value-pattern-use-scenario-v1",
+          "hook-pattern-pain-benefit-v2",
+          "hook-bad-case-generic-opening-v1"
+        ]
+      },
+      "highestHardNegativeRank": 1,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "HARD_NEGATIVE_CONFUSION"
+    },
+    {
+      "queryId": "v03-hook-005",
+      "skillCode": "hook_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "MIXED",
+      "query": "文案只说看到最后你就明白，没有说对象、问题或结果",
+      "expectedKnowledgeIds": [
+        "hook-bad-case-empty-suspense-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "value-bad-case-vague-claim-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-curiosity-gap-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "value-bad-case-vague-claim-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-bad-case-generic-opening-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "value-pattern-audience-outcome-v1",
+          "value-pattern-use-scenario-v1",
+          "value-bad-case-vague-claim-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-bad-case-empty-suspense-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "value-bad-case-vague-claim-v1",
+          "value-pattern-audience-outcome-v1",
+          "value-pattern-use-scenario-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "value-bad-case-vague-claim-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-bad-case-generic-opening-v1"
+        ]
+      },
+      "highestHardNegativeRank": 2,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "UNKNOWN"
+    },
+    {
+      "queryId": "v03-hook-008",
+      "skillCode": "hook_analysis",
+      "difficulty": "EASY",
+      "matchType": "EXACT",
+      "query": "开场第一句话点名新手妈妈，但后面还要马上接具体困扰",
+      "expectedKnowledgeIds": [
+        "hook-pattern-target-audience-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-use-scenario-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-good-case-authority-fast-v1",
+          "hook-pattern-target-audience-v1",
+          "structure-pattern-topic-list-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "value-pattern-use-scenario-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 8,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "structure-rule-opening-transition-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 5,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "structure-rule-opening-transition-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "hook-pattern-target-audience-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-good-case-authority-fast-v1",
+          "hook-pattern-target-audience-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "structure-rule-opening-transition-v1",
+          "hook-rule-first-three-seconds-v1"
+        ]
+      },
+      "highestHardNegativeRank": 5,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-hook-009",
+      "skillCode": "hook_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "SEMANTIC",
+      "query": "视频从“大家好今天来聊聊”开始，用户完全不知道和自己有什么关系",
+      "expectedKnowledgeIds": [
+        "hook-bad-case-generic-opening-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-pattern-topic-list-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-pattern-audience-outcome-v1",
+          "value-pattern-use-scenario-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-pattern-self-intro-delay-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-pattern-target-audience-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-bad-case-feature-first-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-pattern-audience-outcome-v1",
+          "structure-rule-opening-transition-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "SEMANTIC_BOUNDARY_CONFUSION"
+    },
+    {
+      "queryId": "v03-hook-010",
+      "skillCode": "hook_analysis",
+      "difficulty": "HARD",
+      "matchType": "MIXED",
+      "query": "第六秒才出现省钱结果，前面也没有情绪张力或悬念支撑",
+      "expectedKnowledgeIds": [
+        "hook-rule-avoid-late-payoff-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-rule-slow-burn-exception-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-rule-avoid-late-payoff-v1",
+          "structure-rule-slow-burn-exception-v1",
+          "hook-bad-case-feature-first-v1",
+          "value-bad-case-vague-claim-v1",
+          "hook-pattern-curiosity-gap-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-rule-first-three-seconds-v1",
+          "hook-rule-avoid-late-payoff-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "hook-pattern-pain-benefit-v2"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-rule-avoid-late-payoff-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "hook-rule-first-three-seconds-v1",
+          "value-bad-case-vague-claim-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-rule-avoid-late-payoff-v1",
+          "structure-rule-slow-burn-exception-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "value-bad-case-vague-claim-v1"
+        ]
+      },
+      "highestHardNegativeRank": 2,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "UNKNOWN"
+    },
+    {
+      "queryId": "v03-hook-014",
+      "skillCode": "hook_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "MIXED",
+      "query": "老师先报职称又马上承诺三分钟帮你判断孩子问题，这种开场不算拖沓",
+      "expectedKnowledgeIds": [
+        "hook-good-case-authority-fast-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-self-intro-delay-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "hook-rule-first-three-seconds-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "structure-rule-opening-transition-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "hook-rule-first-three-seconds-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "structure-rule-opening-transition-v1",
+          "hook-rule-avoid-late-payoff-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "hook-rule-first-three-seconds-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "structure-rule-opening-transition-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 10,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "hook-rule-first-three-seconds-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "structure-rule-opening-transition-v1"
+        ]
+      },
+      "highestHardNegativeRank": 3,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "HARD_NEGATIVE_CONFUSION"
+    },
+    {
+      "queryId": "v03-hook-015",
+      "skillCode": "hook_analysis",
+      "difficulty": "ADVERSARIAL",
+      "matchType": "SEMANTIC",
+      "query": "第一屏给了价格对比截图，真正要判断的是能不能抓住滑走用户",
+      "expectedKnowledgeIds": [
+        "hook-good-case-visual-proof-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-good-case-visual-proof-v1",
+          "structure-rule-opening-transition-v1",
+          "value-good-case-proof-before-claim-v1",
+          "value-pattern-audience-outcome-v1",
+          "hook-pattern-pain-benefit-v2"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-good-case-visual-proof-v1",
+          "hook-pattern-pain-benefit-v2",
+          "hook-platform-short-feed-v1",
+          "value-pattern-audience-outcome-v1",
+          "value-good-case-step-by-step-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-good-case-visual-proof-v1",
+          "hook-pattern-pain-benefit-v2",
+          "hook-platform-short-feed-v1",
+          "value-pattern-audience-outcome-v1",
+          "hook-good-case-authority-fast-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-good-case-visual-proof-v1",
+          "value-good-case-proof-before-claim-v1",
+          "structure-rule-opening-transition-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-pattern-audience-outcome-v1"
+        ]
+      },
+      "highestHardNegativeRank": 2,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-hook-017",
+      "skillCode": "hook_analysis",
+      "difficulty": "ADVERSARIAL",
+      "matchType": "MIXED",
+      "query": "前三秒已经点名租房党和霉味问题，但没有展开解决步骤",
+      "expectedKnowledgeIds": [
+        "hook-pattern-target-audience-v1",
+        "hook-rule-first-three-seconds-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-use-scenario-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 3,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "hook-rule-first-three-seconds-v1",
+          "hook-pattern-target-audience-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-rule-first-three-seconds-v1",
+          "hook-pattern-target-audience-v1",
+          "structure-bad-case-static-talking-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-rule-first-three-seconds-v1",
+          "hook-pattern-target-audience-v1",
+          "hook-bad-case-generic-opening-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "hook-rule-first-three-seconds-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-target-audience-v1"
+        ]
+      },
+      "highestHardNegativeRank": 1,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "RERANK_INVERSION"
+    },
+    {
+      "queryId": "v03-hook-018",
+      "skillCode": "hook_analysis",
+      "difficulty": "HARD",
+      "matchType": "SEMANTIC",
+      "query": "“今天给大家分享一下我的经验”之后还在寒暄，没有任何结果承诺",
+      "expectedKnowledgeIds": [
+        "hook-bad-case-generic-opening-v1",
+        "hook-pattern-self-intro-delay-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "hook-good-case-authority-fast-v1"
+      ],
+      "hardNegativeKnowledgeIds": [],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-bad-case-feature-first-v1",
+          "value-bad-case-vague-claim-v1",
+          "value-bad-case-scattered-benefits-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "value-pattern-actionable-advice-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "value-pattern-actionable-advice-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-rule-first-three-seconds-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-bad-case-generic-opening-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-rule-first-three-seconds-v1",
+          "structure-rule-opening-transition-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "MULTI_LABEL_AMBIGUITY"
+    },
+    {
+      "queryId": "v03-hook-019",
+      "skillCode": "hook_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "SEMANTIC",
+      "query": "短视频不是没有价值，而是收益点藏得太晚，首屏没人等到后面",
+      "expectedKnowledgeIds": [
+        "hook-rule-avoid-late-payoff-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "structure-rule-slow-burn-exception-v1"
+      ],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-audience-outcome-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "value-bad-case-scattered-benefits-v1",
+          "hook-pattern-pain-benefit-v2",
+          "hook-good-case-visual-proof-v1",
+          "hook-good-case-authority-fast-v1",
+          "structure-pattern-problem-expand-close-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-pattern-pain-benefit-v2",
+          "hook-rule-avoid-late-payoff-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-rule-first-three-seconds-v1",
+          "value-bad-case-feature-without-benefit-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 4,
+        "top5KnowledgeIds": [
+          "hook-pattern-pain-benefit-v2",
+          "hook-good-case-visual-proof-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-rule-avoid-late-payoff-v1",
+          "hook-rule-first-three-seconds-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "hook-pattern-pain-benefit-v2",
+          "value-bad-case-scattered-benefits-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-good-case-authority-fast-v1",
+          "hook-pattern-self-intro-delay-v1"
+        ]
+      },
+      "highestHardNegativeRank": 10,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "RERANK_INVERSION"
+    },
+    {
+      "queryId": "v03-hook-020",
+      "skillCode": "hook_analysis",
+      "difficulty": "ADVERSARIAL",
+      "matchType": "MIXED",
+      "query": "开场用一句身份建立信任，但如果后续没有马上接用户结果就会变成铺垫",
+      "expectedKnowledgeIds": [
+        "hook-good-case-authority-fast-v1",
+        "hook-pattern-self-intro-delay-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-good-case-authority-fast-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "value-bad-case-vague-claim-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-pattern-self-intro-delay-v1",
+          "hook-good-case-authority-fast-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-bad-case-generic-opening-v1",
+          "structure-rule-opening-transition-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-pattern-self-intro-delay-v1",
+          "hook-good-case-authority-fast-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-bad-case-generic-opening-v1",
+          "structure-rule-opening-transition-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "hook-good-case-authority-fast-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-pattern-curiosity-gap-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "MULTI_LABEL_AMBIGUITY"
+    },
+    {
+      "queryId": "v03-structure-002",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "SEMANTIC",
+      "query": "三个要点并列讲，但每一点之间没有递进关系，像清单又不像清单",
+      "expectedKnowledgeIds": [
+        "structure-pattern-topic-list-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-generic-opening-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-pattern-topic-list-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "value-bad-case-vague-claim-v1",
+          "value-pattern-actionable-advice-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-pattern-topic-list-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "structure-pattern-contrast-before-after-v1",
+          "structure-pattern-problem-expand-close-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-pattern-topic-list-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "structure-bad-case-topic-jump-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-pattern-topic-list-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "value-pattern-actionable-advice-v1",
+          "structure-rule-slow-burn-exception-v1"
+        ]
+      },
+      "highestHardNegativeRank": 10,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "SEMANTIC_BOUNDARY_CONFUSION"
+    },
+    {
+      "queryId": "v03-structure-003",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "HARD",
+      "matchType": "MIXED",
+      "query": "钩子承诺避坑，正文却突然开始介绍品牌历史，连接断了",
+      "expectedKnowledgeIds": [
+        "structure-rule-opening-transition-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-rule-first-three-seconds-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-rule-opening-transition-v1",
+          "value-rule-call-to-action-fit-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "hook-rule-first-three-seconds-v1",
+          "hook-bad-case-generic-opening-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-rule-opening-transition-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "structure-bad-case-topic-jump-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-bad-case-feature-first-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-rule-opening-transition-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-bad-case-feature-first-v1",
+          "structure-bad-case-topic-jump-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-rule-opening-transition-v1",
+          "value-rule-call-to-action-fit-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "hook-rule-first-three-seconds-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "highestHardNegativeRank": 4,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "UNKNOWN"
+    },
+    {
+      "queryId": "v03-structure-004",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "HARD",
+      "matchType": "SEMANTIC",
+      "query": "全程一个机位也可以，但要靠字幕分段和例子把注意力托住",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-scene-change-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-bad-case-static-talking-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-rule-density-scene-change-v1",
+          "structure-rule-slow-burn-exception-v1",
+          "structure-rule-midpoint-retention-v1",
+          "structure-good-case-example-driven-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 4,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-good-case-example-driven-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "structure-rule-density-scene-change-v1",
+          "structure-rule-opening-transition-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 3,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-good-case-example-driven-v1",
+          "structure-rule-density-scene-change-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "structure-rule-midpoint-retention-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-rule-density-scene-change-v1",
+          "structure-rule-slow-burn-exception-v1",
+          "structure-rule-midpoint-retention-v1",
+          "structure-good-case-example-driven-v1"
+        ]
+      },
+      "highestHardNegativeRank": 1,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "HARD_NEGATIVE_CONFUSION"
+    },
+    {
+      "queryId": "v03-structure-005",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "MIXED",
+      "query": "同一个画面同一个语速讲到底，也没有字幕或例子推进",
+      "expectedKnowledgeIds": [
+        "structure-bad-case-static-talking-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-rule-density-scene-change-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-rule-density-scene-change-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "structure-rule-midpoint-retention-v1",
+          "structure-rule-slow-burn-exception-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-rule-density-scene-change-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "structure-good-case-example-driven-v1",
+          "structure-good-case-rhythm-marker-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-rule-density-scene-change-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "structure-good-case-example-driven-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-rule-density-scene-change-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "structure-rule-midpoint-retention-v1",
+          "structure-rule-slow-burn-exception-v1"
+        ]
+      },
+      "highestHardNegativeRank": 2,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "UNKNOWN"
+    },
+    {
+      "queryId": "v03-structure-006",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "EASY",
+      "matchType": "EXACT",
+      "query": "用第一点第二点第三点和屏幕小标题让观众知道讲到哪了",
+      "expectedKnowledgeIds": [
+        "structure-good-case-rhythm-marker-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-good-case-step-by-step-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-rhythm-marker-v1",
+          "value-pattern-actionable-advice-v1",
+          "value-pattern-audience-outcome-v1",
+          "structure-good-case-example-driven-v1",
+          "hook-pattern-pain-benefit-v2"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 3,
+        "top5KnowledgeIds": [
+          "hook-pattern-target-audience-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-rule-first-three-seconds-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-rhythm-marker-v1",
+          "hook-pattern-target-audience-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-pattern-audience-outcome-v1",
+          "hook-good-case-visual-proof-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-rhythm-marker-v1",
+          "value-pattern-actionable-advice-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-pattern-audience-outcome-v1",
+          "structure-good-case-example-driven-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-structure-008",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "HARD",
+      "matchType": "MIXED",
+      "query": "先展示改变前，再讲怎么变，最后回到改变后的状态",
+      "expectedKnowledgeIds": [
+        "structure-pattern-contrast-before-after-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-rule-before-after-outcome-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-pattern-contrast-before-after-v1",
+          "value-rule-before-after-outcome-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "structure-bad-case-topic-jump-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-contrast-before-after-v1",
+          "structure-rule-opening-transition-v1",
+          "structure-rule-midpoint-retention-v1",
+          "hook-pattern-self-intro-delay-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-contrast-before-after-v1",
+          "structure-rule-opening-transition-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-rule-first-three-seconds-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-pattern-contrast-before-after-v1",
+          "value-rule-before-after-outcome-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "structure-rule-opening-transition-v1"
+        ]
+      },
+      "highestHardNegativeRank": 1,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "HARD_NEGATIVE_CONFUSION"
+    },
+    {
+      "queryId": "v03-structure-009",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "SEMANTIC",
+      "query": "上一句还在讲痛点，下一句突然跳到购买链接，中间没有过渡",
+      "expectedKnowledgeIds": [
+        "structure-bad-case-topic-jump-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-bad-case-scattered-benefits-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-topic-jump-v1",
+          "value-rule-call-to-action-fit-v1",
+          "hook-bad-case-generic-opening-v1",
+          "value-pattern-actionable-advice-v1",
+          "hook-good-case-authority-fast-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-topic-jump-v1",
+          "structure-rule-opening-transition-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-pattern-actionable-advice-v1",
+          "structure-rule-midpoint-retention-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-topic-jump-v1",
+          "value-pattern-actionable-advice-v1",
+          "structure-rule-opening-transition-v1",
+          "hook-pattern-pain-benefit-v2",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "value-rule-call-to-action-fit-v1",
+          "structure-bad-case-topic-jump-v1",
+          "value-pattern-actionable-advice-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-good-case-authority-fast-v1"
+        ]
+      },
+      "highestHardNegativeRank": 6,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "RERANK_INVERSION"
+    },
+    {
+      "queryId": "v03-structure-011",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "SEMANTIC",
+      "query": "用一个客户案例带着解释概念，让抽象说法更容易跟上",
+      "expectedKnowledgeIds": [
+        "structure-good-case-example-driven-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-example-driven-v1",
+          "value-good-case-proof-before-claim-v1",
+          "structure-bad-case-topic-jump-v1",
+          "value-pattern-use-scenario-v1",
+          "value-pattern-audience-outcome-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-example-driven-v1",
+          "value-pattern-audience-outcome-v1",
+          "value-pattern-use-scenario-v1",
+          "value-rule-specificity-v1",
+          "value-bad-case-feature-without-benefit-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-example-driven-v1",
+          "value-pattern-audience-outcome-v1",
+          "value-pattern-use-scenario-v1",
+          "value-good-case-proof-before-claim-v1",
+          "value-bad-case-feature-without-benefit-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-example-driven-v1",
+          "value-good-case-proof-before-claim-v1",
+          "structure-bad-case-topic-jump-v1",
+          "structure-rule-midpoint-retention-v1",
+          "value-pattern-audience-outcome-v1"
+        ]
+      },
+      "highestHardNegativeRank": 2,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-structure-013",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "ADVERSARIAL",
+      "matchType": "MIXED",
+      "query": "视频有五个技巧，但没有编号和转场词，观众不知道进度",
+      "expectedKnowledgeIds": [
+        "structure-good-case-rhythm-marker-v1",
+        "structure-pattern-topic-list-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "value-good-case-step-by-step-v1"
+      ],
+      "hardNegativeKnowledgeIds": [],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-rhythm-marker-v1",
+          "value-pattern-actionable-advice-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "value-bad-case-vague-claim-v1",
+          "value-pattern-audience-outcome-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-rhythm-marker-v1",
+          "structure-bad-case-static-talking-v1",
+          "hook-rule-first-three-seconds-v1",
+          "structure-bad-case-topic-jump-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-rhythm-marker-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-rule-first-three-seconds-v1",
+          "structure-bad-case-static-talking-v1",
+          "hook-pattern-pain-benefit-v2"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-rhythm-marker-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "value-pattern-actionable-advice-v1",
+          "value-pattern-audience-outcome-v1",
+          "structure-rule-opening-transition-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "MULTI_LABEL_AMBIGUITY"
+    },
+    {
+      "queryId": "v03-structure-014",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "ADVERSARIAL",
+      "matchType": "SEMANTIC",
+      "query": "画面变化很多，但信息只是重复口号，没有真正向下一段推进",
+      "expectedKnowledgeIds": [
+        "structure-rule-midpoint-retention-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-rule-density-scene-change-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-rule-midpoint-retention-v1",
+          "structure-rule-density-scene-change-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "structure-bad-case-static-talking-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 3,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-rule-density-scene-change-v1",
+          "structure-rule-midpoint-retention-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "hook-platform-short-feed-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 3,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-rule-density-scene-change-v1",
+          "structure-rule-midpoint-retention-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "value-pattern-actionable-advice-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "structure-rule-density-scene-change-v1",
+          "structure-rule-midpoint-retention-v1",
+          "structure-bad-case-static-talking-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "highestHardNegativeRank": 1,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "HARD_NEGATIVE_CONFUSION"
+    },
+    {
+      "queryId": "v03-structure-015",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "EASY",
+      "matchType": "SEMANTIC",
+      "query": "前后对比是为了安排讲述顺序，不是为了证明产品一定有效",
+      "expectedKnowledgeIds": [
+        "structure-pattern-contrast-before-after-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-rule-before-after-outcome-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-pattern-contrast-before-after-v1",
+          "hook-good-case-visual-proof-v1",
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-topic-list-v1",
+          "hook-pattern-curiosity-gap-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-pattern-contrast-before-after-v1",
+          "value-rule-before-after-outcome-v1",
+          "hook-good-case-visual-proof-v1",
+          "value-good-case-proof-before-claim-v1",
+          "structure-good-case-example-driven-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-pattern-contrast-before-after-v1",
+          "value-rule-before-after-outcome-v1",
+          "hook-good-case-visual-proof-v1",
+          "value-good-case-proof-before-claim-v1",
+          "structure-good-case-example-driven-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-pattern-contrast-before-after-v1",
+          "hook-good-case-visual-proof-v1",
+          "value-rule-before-after-outcome-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "value-good-case-proof-before-claim-v1"
+        ]
+      },
+      "highestHardNegativeRank": 2,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-structure-016",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "EASY",
+      "matchType": "MIXED",
+      "query": "静态口播问题不是不能用同一镜头，而是没有任何补偿性的段落变化",
+      "expectedKnowledgeIds": [
+        "structure-bad-case-static-talking-v1",
+        "structure-rule-density-scene-change-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-rule-density-scene-change-v1",
+          "structure-bad-case-static-talking-v1",
+          "value-pattern-use-scenario-v1",
+          "hook-bad-case-generic-opening-v1",
+          "structure-pattern-contrast-before-after-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-rule-density-scene-change-v1",
+          "hook-bad-case-generic-opening-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "structure-bad-case-topic-jump-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-static-talking-v1",
+          "structure-rule-density-scene-change-v1",
+          "hook-bad-case-generic-opening-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "value-bad-case-feature-without-benefit-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-rule-density-scene-change-v1",
+          "structure-bad-case-static-talking-v1",
+          "value-pattern-use-scenario-v1",
+          "hook-bad-case-generic-opening-v1",
+          "structure-pattern-contrast-before-after-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "MULTI_LABEL_AMBIGUITY"
+    },
+    {
+      "queryId": "v03-structure-018",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "HARD",
+      "matchType": "SEMANTIC",
+      "query": "这个视频不是缺收益，而是从背景到卖点的段落顺序让人跟不上",
+      "expectedKnowledgeIds": [
+        "structure-bad-case-topic-jump-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-bad-case-scattered-benefits-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-topic-jump-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "value-pattern-use-scenario-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "value-rule-before-after-outcome-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "value-bad-case-feature-without-benefit-v1",
+          "structure-bad-case-topic-jump-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-bad-case-scattered-benefits-v1",
+          "hook-rule-avoid-late-payoff-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-topic-jump-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-rule-avoid-late-payoff-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-bad-case-topic-jump-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "value-pattern-use-scenario-v1",
+          "hook-good-case-authority-fast-v1",
+          "value-rule-before-after-outcome-v1"
+        ]
+      },
+      "highestHardNegativeRank": 2,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-structure-020",
+      "skillCode": "structure_rhythm_analysis",
+      "difficulty": "ADVERSARIAL",
+      "matchType": "MIXED",
+      "query": "讲理论时穿插一个真实场景，是为了把段落解释清楚，不是拿它当成交证明",
+      "expectedKnowledgeIds": [
+        "structure-good-case-example-driven-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-example-driven-v1",
+          "value-good-case-step-by-step-v1",
+          "value-pattern-use-scenario-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "structure-pattern-contrast-before-after-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-example-driven-v1",
+          "value-pattern-use-scenario-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "value-good-case-proof-before-claim-v1",
+          "value-pattern-audience-outcome-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-example-driven-v1",
+          "value-pattern-use-scenario-v1",
+          "value-pattern-audience-outcome-v1",
+          "value-good-case-proof-before-claim-v1",
+          "structure-pattern-problem-expand-close-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "structure-good-case-example-driven-v1",
+          "value-good-case-step-by-step-v1",
+          "value-pattern-use-scenario-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "structure-pattern-contrast-before-after-v1"
+        ]
+      },
+      "highestHardNegativeRank": 4,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-value-001",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "EASY",
+      "matchType": "EXACT",
+      "query": "观众看完能得到什么结果、适合谁、在哪个场景用，都需要说清楚",
+      "expectedKnowledgeIds": [
+        "value-pattern-audience-outcome-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-pain-benefit-v2"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-audience-outcome-v1",
+          "value-pattern-use-scenario-v1",
+          "value-bad-case-vague-claim-v1",
+          "hook-pattern-target-audience-v1",
+          "value-rule-before-after-outcome-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-audience-outcome-v1",
+          "hook-pattern-target-audience-v1",
+          "value-pattern-use-scenario-v1",
+          "value-pattern-actionable-advice-v1",
+          "value-rule-specificity-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-audience-outcome-v1",
+          "hook-pattern-target-audience-v1",
+          "value-pattern-use-scenario-v1",
+          "value-rule-before-after-outcome-v1",
+          "value-rule-specificity-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-audience-outcome-v1",
+          "value-pattern-use-scenario-v1",
+          "value-rule-before-after-outcome-v1",
+          "hook-pattern-target-audience-v1",
+          "hook-good-case-authority-fast-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-value-002",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "SEMANTIC",
+      "query": "不是只说方法好，而是说明通勤、带娃、租房这种场景里怎么解决问题",
+      "expectedKnowledgeIds": [
+        "value-pattern-use-scenario-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-target-audience-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "value-bad-case-vague-claim-v1",
+          "value-pattern-audience-outcome-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "hook-bad-case-generic-opening-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "value-good-case-step-by-step-v1",
+          "structure-good-case-example-driven-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "structure-pattern-problem-expand-close-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "value-good-case-step-by-step-v1",
+          "value-bad-case-vague-claim-v1",
+          "structure-good-case-example-driven-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "value-bad-case-vague-claim-v1",
+          "value-pattern-audience-outcome-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "hook-rule-first-three-seconds-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-value-005",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "HARD",
+      "matchType": "MIXED",
+      "query": "整条都在讲配置参数，没有把参数翻译成用户能感受到的好处",
+      "expectedKnowledgeIds": [
+        "value-bad-case-feature-without-benefit-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-feature-first-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-bad-case-feature-first-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-bad-case-scattered-benefits-v1",
+          "value-good-case-step-by-step-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-bad-case-feature-without-benefit-v1",
+          "value-good-case-step-by-step-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "value-rule-specificity-v1",
+          "hook-bad-case-feature-first-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-bad-case-feature-without-benefit-v1",
+          "value-good-case-step-by-step-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "hook-bad-case-feature-first-v1",
+          "value-rule-specificity-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-bad-case-feature-first-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-pattern-pain-benefit-v2",
+          "hook-good-case-authority-fast-v1",
+          "hook-rule-avoid-late-payoff-v1"
+        ]
+      },
+      "highestHardNegativeRank": 1,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "RERANK_INVERSION"
+    },
+    {
+      "queryId": "v03-value-006",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "SEMANTIC",
+      "query": "文案反复说很好用很值得，但没有对象、场景、结果或证据",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-claim-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-empty-suspense-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-bad-case-vague-claim-v1",
+          "value-pattern-audience-outcome-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-bad-case-vague-claim-v1",
+          "value-good-case-proof-before-claim-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "value-pattern-use-scenario-v1",
+          "value-rule-before-after-outcome-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-bad-case-vague-claim-v1",
+          "value-good-case-proof-before-claim-v1",
+          "value-pattern-use-scenario-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-good-case-visual-proof-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-bad-case-vague-claim-v1",
+          "hook-good-case-visual-proof-v1",
+          "value-pattern-audience-outcome-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "highestHardNegativeRank": 5,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-value-008",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "EASY",
+      "matchType": "EXACT",
+      "query": "把清洁步骤拆成先喷、等三分钟、再擦，用户能直接照做",
+      "expectedKnowledgeIds": [
+        "value-good-case-step-by-step-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-good-case-rhythm-marker-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-good-case-step-by-step-v1",
+          "hook-bad-case-feature-first-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "structure-good-case-rhythm-marker-v1",
+          "structure-bad-case-topic-jump-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-good-case-step-by-step-v1",
+          "value-pattern-audience-outcome-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-platform-short-feed-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-good-case-step-by-step-v1",
+          "value-pattern-audience-outcome-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "hook-platform-short-feed-v1",
+          "hook-bad-case-feature-first-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-good-case-step-by-step-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-good-case-authority-fast-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "structure-good-case-rhythm-marker-v1"
+        ]
+      },
+      "highestHardNegativeRank": 4,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-value-010",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "MIXED",
+      "query": "省钱、省心、变好看都提了，但没有一个主结果贯穿全片",
+      "expectedKnowledgeIds": [
+        "value-bad-case-scattered-benefits-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-bad-case-topic-jump-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "value-bad-case-vague-claim-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "value-rule-specificity-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 3,
+        "top5KnowledgeIds": [
+          "value-rule-specificity-v1",
+          "value-bad-case-vague-claim-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-bad-case-feature-without-benefit-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 3,
+        "top5KnowledgeIds": [
+          "value-bad-case-vague-claim-v1",
+          "value-rule-specificity-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-bad-case-empty-suspense-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "value-bad-case-vague-claim-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "value-rule-specificity-v1",
+          "value-bad-case-feature-without-benefit-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-value-011",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "HARD",
+      "matchType": "SEMANTIC",
+      "query": "用使用前后的状态变化说明观众收益，而不是只按时间顺序讲过程",
+      "expectedKnowledgeIds": [
+        "value-rule-before-after-outcome-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-pattern-contrast-before-after-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-contrast-before-after-v1",
+          "value-pattern-use-scenario-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "value-bad-case-feature-without-benefit-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-rule-before-after-outcome-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "structure-pattern-contrast-before-after-v1",
+          "hook-rule-avoid-late-payoff-v1",
+          "value-rule-specificity-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-contrast-before-after-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-rule-avoid-late-payoff-v1",
+          "value-rule-specificity-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-contrast-before-after-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "value-pattern-use-scenario-v1",
+          "value-bad-case-feature-without-benefit-v1"
+        ]
+      },
+      "highestHardNegativeRank": 2,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "CROSS_SKILL_CONTAMINATION"
+    },
+    {
+      "queryId": "v03-value-012",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "HARD",
+      "matchType": "MIXED",
+      "query": "开头有痛点，但整条视频没有回答这个人最后能获得什么改变",
+      "expectedKnowledgeIds": [
+        "value-pattern-audience-outcome-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-pattern-pain-benefit-v2"
+      ],
+      "BM25": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-pattern-pain-benefit-v2",
+          "value-pattern-audience-outcome-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "value-pattern-use-scenario-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "hook-pattern-pain-benefit-v2",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-target-audience-v1",
+          "hook-bad-case-generic-opening-v1",
+          "structure-rule-opening-transition-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 10,
+        "top5KnowledgeIds": [
+          "hook-pattern-pain-benefit-v2",
+          "hook-bad-case-empty-suspense-v1",
+          "hook-pattern-target-audience-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-bad-case-feature-first-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-pattern-pain-benefit-v2",
+          "value-pattern-audience-outcome-v1",
+          "hook-bad-case-empty-suspense-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "value-pattern-use-scenario-v1"
+        ]
+      },
+      "highestHardNegativeRank": 1,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "HARD_NEGATIVE_CONFUSION"
+    },
+    {
+      "queryId": "v03-value-013",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "MEDIUM",
+      "matchType": "SEMANTIC",
+      "query": "场景是厨房油污，不是泛泛说产品适合所有家庭",
+      "expectedKnowledgeIds": [
+        "value-pattern-use-scenario-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-rule-specificity-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "structure-pattern-topic-list-v1",
+          "value-bad-case-vague-claim-v1",
+          "hook-bad-case-generic-opening-v1",
+          "value-pattern-audience-outcome-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "hook-bad-case-generic-opening-v1",
+          "structure-bad-case-static-talking-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "value-bad-case-scattered-benefits-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "hook-bad-case-generic-opening-v1",
+          "value-bad-case-vague-claim-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "value-bad-case-feature-without-benefit-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-pattern-use-scenario-v1",
+          "structure-pattern-topic-list-v1",
+          "value-bad-case-vague-claim-v1",
+          "value-rule-before-after-outcome-v1",
+          "hook-bad-case-generic-opening-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "SEMANTIC_BOUNDARY_CONFUSION"
+    },
+    {
+      "queryId": "v03-value-014",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "EASY",
+      "matchType": "MIXED",
+      "query": "最后让用户收藏检查清单，比突然引导购买更符合这条内容",
+      "expectedKnowledgeIds": [
+        "value-rule-call-to-action-fit-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "value-pattern-actionable-advice-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": null,
+        "top5KnowledgeIds": [
+          "value-pattern-audience-outcome-v1",
+          "hook-rule-avoid-late-payoff-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "structure-rule-opening-transition-v1",
+          "value-pattern-actionable-advice-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 6,
+        "top5KnowledgeIds": [
+          "hook-rule-avoid-late-payoff-v1",
+          "value-good-case-step-by-step-v1",
+          "value-pattern-actionable-advice-v1",
+          "value-pattern-audience-outcome-v1",
+          "hook-good-case-visual-proof-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 6,
+        "top5KnowledgeIds": [
+          "hook-rule-avoid-late-payoff-v1",
+          "value-pattern-audience-outcome-v1",
+          "value-pattern-actionable-advice-v1",
+          "hook-good-case-visual-proof-v1",
+          "value-good-case-step-by-step-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 9,
+        "top5KnowledgeIds": [
+          "hook-rule-avoid-late-payoff-v1",
+          "value-pattern-audience-outcome-v1",
+          "hook-pattern-curiosity-gap-v1",
+          "structure-rule-opening-transition-v1",
+          "value-rule-before-after-outcome-v1"
+        ]
+      },
+      "highestHardNegativeRank": 3,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "RERANK_INVERSION"
+    },
+    {
+      "queryId": "v03-value-015",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "ADVERSARIAL",
+      "matchType": "SEMANTIC",
+      "query": "案例不是为了让结构更顺，而是为了先证明结论可信",
+      "expectedKnowledgeIds": [
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-good-case-example-driven-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-good-case-proof-before-claim-v1",
+          "structure-good-case-example-driven-v1",
+          "structure-pattern-topic-list-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "structure-pattern-contrast-before-after-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "structure-good-case-example-driven-v1",
+          "value-good-case-proof-before-claim-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-contrast-before-after-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "structure-good-case-example-driven-v1",
+          "value-good-case-proof-before-claim-v1",
+          "structure-pattern-problem-expand-close-v1",
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-contrast-before-after-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-good-case-proof-before-claim-v1",
+          "structure-good-case-example-driven-v1",
+          "structure-pattern-topic-list-v1",
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-problem-expand-close-v1"
+        ]
+      },
+      "highestHardNegativeRank": 1,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "HARD_NEGATIVE_CONFUSION"
+    },
+    {
+      "queryId": "v03-value-017",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "EASY",
+      "matchType": "SEMANTIC",
+      "query": "参数出现在开头不一定错，问题是整条都没把功能转成收益",
+      "expectedKnowledgeIds": [
+        "value-bad-case-feature-without-benefit-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "hook-bad-case-feature-first-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "hook-bad-case-feature-first-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-rule-first-three-seconds-v1",
+          "hook-pattern-self-intro-delay-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-bad-case-feature-first-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "hook-pattern-pain-benefit-v2",
+          "hook-bad-case-generic-opening-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-bad-case-feature-first-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-pattern-pain-benefit-v2",
+          "value-bad-case-scattered-benefits-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 3,
+        "top5KnowledgeIds": [
+          "hook-bad-case-feature-first-v1",
+          "hook-pattern-self-intro-delay-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "hook-rule-first-three-seconds-v1",
+          "hook-bad-case-generic-opening-v1"
+        ]
+      },
+      "highestHardNegativeRank": 1,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "RERANK_INVERSION"
+    },
+    {
+      "queryId": "v03-value-018",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "ADVERSARIAL",
+      "matchType": "MIXED",
+      "query": "中段不是没推进，而是每个收益都停留在好用、划算这种空话",
+      "expectedKnowledgeIds": [
+        "value-rule-specificity-v1",
+        "value-bad-case-vague-claim-v1"
+      ],
+      "acceptableKnowledgeIds": [
+        "structure-rule-midpoint-retention-v1"
+      ],
+      "hardNegativeKnowledgeIds": [],
+      "BM25": {
+        "expectedBestRank": 1,
+        "top5KnowledgeIds": [
+          "value-rule-specificity-v1",
+          "structure-rule-midpoint-retention-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "hook-bad-case-generic-opening-v1",
+          "hook-pattern-self-intro-delay-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 4,
+        "top5KnowledgeIds": [
+          "structure-rule-midpoint-retention-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "value-bad-case-feature-without-benefit-v1",
+          "value-rule-specificity-v1",
+          "hook-rule-avoid-late-payoff-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 3,
+        "top5KnowledgeIds": [
+          "structure-rule-midpoint-retention-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "value-rule-specificity-v1",
+          "hook-rule-avoid-late-payoff-v1",
+          "value-bad-case-feature-without-benefit-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "structure-rule-midpoint-retention-v1",
+          "value-rule-specificity-v1",
+          "value-bad-case-scattered-benefits-v1",
+          "hook-rule-avoid-late-payoff-v1",
+          "hook-bad-case-generic-opening-v1"
+        ]
+      },
+      "highestHardNegativeRank": null,
+      "hardNegativeAboveExpected": false,
+      "candidatePoolSize": 34,
+      "errorType": "MULTI_LABEL_AMBIGUITY"
+    },
+    {
+      "queryId": "v03-value-019",
+      "skillCode": "value_delivery_analysis",
+      "difficulty": "ADVERSARIAL",
+      "matchType": "MIXED",
+      "query": "前后对比图如果服务于证明省时效果，应归到价值可信而非段落顺序",
+      "expectedKnowledgeIds": [
+        "value-rule-before-after-outcome-v1",
+        "value-good-case-proof-before-claim-v1"
+      ],
+      "acceptableKnowledgeIds": [],
+      "hardNegativeKnowledgeIds": [
+        "structure-pattern-contrast-before-after-v1"
+      ],
+      "BM25": {
+        "expectedBestRank": 4,
+        "top5KnowledgeIds": [
+          "structure-pattern-contrast-before-after-v1",
+          "structure-good-case-example-driven-v1",
+          "hook-good-case-visual-proof-v1",
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-problem-expand-close-v1"
+        ]
+      },
+      "Embedding": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "structure-pattern-contrast-before-after-v1",
+          "value-rule-before-after-outcome-v1",
+          "value-good-case-proof-before-claim-v1",
+          "hook-good-case-visual-proof-v1",
+          "hook-rule-first-three-seconds-v1"
+        ]
+      },
+      "Hybrid": {
+        "expectedBestRank": 2,
+        "top5KnowledgeIds": [
+          "structure-pattern-contrast-before-after-v1",
+          "value-rule-before-after-outcome-v1",
+          "hook-good-case-visual-proof-v1",
+          "value-good-case-proof-before-claim-v1",
+          "structure-good-case-example-driven-v1"
+        ]
+      },
+      "Rerank": {
+        "expectedBestRank": 4,
+        "top5KnowledgeIds": [
+          "structure-pattern-contrast-before-after-v1",
+          "structure-good-case-example-driven-v1",
+          "hook-good-case-visual-proof-v1",
+          "value-rule-before-after-outcome-v1",
+          "structure-pattern-problem-expand-close-v1"
+        ]
+      },
+      "highestHardNegativeRank": 1,
+      "hardNegativeAboveExpected": true,
+      "candidatePoolSize": 34,
+      "errorType": "RERANK_INVERSION"
+    }
+  ],
+  "summary": {
+    "topRecurringConfusedKnowledgePairs": [
+      [
+        "value-bad-case-feature-without-benefit-v1 -> hook-bad-case-feature-first-v1",
+        2
+      ],
+      [
+        "hook-pattern-curiosity-gap-v1 -> hook-bad-case-empty-suspense-v1",
+        1
+      ],
+      [
+        "hook-good-case-authority-fast-v1 -> hook-pattern-self-intro-delay-v1",
+        1
+      ],
+      [
+        "hook-pattern-target-audience-v1 -> value-pattern-use-scenario-v1",
+        1
+      ],
+      [
+        "hook-rule-first-three-seconds-v1 -> value-pattern-use-scenario-v1",
+        1
+      ],
+      [
+        "hook-rule-avoid-late-payoff-v1 -> value-pattern-audience-outcome-v1",
+        1
+      ],
+      [
+        "structure-rule-density-scene-change-v1 -> structure-bad-case-static-talking-v1",
+        1
+      ],
+      [
+        "structure-pattern-contrast-before-after-v1 -> value-rule-before-after-outcome-v1",
+        1
+      ],
+      [
+        "structure-rule-midpoint-retention-v1 -> structure-rule-density-scene-change-v1",
+        1
+      ],
+      [
+        "value-pattern-audience-outcome-v1 -> hook-pattern-pain-benefit-v2",
+        1
+      ]
+    ],
+    "missCountBySkillCode": {
+      "hook_analysis": 4,
+      "value_delivery_analysis": 2
+    },
+    "missCountByErrorType": {
+      "RERANK_INVERSION": 8,
+      "HARD_NEGATIVE_CONFUSION": 7,
+      "UNKNOWN": 4,
+      "CROSS_SKILL_CONTAMINATION": 13,
+      "SEMANTIC_BOUNDARY_CONFUSION": 3,
+      "MULTI_LABEL_AMBIGUITY": 5
+    },
+    "hardNegativeFailureKnowledgeIds": [
+      [
+        "hook-bad-case-feature-first-v1",
+        2
+      ],
+      [
+        "hook-bad-case-empty-suspense-v1",
+        1
+      ],
+      [
+        "hook-pattern-self-intro-delay-v1",
+        1
+      ],
+      [
+        "value-pattern-use-scenario-v1",
+        1
+      ],
+      [
+        "value-pattern-audience-outcome-v1",
+        1
+      ],
+      [
+        "structure-bad-case-static-talking-v1",
+        1
+      ],
+      [
+        "value-rule-before-after-outcome-v1",
+        1
+      ],
+      [
+        "structure-rule-density-scene-change-v1",
+        1
+      ],
+      [
+        "hook-pattern-pain-benefit-v2",
+        1
+      ],
+      [
+        "value-pattern-actionable-advice-v1",
+        1
+      ]
+    ],
+    "suppressedExpectedKnowledgeIds": [
+      [
+        "hook-pattern-target-audience-v1",
+        2
+      ],
+      [
+        "hook-rule-avoid-late-payoff-v1",
+        2
+      ],
+      [
+        "structure-bad-case-topic-jump-v1",
+        2
+      ],
+      [
+        "value-bad-case-feature-without-benefit-v1",
+        2
+      ],
+      [
+        "value-good-case-proof-before-claim-v1",
+        2
+      ],
+      [
+        "hook-pattern-pain-benefit-v2",
+        1
+      ],
+      [
+        "hook-pattern-curiosity-gap-v1",
+        1
+      ],
+      [
+        "hook-bad-case-empty-suspense-v1",
+        1
+      ],
+      [
+        "hook-bad-case-generic-opening-v1",
+        1
+      ],
+      [
+        "hook-good-case-authority-fast-v1",
+        1
+      ]
+    ]
+  }
+}

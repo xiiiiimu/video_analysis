@@ -1,0 +1,866 @@
+{
+  "datasetVersion": "video-diagnosis-rag-formal-candidates-v0.2",
+  "annotationPolicy": "All generated candidates are PENDING_REVIEW. Change annotationStatus to VERIFIED only after human review.",
+  "cases": [
+    {
+      "queryId": "hook-pattern-01",
+      "query": "用户刷到视频第一眼没停留，应该检索哪类开场钩子规则",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-pattern-02",
+      "query": "评估开头有没有先给痛点再给收益，需要参考什么标准",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-pattern-03",
+      "query": "视频前几秒一直铺垫背景，想判断是否拖慢兴趣建立",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-pattern-04",
+      "query": "首屏没有反常识也没有价值预期，应该找哪条钩子知识",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-pattern-05",
+      "query": "诊断开场是否快速制造情绪张力和继续看的理由",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-pattern-06",
+      "query": "开头先自我介绍而不是讲用户问题，该用什么规则评估",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-pattern-07",
+      "query": "前三秒文案平淡，需要判断是否缺少利益承诺",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-pattern-08",
+      "query": "想检查短视频开场有没有把观众痛点前置",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-pattern-09",
+      "query": "用户不知道为什么要继续看，应该参考哪类 hook pattern",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-pattern-10",
+      "query": "视频开头没有明确结果感，如何找钩子诊断依据",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-good-case-01",
+      "query": "想找开头直接说明省钱省时收益的参考案例",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-good-case-02",
+      "query": "对比优秀视频首屏如何让用户马上看到好处",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-good-case-03",
+      "query": "需要一个利益点先行的 hook 正向样例",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-good-case-04",
+      "query": "首句就承诺结果的短视频案例应该检索哪条知识",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-good-case-05",
+      "query": "想看优秀口播怎样在开头给出可感知收益",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-good-case-06",
+      "query": "用什么案例说明开场先给价值比先铺垫更有效",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-good-case-07",
+      "query": "找一个开头就告诉观众能获得什么的好案例",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-good-case-08",
+      "query": "诊断首屏收益表达时需要正向对照样本",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-good-case-09",
+      "query": "参考视频开头先讲避坑收益，这属于哪类案例",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "hook-good-case-10",
+      "query": "需要首屏给利益点的 good case 做判断基准",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-pattern-01",
+      "query": "视频内容散乱时应该检索哪种问题展开收束结构",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-pattern-02",
+      "query": "判断短视频有没有按问题引入再行动收尾组织",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-pattern-03",
+      "query": "段落之间没有承接，想找结构节奏的组织规则",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-pattern-04",
+      "query": "视频说了很多点但没有主线，应该参考什么结构模式",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-pattern-05",
+      "query": "分析脚本是否有开头问题中段解释结尾建议",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-pattern-06",
+      "query": "内容从痛点跳到卖点再跳回背景，如何找结构诊断依据",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-pattern-07",
+      "query": "评估短视频是否有清楚的段落转场和收束",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-pattern-08",
+      "query": "视频节奏混乱，想找三段式信息组织知识",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-pattern-09",
+      "query": "判断内容有没有先提问再展开关键点",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-pattern-10",
+      "query": "需要结构模式来检查观众能不能跟上叙事",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-rule-01",
+      "query": "画面长时间不变时怎么判断信息密度是否不足",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-rule-02",
+      "query": "镜头变化少但口播很多，应该检索什么节奏规则",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-rule-03",
+      "query": "想分析转场信号少会不会影响注意力维持",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-rule-04",
+      "query": "视频一直同一场景，需要找节奏和镜头变化的诊断规则",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-rule-05",
+      "query": "检查信息密度和段落切换是否支撑完播",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-rule-06",
+      "query": "没有明显转场时如何评估短视频节奏风险",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-rule-07",
+      "query": "画面不动但文案在讲卖点，应该参考哪条 analysis rule",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-rule-08",
+      "query": "判断镜头切换频率是否太低需要什么依据",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-rule-09",
+      "query": "观众注意力可能掉线，想找节奏诊断规则",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "structure-rule-10",
+      "query": "视频中段信息堆叠但视觉变化弱，如何找规则",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-pattern-01",
+      "query": "判断视频有没有说清楚观众最终能得到什么",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-pattern-02",
+      "query": "内容讲了很多功能但收益不明确，需要什么价值表达标准",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-pattern-03",
+      "query": "想检查文案是否包含对象场景结果和行动建议",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-pattern-04",
+      "query": "视频价值点模糊，应该检索哪类收益表达知识",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-pattern-05",
+      "query": "用户看完不知道下一步做什么，如何找价值传递依据",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-pattern-06",
+      "query": "诊断是否把结果感和使用场景讲清楚",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-pattern-07",
+      "query": "评估观众收益有没有被具体化",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-pattern-08",
+      "query": "视频只说产品很好，想判断有没有明确 outcome",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-pattern-09",
+      "query": "需要检查行动建议是否和用户收益连接起来",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-pattern-10",
+      "query": "找价值传递标准来判断内容是不是只讲过程",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-bad-case-01",
+      "query": "找一个只罗列功能却没有说用户收益的反例",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-bad-case-02",
+      "query": "视频一直讲成分和流程，但没有解释为什么要看完",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-bad-case-03",
+      "query": "需要模糊收益表达的 bad case 做对照",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-bad-case-04",
+      "query": "判断内容是不是只讲功能不讲结果，可以参考什么反例",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-bad-case-05",
+      "query": "卖点很多但用户动机不强，想找负面案例",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-bad-case-06",
+      "query": "视频没有说明现在行动的理由，属于哪种价值传递问题",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-bad-case-07",
+      "query": "想对照一个只讲过程没有收益落点的案例",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-bad-case-08",
+      "query": "内容围绕产品特点展开但缺少用户视角，找什么案例",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-bad-case-09",
+      "query": "观众不知道为什么需要这个方案，应该检索哪条反例",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "SEMANTIC",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    },
+    {
+      "queryId": "value-bad-case-10",
+      "query": "评估价值表达空泛时需要 bad case 参考",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "MIXED",
+      "annotationStatus": "PENDING_REVIEW",
+      "category": "",
+      "notes": "Generated candidate. Human review required before use in formal metrics."
+    }
+  ],
+  "smokeCases": [
+    {
+      "queryId": "smoke-hook-domain-opening-pain-v1",
+      "query": "前三秒如何用痛点和收益建立钩子",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "hook-pattern-opening-pain-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "VERIFIED",
+      "category": "",
+      "notes": "Smoke only."
+    },
+    {
+      "queryId": "smoke-hook-similar-good-benefit-v1",
+      "query": "开头直接给出利益点的优秀案例",
+      "skillCode": "hook_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "hook-good-case-direct-benefit-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "VERIFIED",
+      "category": "",
+      "notes": "Smoke only."
+    },
+    {
+      "queryId": "smoke-structure-domain-three-act-v1",
+      "query": "短视频结构如何按问题展开收束组织",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "structure-pattern-three-act-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "VERIFIED",
+      "category": "",
+      "notes": "Smoke only."
+    },
+    {
+      "queryId": "smoke-structure-rule-density-v1",
+      "query": "镜头长期不变时如何诊断信息密度和节奏",
+      "skillCode": "structure_rhythm_analysis",
+      "knowledgeType": "ANALYSIS_RULE",
+      "expectedKnowledgeIds": [
+        "structure-rule-density-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "VERIFIED",
+      "category": "",
+      "notes": "Smoke only."
+    },
+    {
+      "queryId": "smoke-value-domain-clear-outcome-v1",
+      "query": "如何判断视频是否讲清楚观众收益和行动建议",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "DOMAIN_KNOWLEDGE",
+      "expectedKnowledgeIds": [
+        "value-delivery-pattern-clear-outcome-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "VERIFIED",
+      "category": "",
+      "notes": "Smoke only."
+    },
+    {
+      "queryId": "smoke-value-similar-bad-vague-benefit-v1",
+      "query": "只讲功能不讲收益的反例",
+      "skillCode": "value_delivery_analysis",
+      "knowledgeType": "SIMILAR_CASE",
+      "expectedKnowledgeIds": [
+        "value-bad-case-vague-benefit-v1"
+      ],
+      "difficulty": "EXACT",
+      "annotationStatus": "VERIFIED",
+      "category": "",
+      "notes": "Smoke only."
+    }
+  ]
+}

@@ -1,0 +1,4262 @@
+{
+  "finishedAt": "2026-10-29T01:42:41.699739+00:00",
+  "model": "gpt-4o-mini",
+  "caseCount": 15,
+  "repeat": 1,
+  "cases": {
+    "c01_hook_no_promise": {
+      "description": "目标开场 6 秒是寒暄，没有任何价值承诺；参考第 0.5 秒就承诺'五分钟做好早餐'。",
+      "expected": [
+        "hook_no_value_promise"
+      ],
+      "forbidden": [
+        "no_cta",
+        "pacing_too_dense",
+        "pacing_too_slow"
+      ],
+      "strengthDims": []
+    },
+    "c02_hook_slow_start": {
+      "description": "目标前 6 秒是没有口播、没有字幕的空镜，第 6 秒才开始说话。",
+      "expected": [
+        "hook_slow_start"
+      ],
+      "forbidden": [
+        "no_cta",
+        "value_unclear"
+      ],
+      "strengthDims": []
+    },
+    "c03_value_late": {
+      "description": "目标开场只说'今天分享一些早餐心得'，具体收益（省二十分钟）直到第 70 秒才出现。",
+      "expected": [
+        "value_late"
+      ],
+      "forbidden": [
+        "no_cta"
+      ],
+      "strengthDims": []
+    },
+    "c04_no_cta": {
+      "description": "目标内容完整，但结尾直接结束，没有任何关注/下一步引导；参考结尾有明确行动号召。",
+      "expected": [
+        "no_cta"
+      ],
+      "forbidden": [
+        "hook_no_value_promise",
+        "hook_slow_start",
+        "value_late"
+      ],
+      "strengthDims": []
+    },
+    "c05_no_proof": {
+      "description": "目标说'效果非常好'，但从头到尾没有展示结果；参考有'25分钟→5分钟'的前后对比。",
+      "expected": [
+        "no_proof"
+      ],
+      "forbidden": [
+        "no_cta",
+        "hook_no_value_promise"
+      ],
+      "strengthDims": []
+    },
+    "c06_pacing_dense": {
+      "description": "目标平均 1.8 秒切一次镜头（48 个镜头/88 秒），参考约 6 秒一次。",
+      "expected": [
+        "pacing_too_dense"
+      ],
+      "forbidden": [
+        "pacing_too_slow",
+        "no_cta",
+        "hook_no_value_promise"
+      ],
+      "strengthDims": []
+    },
+    "c07_pacing_slow": {
+      "description": "目标前 75 秒一镜到底没有任何切换，参考约 6 秒切一次。",
+      "expected": [
+        "pacing_too_slow"
+      ],
+      "forbidden": [
+        "pacing_too_dense",
+        "no_cta"
+      ],
+      "strengthDims": []
+    },
+    "c08_structure_unclear": {
+      "description": "目标讲了同样三件事，但没有'第一步/第二步'这类口播或字幕标记，内容混在一起。",
+      "expected": [
+        "structure_unclear"
+      ],
+      "forbidden": [
+        "no_cta",
+        "hook_no_value_promise"
+      ],
+      "strengthDims": []
+    },
+    "c09_strength_hook": {
+      "description": "目标开场比参考强：目标第 0.5 秒就承诺收益并配大字幕，参考开场是寒暄。其它维度两者相当。",
+      "expected": [],
+      "forbidden": [
+        "hook_no_value_promise",
+        "hook_slow_start",
+        "hook_weak_visual_text",
+        "no_cta"
+      ],
+      "strengthDims": [
+        "HOOK"
+      ]
+    },
+    "c10_strength_value": {
+      "description": "目标收益表达、结果证明、结尾引导都比参考完整；参考收益模糊且没有结尾引导。",
+      "expected": [],
+      "forbidden": [
+        "value_late",
+        "value_unclear",
+        "no_cta",
+        "no_proof"
+      ],
+      "strengthDims": [
+        "VALUE_DELIVERY"
+      ]
+    },
+    "c11_contradiction_bait": {
+      "description": "目标开场口播已经明确承诺收益，只是开场没有屏幕文字；参考开场有大字幕。正确判断是'开场缺屏幕文字强化'，而不是'开场没有价值承诺'，价值传递也不应判为收益太晚。",
+      "expected": [
+        "hook_weak_visual_text"
+      ],
+      "forbidden": [
+        "hook_no_value_promise",
+        "value_late",
+        "value_unclear"
+      ],
+      "strengthDims": []
+    },
+    "c12_asr_failed": {
+      "description": "目标语音转写失败（speechStatus=failed），只有屏幕文字；收益文字第 40 秒才出现。不应引用或臆测口播内容。",
+      "expected": [
+        "value_late"
+      ],
+      "forbidden": [
+        "no_cta"
+      ],
+      "strengthDims": []
+    },
+    "c13_truncated_long_video": {
+      "description": "目标视频 5 分钟，只分析了前 120 秒；开场没有价值承诺。结尾不在分析窗口内，不能断言'没有行动号召'。",
+      "expected": [
+        "hook_no_value_promise"
+      ],
+      "forbidden": [
+        "no_cta"
+      ],
+      "strengthDims": []
+    },
+    "c14_equal_quality": {
+      "description": "目标与参考几乎一致（同样的结构、节奏、收益与结尾），不应报出明显问题。",
+      "expected": [],
+      "forbidden": [
+        "hook_no_value_promise",
+        "hook_slow_start",
+        "pacing_too_dense",
+        "pacing_too_slow",
+        "value_late",
+        "no_cta",
+        "no_proof"
+      ],
+      "strengthDims": []
+    },
+    "c15_two_references_dense": {
+      "description": "两个参考视频节奏都在 5~7 秒切一次，目标 1.5 秒切一次；其它维度相当。",
+      "expected": [
+        "pacing_too_dense"
+      ],
+      "forbidden": [
+        "pacing_too_slow",
+        "no_cta"
+      ],
+      "strengthDims": []
+    }
+  },
+  "results": {
+    "v1": {
+      "summary": {
+        "runs": 15,
+        "failedRuns": 0,
+        "issueRecall": 0.583,
+        "falseAlarmRate": 0.5,
+        "strengthMisreportRate": 1.0,
+        "quotedFindingRate": 0.143,
+        "typedFindingRate": 0.0,
+        "invalidRefRate": 0.003,
+        "avgRetries": 0.47,
+        "avgTokens": 18678,
+        "avgLatencySeconds": 10.8,
+        "stability": null
+      },
+      "runs": [
+        {
+          "caseId": "c01_hook_no_promise",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 15.7,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 13758,
+            "outputTokens": 1438,
+            "totalTokens": 15196
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 3-5 秒内没有有效吸引观众的兴趣或价值预期，主要内容是介绍和天气，缺乏直接的吸引力。参考视频则明确提出了观众能获得的具体技巧，吸引力更强。",
+              "differenceText": "目标视频开头提到天气和早餐，但没有明确的吸引点；参考视频则直接展示了能让早餐快速完成的技巧，吸引力明显更强。",
+              "suggestedAction": "在开头增加一个引人注目的承诺，例如直接说明观众将学到的具体技巧或时间节省，来提高吸引力。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:00"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频与参考视频在结构和节奏上存在显著差异，尤其是在镜头切换和信息密度方面。",
+              "differenceText": "目标视频的镜头切换频率较高，且每个镜头的时长相对均匀，信息传递较为清晰；而参考视频在镜头切换上更为流畅，且信息密度较高，观众更容易跟随内容进展。",
+              "suggestedAction": "建议在目标视频中增加镜头的多样性和信息的层次感，适当延长某些镜头的时长，以便观众更好地吸收信息。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:06",
+                "FRAME:T@00:00:12",
+                "FRAME:R1@00:00:06",
+                "FRAME:R1@00:00:12",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:T#4"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在第 1 秒就明确传达了用户收益，强调了早餐准备的效率。结尾部分也包含了行动号召，鼓励观众关注以获取更多内容。",
+              "differenceText": "目标视频在开头直接展示了用户收益（早餐准备时间缩短），而参考视频则通过技巧引导，未能在开头直接传达明确的用户收益。",
+              "suggestedAction": "在参考视频的开头增加明确的用户收益描述，以提高观众的兴趣和价值预期。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:01:05",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:01:05",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:03",
+                "ASR:T@00:01:05"
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在吸引观众兴趣和价值预期方面存在明显不足，尤其是在开头缺乏引人注目的承诺，而参考视频则通过明确的技巧展示成功吸引了观众。此外，目标视频在结构和节奏上较为单一，未能有效传递信息。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "在开头增加一个引人注目的承诺，例如直接说明观众将学到的具体技巧或时间节省，来提高吸引力。",
+                "confidence": 0.8,
+                "rationale": "开场钩子：目标视频在前 3-5 秒内没有有效吸引观众的兴趣或价值预期，主要内容是介绍和天气，缺乏直接的吸引力。参考视频则明确提出了观众能获得的具体技巧，吸引力更强。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "在参考视频的开头增加明确的用户收益描述，以提高观众的兴趣和价值预期。",
+                "confidence": 0.85,
+                "rationale": "价值传递：目标视频在第 1 秒就明确传达了用户收益，强调了早餐准备的效率。结尾部分也包含了行动号召，鼓励观众关注以获取更多内容。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "建议在目标视频中增加镜头的多样性和信息的层次感，适当延长某些镜头的时长，以便观众更好地吸收信息。",
+                "confidence": 0.8,
+                "rationale": "结构节奏：目标视频与参考视频在结构和节奏上存在显著差异，尤其是在镜头切换和信息密度方面。"
+              }
+            ],
+            "mergedActions": [
+              "在开头增加一个引人注目的承诺，例如直接说明观众将学到的具体技巧或时间节省，来提高吸引力。",
+              "在目标视频中增加镜头的多样性和信息的层次感，适当延长某些镜头的时长，以便观众更好地吸收信息。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [
+              "hook_no_value_promise"
+            ],
+            "hits": [
+              "hook_no_value_promise"
+            ],
+            "forbidden": [
+              "no_cta",
+              "pacing_too_dense",
+              "pacing_too_slow"
+            ],
+            "falseAlarms": [
+              "no_cta",
+              "pacing_too_dense"
+            ],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 32,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c02_hook_slow_start",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 8.8,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 13650,
+            "outputTokens": 1318,
+            "totalTokens": 14968
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 5 秒内未能有效吸引观众的注意力，缺乏明确的价值预期。",
+              "differenceText": "目标视频的开场文字和口播内容在前 5 秒未能传达出吸引观众的强烈理由，而参考视频则在开场时清晰地展示了观众的收益。",
+              "suggestedAction": "在开头增加更具吸引力的内容，例如直接展示早餐的美味或时间节省的具体场景。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:06",
+                "FRAME:T@00:00:12",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:12",
+                "OCR:T@00:00:06",
+                "ASR:T@00:00:06",
+                "ASR:T@00:00:12"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在结构和节奏上与参考视频相似，均采用了清晰的段落划分和均匀的镜头切换节奏。",
+              "differenceText": "目标视频的镜头切换和信息密度与参考视频相似，均匀的节奏使得信息传递流畅。",
+              "suggestedAction": "保持当前的镜头切换和段落结构，以维持观众的注意力和信息的清晰传递。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:06",
+                "FRAME:T@00:00:12",
+                "FRAME:R1@00:00:06",
+                "FRAME:R1@00:00:12",
+                "SCENE:T#1",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:R1#1",
+                "SCENE:R1#2",
+                "SCENE:R1#3"
+              ],
+              "confidence": 1.0
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 90 秒内清晰地传达了用户收益，具体方法和结果都得到了明确的说明。",
+              "differenceText": "目标视频在 6 秒时就明确提出了用户收益，而参考视频在 0 秒时就已经传达了类似的信息，但目标视频在后续的具体步骤和结果上更加详细。",
+              "suggestedAction": "保持当前的结构和内容，确保在开头就明确传达用户收益，并在结尾呼吁观众关注。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:06",
+                "FRAME:T@00:01:05",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:01:05",
+                "OCR:T@00:00:06",
+                "ASR:T@00:01:05"
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在前 5 秒未能有效吸引观众的注意力，缺乏明确的价值预期，这是与参考视频的最关键差距。尽管在结构和节奏上表现相似，目标视频在开头的吸引力和用户收益的传达上仍需改进。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "在开头增加更具吸引力的内容，例如直接展示早餐的美味或时间节省的具体场景。",
+                "confidence": 0.8,
+                "rationale": "开场钩子：目标视频在前 5 秒内未能有效吸引观众的注意力，缺乏明确的价值预期。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前的镜头切换和段落结构，以维持观众的注意力和信息的清晰传递。",
+                "confidence": 1.0,
+                "rationale": "结构节奏：目标视频在结构和节奏上与参考视频相似，均采用了清晰的段落划分和均匀的镜头切换节奏。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前的结构和内容，确保在开头就明确传达用户收益，并在结尾呼吁观众关注。",
+                "confidence": 0.85,
+                "rationale": "价值传递：目标视频在前 90 秒内清晰地传达了用户收益，具体方法和结果都得到了明确的说明。"
+              }
+            ],
+            "mergedActions": [
+              "在开头增加更具吸引力的内容，例如直接展示早餐的美味或时间节省的具体场景，以增强观众的兴趣。",
+              "保持当前的镜头切换和段落结构，以维持观众的注意力和信息的清晰传递。",
+              "确保在开头就明确传达用户收益，并在结尾呼吁观众关注。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [
+              "hook_slow_start"
+            ],
+            "hits": [],
+            "forbidden": [
+              "no_cta",
+              "value_unclear"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 35,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c03_value_late",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 10.6,
+          "usage": {
+            "modelCalls": 5,
+            "inputTokens": 18052,
+            "outputTokens": 1700,
+            "totalTokens": 19752
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 5 秒内通过口播和屏幕文字快速引入早餐心得，建立了观众的兴趣。参考视频则通过明确的标题和口播内容提供了清晰的价值预期。",
+              "differenceText": "目标视频的开场文字为'早餐心得'，而参考视频则使用了'5分钟早餐 3个技巧'，更明确地传达了观众能获得的具体收益。",
+              "suggestedAction": "在开场部分增加具体的收益描述，例如提到能在短时间内学会的技巧，以增强吸引力。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:02",
+                "FRAME:T@00:00:03",
+                "FRAME:T@00:00:04",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "FRAME:R1@00:00:02",
+                "FRAME:R1@00:00:03",
+                "FRAME:R1@00:00:04",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:00",
+                "ASR:T@00:00:01"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在第 70 秒明确传达了用户收益，强调了节省时间的效果，并在结尾处呼吁观众关注以获取更多内容。",
+              "differenceText": "目标视频在传达用户收益方面较为明确，尤其是在节省时间的具体数字上，而参考视频则通过更具体的步骤和效果展示了用户收益。",
+              "suggestedAction": "在目标视频中增加更多具体的步骤和效果展示，以增强用户收益的传达。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:01:10",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:01:05",
+                "FRAME:R1@00:01:12",
+                "ASR:T@00:01:10",
+                "ASR:T@00:01:20",
+                "OCR:T@00:01:10"
+              ],
+              "confidence": 0.8
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场部分通过口播和屏幕文字引入早餐心得，成功吸引了观众的兴趣，但缺乏明确的收益描述，未能有效传达观众能获得的具体价值。相比之下，参考视频通过清晰的标题和内容提供了更具吸引力的价值预期。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "在开场部分增加具体的收益描述，例如提到能在短时间内学会的技巧，以增强吸引力。",
+                "confidence": 0.8,
+                "rationale": "开场钩子：增加具体的收益描述将有助于更好地吸引观众的注意力，并明确他们能从视频中获得的价值。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "在目标视频中增加更多具体的步骤和效果展示，以增强用户收益的传达。",
+                "confidence": 0.8,
+                "rationale": "价值传递：通过增加具体的步骤和效果展示，可以更有效地传达用户收益，提升观众的参与感和满意度。"
+              }
+            ],
+            "mergedActions": [
+              "在开场部分增加具体的收益描述，例如提到能在短时间内学会的技巧，以增强吸引力。",
+              "在目标视频中增加更多具体的步骤和效果展示，以增强用户收益的传达。"
+            ],
+            "evidenceGaps": [
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "缺少足够的证据来判断目标视频的结构和节奏是否合理。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "value_late"
+            ],
+            "hits": [],
+            "forbidden": [
+              "no_cta"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 2,
+            "gapCount": 2,
+            "quotedFindings": 1,
+            "typedFindings": 0,
+            "citedRefs": 34,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 2
+            }
+          }
+        },
+        {
+          "caseId": "c04_no_cta",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 12.5,
+          "usage": {
+            "modelCalls": 5,
+            "inputTokens": 16093,
+            "outputTokens": 1697,
+            "totalTokens": 17790
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频与参考视频在段落结构和节奏上保持一致，均匀的镜头切换和信息密度良好。",
+              "differenceText": "目标视频与参考视频在镜头切换频率和段落结构上相似，均为每段6秒，且信息传递清晰。",
+              "suggestedAction": "保持现有的镜头切换和信息密度，确保每个段落都有明确的主题和内容。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:12",
+                "FRAME:T@00:00:30",
+                "FRAME:T@00:00:50",
+                "FRAME:T@01:05",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:12",
+                "FRAME:R1@00:00:30",
+                "FRAME:R1@00:00:50",
+                "FRAME:R1@00:01:05",
+                "SCENE:T#1",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:T#4",
+                "SCENE:T#5",
+                "SCENE:T#6",
+                "SCENE:T#7",
+                "SCENE:T#8",
+                "SCENE:T#9",
+                "SCENE:T#10",
+                "SCENE:T#11",
+                "SCENE:T#12",
+                "SCENE:T#13",
+                "SCENE:T#14",
+                "SCENE:T#15"
+              ],
+              "confidence": 1.0
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 15 秒内明确传达了用户收益，并在结尾处有行动号召。",
+              "differenceText": "目标视频在 1:05 处清晰表述了用户的时间节省，而参考视频在结尾处没有明确的行动号召。",
+              "suggestedAction": "在参考视频中增加具体的用户收益数据和明确的行动号召，以增强其价值传递。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:01:05",
+                "FRAME:R1@00:01:20",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20"
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在前 3 秒缺少画面文字，导致无法有效吸引观众，而参考视频则提供了完整的开场信息。此外，目标视频在结构和节奏上表现良好，与参考视频相似，信息传递清晰。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "保持现有的镜头切换和信息密度，确保每个段落都有明确的主题和内容。",
+                "confidence": 1.0,
+                "rationale": "保持现有的镜头切换和信息密度，确保每个段落都有明确的主题和内容，以维持良好的观众体验。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "在参考视频中增加具体的用户收益数据和明确的行动号召，以增强其价值传递。",
+                "confidence": 0.85,
+                "rationale": "在参考视频中增加具体的用户收益数据和明确的行动号召，以增强其价值传递，提升观众的参与感。"
+              }
+            ],
+            "mergedActions": [
+              "增加前 3 秒的画面文字，以明确传达视频主题和吸引观众。",
+              "保持现有的镜头切换和信息密度，确保每个段落都有明确的主题和内容。",
+              "在参考视频中增加具体的用户收益数据和明确的行动号召，以增强其价值传递。"
+            ],
+            "evidenceGaps": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "reason": "缺少前 3 秒画面文字，无法判断开场是否有效吸引观众。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "no_cta"
+            ],
+            "hits": [
+              "no_cta"
+            ],
+            "forbidden": [
+              "hook_no_value_promise",
+              "hook_slow_start",
+              "value_late"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 2,
+            "gapCount": 2,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 45,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 2
+            }
+          }
+        },
+        {
+          "caseId": "c05_no_proof",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 11.4,
+          "usage": {
+            "modelCalls": 5,
+            "inputTokens": 18188,
+            "outputTokens": 1740,
+            "totalTokens": 19928
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 3-5 秒内有效地吸引了观众的注意力，明确展示了内容的价值预期。",
+              "differenceText": "目标视频与参考视频在开场时均展示了相似的内容和信息，但目标视频的口播和屏幕文字结合得更为紧密，增强了吸引力。",
+              "suggestedAction": "保持当前开场的口播和文字内容，确保在前 5 秒内继续强化观众的兴趣。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:03",
+                "FRAME:R1@00:00:02",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:01"
+              ],
+              "confidence": 1.0
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频和参考视频在结构和节奏上有明显差异，目标视频的镜头切换和信息密度较低。",
+              "differenceText": "目标视频在前80秒内的镜头切换频率较低，信息密度相对较少，且段落结构不如参考视频清晰，导致节奏感不足。",
+              "suggestedAction": "增加镜头切换频率和信息密度，确保每个段落之间有更清晰的过渡，以提升整体节奏感。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:12",
+                "FRAME:T@00:00:30",
+                "FRAME:T@00:00:50",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:12",
+                "FRAME:R1@00:00:30",
+                "FRAME:R1@00:00:50",
+                "SCENE:T#1",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:T#4",
+                "SCENE:T#5",
+                "SCENE:T#6",
+                "SCENE:T#7",
+                "SCENE:T#8",
+                "SCENE:T#9",
+                "SCENE:T#10",
+                "SCENE:T#11",
+                "SCENE:T#12",
+                "SCENE:T#13",
+                "SCENE:T#14"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 80 秒内明确传达了用户收益，具体方法和结果清晰可见。",
+              "differenceText": "目标视频在 00:01:05 处提到使用这三个方法效果非常好，并在 00:01:14 处呼吁观众关注，形成了明确的用户收益和行动号召。参考视频在 00:01:05 处也有类似的内容，但没有具体的行动号召。",
+              "suggestedAction": "在结尾部分增加更明确的行动号召，例如提供更多相关内容的链接或提示。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:T@00:01:14",
+                "FRAME:R1@00:01:05",
+                "FRAME:R1@00:01:20",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:14"
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场时有效吸引了观众的注意力，并明确展示了内容的价值预期，然而在结构和节奏上与参考视频存在明显差距，镜头切换频率和信息密度较低，导致整体节奏感不足。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前开场的口播和文字内容，确保在前 5 秒内继续强化观众的兴趣。",
+                "confidence": 1.0,
+                "rationale": "开场钩子：目标视频在前 3-5 秒内有效地吸引了观众的注意力，明确展示了内容的价值预期。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "在结尾部分增加更明确的行动号召，例如提供更多相关内容的链接或提示。",
+                "confidence": 0.85,
+                "rationale": "价值传递：目标视频在前 80 秒内明确传达了用户收益，具体方法和结果清晰可见。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "增加镜头切换频率和信息密度，确保每个段落之间有更清晰的过渡，以提升整体节奏感。",
+                "confidence": 0.8,
+                "rationale": "结构节奏：目标视频和参考视频在结构和节奏上有明显差异，目标视频的镜头切换和信息密度较低。"
+              }
+            ],
+            "mergedActions": [
+              "保持当前开场的口播和文字内容，确保在前 5 秒内继续强化观众的兴趣。",
+              "在结尾部分增加更明确的行动号召，例如提供更多相关内容的链接或提示。",
+              "增加镜头切换频率和信息密度，确保每个段落之间有更清晰的过渡，以提升整体节奏感。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [
+              "no_proof"
+            ],
+            "hits": [],
+            "forbidden": [
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "falseAlarms": [
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 1,
+            "typedFindings": 0,
+            "citedRefs": 48,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c06_pacing_dense",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 8.2,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 16092,
+            "outputTokens": 1485,
+            "totalTokens": 17577
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 5 秒内通过口播和屏幕文字有效传达了制作快速早餐的技巧，吸引观众继续观看的兴趣。",
+              "differenceText": "目标视频与参考视频在开场的内容和节奏上相似，均展示了制作早餐的技巧，但目标视频的口播内容略有不同，强调了技巧的数量和时间效率。",
+              "suggestedAction": "保持当前的开场内容，确保在前 5 秒内继续强调观众能获得的具体收益，例如节省时间或提高效率。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:02",
+                "FRAME:T@00:00:03",
+                "FRAME:T@00:00:04",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "FRAME:R1@00:00:02",
+                "FRAME:R1@00:00:03",
+                "FRAME:R1@00:00:04",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:00",
+                "ASR:T@00:00:01",
+                "ASR:T@00:00:02",
+                "ASR:T@00:00:03"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频与参考视频在镜头切换和节奏上存在明显差异，目标视频的镜头切换频率较高，信息密度较大。",
+              "differenceText": "目标视频在前 120 秒内有更多的镜头切换（例如，目标视频在 00:00:00 到 00:00:01 之间有 5 次切换，而参考视频在同样时间段内仅有 1 次），且每个镜头的时长较短，导致节奏较快。",
+              "suggestedAction": "考虑在镜头切换时增加每个镜头的时长，以便观众能够更好地吸收信息。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "SCENE:T#1",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:R1#1",
+                "SCENE:R1#2"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 15 秒内明确传达了用户收益，展示了如何将早餐准备时间从 25 分钟缩短到 5 分钟，并提供了具体步骤和行动号召。",
+              "differenceText": "目标视频与参考视频在用户收益的传达上相似，均在开头部分清晰展示了价值预期和具体步骤。",
+              "suggestedAction": "保持当前的结构和内容，确保在开头部分继续强调用户收益和行动号召。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:01:05",
+                "FRAME:R1@00:01:20",
+                "OCR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20"
+              ],
+              "confidence": 0.9
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场部分有效吸引了观众的兴趣，通过强调节省时间和提高效率的技巧，与参考视频相比具有一定优势。然而，目标视频在镜头切换频率和信息密度上存在明显差距，可能影响观众的信息吸收。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前的开场内容，确保在前 5 秒内继续强调观众能获得的具体收益，例如节省时间或提高效率。",
+                "confidence": 0.9,
+                "rationale": "开场钩子：目标视频在前 5 秒内通过口播和屏幕文字有效传达了制作快速早餐的技巧，吸引观众继续观看的兴趣。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前的结构和内容，确保在开头部分继续强调用户收益和行动号召。",
+                "confidence": 0.9,
+                "rationale": "价值传递：目标视频在前 15 秒内明确传达了用户收益，展示了如何将早餐准备时间从 25 分钟缩短到 5 分钟，并提供了具体步骤和行动号召。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "考虑在镜头切换时增加每个镜头的时长，以便观众能够更好地吸收信息。",
+                "confidence": 0.8,
+                "rationale": "结构节奏：目标视频与参考视频在镜头切换和节奏上存在明显差异，目标视频的镜头切换频率较高，信息密度较大。"
+              }
+            ],
+            "mergedActions": [
+              "保持当前的开场内容，确保在前 5 秒内继续强调观众能获得的具体收益，例如节省时间或提高效率。",
+              "保持当前的结构和内容，确保在开头部分继续强调用户收益和行动号召。",
+              "考虑在镜头切换时增加每个镜头的时长，以便观众能够更好地吸收信息。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [
+              "pacing_too_dense"
+            ],
+            "hits": [
+              "pacing_too_dense"
+            ],
+            "forbidden": [
+              "pacing_too_slow",
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "falseAlarms": [
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 49,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c07_pacing_slow",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 7.8,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 12461,
+            "outputTokens": 1359,
+            "totalTokens": 13820
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 5 秒内通过口播和屏幕文字有效地传达了制作快速早餐的技巧，吸引了观众的兴趣。",
+              "differenceText": "目标视频与参考视频在开场时都展示了相似的内容，但目标视频的开场节奏稍显平稳，缺乏更强的情绪张力。",
+              "suggestedAction": "在开场时增加一些引人注目的视觉元素或情绪化的语言，以增强观众的兴趣。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:02",
+                "FRAME:T@00:00:03",
+                "FRAME:T@00:00:04",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "FRAME:R1@00:00:02",
+                "FRAME:R1@00:00:03",
+                "FRAME:R1@00:00:04",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:00",
+                "SCENE:T#1"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频的段落结构和节奏变化较为平稳，但存在较长的镜头时长和信息密度不均的问题。",
+              "differenceText": "目标视频的镜头切换频率较低，尤其在前75秒内，存在一个75秒的长镜头，而参考视频则有更频繁的镜头切换和更短的镜头时长，增强了节奏感。",
+              "suggestedAction": "考虑在目标视频中增加镜头切换频率，缩短单个镜头的时长，以提高节奏感和信息传递的效率。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:01:15",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:06",
+                "SCENE:T#1",
+                "SCENE:T#2",
+                "SCENE:R1#1",
+                "SCENE:R1#2"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 15 秒内明确传达了用户收益，且在结尾有行动号召。",
+              "differenceText": "目标视频在第 5 秒就展示了用户收益，并在第 65 秒处有明确的行动号召，而参考视频的用户收益展示时间较晚，且缺乏行动号召。",
+              "suggestedAction": "保持当前的结构和内容，确保在开头和结尾都清晰传达用户收益和行动号召。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:01:05",
+                "FRAME:R1@00:01:20",
+                "OCR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20"
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场时有效传达了制作快速早餐的技巧，但节奏稍显平稳，缺乏更强的情绪张力。与参考视频相比，镜头切换频率较低，影响了整体节奏感。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "在开场时增加一些引人注目的视觉元素或情绪化的语言，以增强观众的兴趣。",
+                "confidence": 0.8,
+                "rationale": "开场钩子：增强开场的情绪张力可以更好地吸引观众的兴趣。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前的结构和内容，确保在开头和结尾都清晰传达用户收益和行动号召。",
+                "confidence": 0.85,
+                "rationale": "价值传递：保持清晰的用户收益和行动号召可以有效引导观众。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "考虑在目标视频中增加镜头切换频率，缩短单个镜头的时长，以提高节奏感和信息传递的效率。",
+                "confidence": 0.8,
+                "rationale": "结构节奏：提高镜头切换频率和缩短镜头时长可以增强视频的节奏感。"
+              }
+            ],
+            "mergedActions": [
+              "在开场时增加引人注目的视觉元素或情绪化的语言，以增强观众的兴趣。",
+              "保持当前的结构和内容，确保在开头和结尾都清晰传达用户收益和行动号召。",
+              "增加镜头切换频率，缩短单个镜头的时长，以提高节奏感和信息传递的效率。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [
+              "pacing_too_slow"
+            ],
+            "hits": [],
+            "forbidden": [
+              "pacing_too_dense",
+              "no_cta"
+            ],
+            "falseAlarms": [
+              "pacing_too_dense",
+              "no_cta"
+            ],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 46,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c08_structure_unclear",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 7.8,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 13401,
+            "outputTokens": 1332,
+            "totalTokens": 14733
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 3-5 秒内有效地展示了早餐技巧的主题，吸引观众继续观看。参考视频同样展示了类似的内容，但在信息传递上更为清晰。",
+              "differenceText": "目标视频的开场信息较为简洁，虽然提到早餐技巧，但未明确指出具体的步骤或收益；而参考视频在开场后立即引入了具体步骤，增强了观众的兴趣和期待。",
+              "suggestedAction": "在开场时增加具体的步骤或收益描述，例如明确指出每个技巧的具体好处，以增强观众的兴趣。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:02",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "FRAME:R1@00:00:02",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:00",
+                "SCENE:T#1"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频的段落结构和节奏变化不够清晰，信息密度和镜头切换频率较低，导致观众可能难以跟随内容。",
+              "differenceText": "目标视频在镜头切换和信息传递上较为平稳，缺乏明显的节奏变化，而参考视频则在段落结构上更为明确，信息传递更为紧凑。",
+              "suggestedAction": "增加镜头切换频率和信息密度，优化段落结构，使内容更具节奏感。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:06",
+                "FRAME:T@00:00:12",
+                "FRAME:R1@00:00:12",
+                "FRAME:R1@00:00:18",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:T#4"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 15 秒内明确传达了用户收益，展示了早餐准备的三个技巧，并在结尾处呼吁观众关注。参考视频同样清晰地传达了用户价值。",
+              "differenceText": "目标视频在开头和结尾都有效地传达了用户收益，而参考视频在内容结构上也保持了类似的清晰度和行动号召。",
+              "suggestedAction": "保持当前的内容结构和信息传达方式，确保用户收益和行动号召在视频中清晰可见。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:01:20",
+                "OCR:T@00:00:00",
+                "ASR:T@00:01:05"
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场时有效展示了早餐技巧的主题，但缺乏具体步骤和收益的清晰传达，导致观众兴趣不足。相比之下，参考视频在信息传递上更为明确，增强了观众的期待感。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "在开场时增加具体的步骤或收益描述，例如明确指出每个技巧的具体好处，以增强观众的兴趣。",
+                "confidence": 0.8,
+                "rationale": "开场钩子需要更具体的步骤或收益描述，以增强观众的兴趣和期待。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前的内容结构和信息传达方式，确保用户收益和行动号召在视频中清晰可见。",
+                "confidence": 0.85,
+                "rationale": "保持当前的内容结构和信息传达方式，确保用户收益和行动号召在视频中清晰可见，以维持观众的关注。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "增加镜头切换频率和信息密度，优化段落结构，使内容更具节奏感。",
+                "confidence": 0.8,
+                "rationale": "增加镜头切换频率和信息密度，优化段落结构，使内容更具节奏感，以便观众更容易跟随。"
+              }
+            ],
+            "mergedActions": [
+              "在开场时增加具体的步骤或收益描述，以增强观众的兴趣。",
+              "保持当前的内容结构，确保用户收益和行动号召在视频中清晰可见。",
+              "增加镜头切换频率和信息密度，优化段落结构，使内容更具节奏感。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [
+              "structure_unclear"
+            ],
+            "hits": [
+              "structure_unclear"
+            ],
+            "forbidden": [
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "falseAlarms": [
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 36,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c09_strength_hook",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 7.7,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 13572,
+            "outputTokens": 1342,
+            "totalTokens": 14914
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 5 秒内通过口播和屏幕文字有效地传达了制作早餐的技巧，建立了观众的兴趣和价值预期。",
+              "differenceText": "目标视频的开场直接提供了具体的技巧和时间承诺，而参考视频则以较为宽泛的介绍开始，未能迅速吸引观众的注意。",
+              "suggestedAction": "可以在开场部分增加更多具体的吸引点，例如直接展示早餐的成品或强调节省时间的优势。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:02",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:00",
+                "ASR:T@00:00:01"
+              ],
+              "confidence": 0.85
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频和参考视频在结构和节奏上有明显差异，目标视频的段落切换和信息密度较高。",
+              "differenceText": "目标视频在前 60 秒内有更多的镜头切换和信息密度，段落结构更为紧凑，而参考视频的段落切换较为均匀，信息传递较为平缓。",
+              "suggestedAction": "考虑在目标视频中增加一些平缓的节奏变化，以便于观众更好地消化信息。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:06",
+                "FRAME:T@00:00:12",
+                "FRAME:R1@00:00:06",
+                "FRAME:R1@00:00:12",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:T#4"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 120 秒内明确传达了用户收益，特别是在 5 分钟早餐的技巧上，观众可以节省时间。结尾部分也包含了行动号召。",
+              "differenceText": "目标视频在 00:01:05 提到用户可以将早餐准备时间从 25 分钟缩短到 5 分钟，并在 00:01:20 提出关注号召，而参考视频未能清晰传达类似的用户收益。",
+              "suggestedAction": "在参考视频中增加具体的用户收益示例和明确的行动号召，以提升价值传达的清晰度。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:01:05",
+                "FRAME:R1@00:01:20",
+                "OCR:T@00:01:05",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20"
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场部分通过具体的技巧和时间承诺有效吸引了观众的注意，而参考视频则缺乏这样的直接吸引力。此外，目标视频明确传达了用户收益，尤其是在节省时间方面，增强了观众的价值预期。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "可以在开场部分增加更多具体的吸引点，例如直接展示早餐的成品或强调节省时间的优势。",
+                "confidence": 0.85,
+                "rationale": "开场钩子：增强开场部分的吸引力可以更好地抓住观众的注意力。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "在参考视频中增加具体的用户收益示例和明确的行动号召，以提升价值传达的清晰度。",
+                "confidence": 0.85,
+                "rationale": "价值传递：清晰的用户收益和行动号召能够提升观众的参与感和期待。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "考虑在目标视频中增加一些平缓的节奏变化，以便于观众更好地消化信息。",
+                "confidence": 0.8,
+                "rationale": "结构节奏：适当的节奏变化有助于观众更好地理解和消化信息。"
+              }
+            ],
+            "mergedActions": [
+              "在开场部分增加具体的吸引点，例如直接展示早餐的成品或强调节省时间的优势，以增强观众的兴趣。",
+              "在参考视频中增加具体的用户收益示例和明确的行动号召，以提升价值传达的清晰度。",
+              "考虑在目标视频中增加一些平缓的节奏变化，以便于观众更好地消化信息。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [],
+            "hits": [],
+            "forbidden": [
+              "hook_no_value_promise",
+              "hook_slow_start",
+              "hook_weak_visual_text",
+              "no_cta"
+            ],
+            "falseAlarms": [
+              "hook_no_value_promise",
+              "hook_weak_visual_text",
+              "no_cta"
+            ],
+            "strengthDims": [
+              "HOOK"
+            ],
+            "strengthMisreported": [
+              "HOOK"
+            ],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 35,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c10_strength_value",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 7.8,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 12860,
+            "outputTokens": 1379,
+            "totalTokens": 14239
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 5 秒内通过口播和屏幕文字有效地传达了早餐技巧的主题，吸引观众继续观看。",
+              "differenceText": "目标视频提供了具体的早餐技巧和时间承诺（5分钟），而参考视频则仅提到简单早餐，缺乏具体性和吸引力。",
+              "suggestedAction": "可以在开头增加更多关于技巧的具体内容或视觉元素，以进一步增强吸引力。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:02",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:00",
+                "SCENE:T#1"
+              ],
+              "confidence": 0.85
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频的段落结构和节奏变化较为清晰，镜头切换频率适中，信息密度合理。参考视频在结构上较为简单，信息传递较少。",
+              "differenceText": "目标视频在前 120 秒内有更多的镜头切换和信息段落，且每个段落的时长相对均匀，保持了观众的注意力；而参考视频的镜头切换较少，信息传递不够丰富。",
+              "suggestedAction": "可以考虑在参考视频中增加镜头切换频率和信息段落，以提升观众的观看体验。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:12",
+                "FRAME:T@00:00:30",
+                "FRAME:T@00:01:05",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:20",
+                "FRAME:R1@00:01:10",
+                "SCENE:T#1",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:T#4",
+                "SCENE:T#5",
+                "SCENE:R1#1",
+                "SCENE:R1#2"
+              ],
+              "confidence": 0.85
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 120 秒内明确传达了用户收益，具体方法和结果清晰可见。",
+              "differenceText": "目标视频在开头提供了具体的早餐准备技巧，并在最后强调了节省时间的效果，而参考视频则缺乏明确的用户收益和行动号召。",
+              "suggestedAction": "在参考视频中增加具体的步骤和时间节省的对比，以提高用户收益的传达效果。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:00:00",
+                "OCR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20"
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在吸引观众方面表现出色，通过具体的早餐技巧和时间承诺有效传达主题，而参考视频则缺乏具体性和吸引力。目标视频的结构和节奏也更为清晰，信息传递丰富，显著提升了观看体验。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "可以在开头增加更多关于技巧的具体内容或视觉元素，以进一步增强吸引力。",
+                "confidence": 0.85,
+                "rationale": "开场钩子：增强开头的具体内容和视觉元素可以进一步吸引观众的注意力。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "在参考视频中增加具体的步骤和时间节省的对比，以提高用户收益的传达效果。",
+                "confidence": 0.85,
+                "rationale": "价值传递：增加具体步骤和时间节省的对比将有助于更清晰地传达用户收益。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "可以考虑在参考视频中增加镜头切换频率和信息段落，以提升观众的观看体验。",
+                "confidence": 0.85,
+                "rationale": "结构节奏：提升镜头切换频率和信息段落将改善观众的观看体验。"
+              }
+            ],
+            "mergedActions": [
+              "在开头增加具体的早餐技巧和视觉元素，以增强吸引力。",
+              "增加具体步骤和时间节省的对比，以提高用户收益的传达效果。",
+              "提升镜头切换频率和信息段落，以改善观众的观看体验。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [],
+            "hits": [],
+            "forbidden": [
+              "value_late",
+              "value_unclear",
+              "no_cta",
+              "no_proof"
+            ],
+            "falseAlarms": [
+              "no_cta"
+            ],
+            "strengthDims": [
+              "VALUE_DELIVERY"
+            ],
+            "strengthMisreported": [
+              "VALUE_DELIVERY"
+            ],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 1,
+            "typedFindings": 0,
+            "citedRefs": 43,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c11_contradiction_bait",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 18.8,
+          "usage": {
+            "modelCalls": 8,
+            "inputTokens": 28643,
+            "outputTokens": 2929,
+            "totalTokens": 31572
+          },
+          "retries": 2,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前3-5秒内通过口播介绍了三个技巧来快速准备早餐，但未能有效传达具体的吸引力或价值预期。参考视频则通过明确的标题和口播内容吸引观众注意。",
+              "differenceText": "目标视频的开场缺乏明确的吸引力和价值预期，而参考视频则通过清晰的标题和引人入胜的口播内容有效吸引观众。",
+              "suggestedAction": "在开场时增加更具吸引力的文字或视觉元素，以明确传达观看视频的好处。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:02",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "FRAME:R1@00:00:02",
+                "ASR:T@00:00:00",
+                "ASR:T@00:00:01",
+                "ASR:T@00:00:02"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频与参考视频在结构和节奏上存在明显差异，尤其是在镜头切换和信息密度方面。",
+              "differenceText": "目标视频的镜头切换频率较高，且信息密度较大，导致节奏较快；而参考视频的镜头切换较为均匀，信息传递较为平稳。",
+              "suggestedAction": "可以考虑在镜头切换时增加更多的过渡效果，或在信息密度较高的段落中适当延长镜头时长，以提高观众的理解和吸收能力。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:12",
+                "FRAME:T@00:00:30",
+                "FRAME:R1@00:00:12",
+                "FRAME:R1@00:00:30",
+                "SCENE:T#3",
+                "SCENE:R1#3"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 15 秒内明确传达了用户收益，展示了如何将早餐准备时间从 25 分钟缩短到 5 分钟。",
+              "differenceText": "目标视频在开头就清晰地说明了用户可以通过三个技巧快速准备早餐，而参考视频在这一点上可能没有同样的清晰度。",
+              "suggestedAction": "确保在视频开头明确传达用户收益，并在结尾提供行动号召。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:01:05",
+                "FRAME:R1@00:01:20",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20"
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场时未能有效传达吸引力和价值预期，导致观众注意力不足，而参考视频通过清晰的标题和引人入胜的口播内容成功吸引了观众。尽管目标视频在用户收益的传达上表现良好，但整体结构和节奏的把控仍需改进。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "在开场时增加更具吸引力的文字或视觉元素，以明确传达观看视频的好处。",
+                "confidence": 0.8,
+                "rationale": "开场钩子：目标视频在前3-5秒内通过口播介绍了三个技巧来快速准备早餐，但未能有效传达具体的吸引力或价值预期。参考视频则通过明确的标题和口播内容吸引观众注意。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "确保在视频开头明确传达用户收益，并在结尾提供行动号召。",
+                "confidence": 0.85,
+                "rationale": "价值传递：目标视频在前 15 秒内明确传达了用户收益，展示了如何将早餐准备时间从 25 分钟缩短到 5 分钟。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "可以考虑在镜头切换时增加更多的过渡效果，或在信息密度较高的段落中适当延长镜头时长，以提高观众的理解和吸收能力。",
+                "confidence": 0.8,
+                "rationale": "结构节奏：目标视频与参考视频在结构和节奏上存在明显差异，尤其是在镜头切换和信息密度方面。"
+              }
+            ],
+            "mergedActions": [
+              "在开场时增加更具吸引力的文字或视觉元素，以明确传达观看视频的好处，并确保在视频开头明确传达用户收益，在结尾提供行动号召。",
+              "在镜头切换时增加更多的过渡效果，或在信息密度较高的段落中适当延长镜头时长，以提高观众的理解和吸收能力。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "hook_weak_visual_text"
+            ],
+            "hits": [
+              "hook_weak_visual_text"
+            ],
+            "forbidden": [
+              "hook_no_value_promise",
+              "value_late",
+              "value_unclear"
+            ],
+            "falseAlarms": [
+              "hook_no_value_promise"
+            ],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 35,
+            "invalidRefs": 2,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c12_asr_failed",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 8.7,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 12886,
+            "outputTokens": 1590,
+            "totalTokens": 14476
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在开头的 3-5 秒内仅展示了 '早餐分享' 的文字，没有明确的吸引力或价值预期，而参考视频则提供了具体的技巧和明确的收益预告。",
+              "differenceText": "目标视频的开场文字较为模糊，仅为 '早餐分享'，而参考视频则清晰地传达了 '5分钟早餐 3个技巧'，并通过口播进一步增强了吸引力。",
+              "suggestedAction": "在开头增加具体的内容预告，例如 '5分钟内学会3个早餐技巧'，并考虑加入口播来增强吸引力。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:04",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:04",
+                "OCR:T@00:00:00",
+                "OCR:T@00:00:04"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频的段落结构和节奏变化不如参考视频流畅，信息密度较低。",
+              "differenceText": "目标视频在镜头切换和信息传递上较为平稳，缺乏参考视频中的节奏变化和信息密度的提升。",
+              "suggestedAction": "增加镜头切换的频率，并在每个段落中提高信息密度，以增强节奏感。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:06",
+                "FRAME:T@00:00:12",
+                "FRAME:T@00:00:18",
+                "FRAME:T@00:00:24",
+                "FRAME:T@00:00:30",
+                "FRAME:T@00:00:36",
+                "FRAME:T@00:00:42",
+                "FRAME:T@00:00:48",
+                "FRAME:T@00:00:54",
+                "FRAME:T@00:01:00",
+                "FRAME:T@00:01:06",
+                "FRAME:T@00:01:12",
+                "FRAME:T@00:01:18",
+                "FRAME:T@00:01:24",
+                "FRAME:R1@00:00:06",
+                "FRAME:R1@00:00:12",
+                "FRAME:R1@00:00:18",
+                "FRAME:R1@00:00:24",
+                "FRAME:R1@00:00:30",
+                "FRAME:R1@00:00:36",
+                "FRAME:R1@00:00:42",
+                "FRAME:R1@00:00:48",
+                "FRAME:R1@00:00:54",
+                "FRAME:R1@00:01:00",
+                "FRAME:R1@00:01:06",
+                "FRAME:R1@00:01:12",
+                "FRAME:R1@00:01:18",
+                "FRAME:R1@00:01:24",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:T#4",
+                "SCENE:T#5",
+                "SCENE:T#6",
+                "SCENE:T#7",
+                "SCENE:T#8",
+                "SCENE:T#9",
+                "SCENE:T#10",
+                "SCENE:T#11",
+                "SCENE:T#12",
+                "SCENE:T#13",
+                "SCENE:T#14",
+                "SCENE:T#15"
+              ],
+              "confidence": 0.8
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开头的吸引力和价值预期方面明显不足，仅展示了模糊的 '早餐分享' 文本，而参考视频则通过具体的技巧和收益预告有效吸引观众。此外，目标视频的段落结构和节奏变化不如参考视频流畅，信息密度较低。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "在开头增加具体的内容预告，例如 '5分钟内学会3个早餐技巧'，并考虑加入口播来增强吸引力。",
+                "confidence": 0.8,
+                "rationale": "开场钩子：目标视频在开头的 3-5 秒内仅展示了 '早餐分享' 的文字，没有明确的吸引力或价值预期，而参考视频则提供了具体的技巧和明确的收益预告。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "增加镜头切换的频率，并在每个段落中提高信息密度，以增强节奏感。",
+                "confidence": 0.8,
+                "rationale": "结构节奏：目标视频的段落结构和节奏变化不如参考视频流畅，信息密度较低。"
+              }
+            ],
+            "mergedActions": [
+              "在开头增加具体的内容预告，例如 '5分钟内学会3个早餐技巧'，并考虑加入口播来增强吸引力。",
+              "增加镜头切换的频率，并在每个段落中提高信息密度，以增强节奏感。"
+            ],
+            "evidenceGaps": [
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "reason": "缺少口播证据，无法判断用户收益是否明确传达。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "value_late"
+            ],
+            "hits": [],
+            "forbidden": [
+              "no_cta"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 2,
+            "gapCount": 2,
+            "quotedFindings": 1,
+            "typedFindings": 0,
+            "citedRefs": 80,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 2
+            }
+          }
+        },
+        {
+          "caseId": "c13_truncated_long_video",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 14.5,
+          "usage": {
+            "modelCalls": 6,
+            "inputTokens": 21600,
+            "outputTokens": 2369,
+            "totalTokens": 23969
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 5 秒内通过口播和屏幕文字建立了一定的兴趣，但未能明确传达用户收益。参考视频则通过具体的技巧和明确的收益吸引观众。",
+              "differenceText": "目标视频的开场内容较为模糊，仅提到“随便聊聊”，缺乏具体的吸引点和用户收益；而参考视频直接提出了具体的技巧和时间效率，明确吸引观众的兴趣。",
+              "suggestedAction": "建议在开场时明确提出视频的主题和观众可以获得的具体收益，例如“学习如何在五分钟内准备早餐的三个技巧”。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:02",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:00",
+                "ASR:T@00:00:01"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在结构和节奏上表现出较好的组织性，段落切换和镜头节奏相对均匀。",
+              "differenceText": "目标视频的镜头切换频率和段落结构与参考视频相似，但在信息密度和节奏变化上略显不足。",
+              "suggestedAction": "可以考虑增加镜头切换频率或在段落之间加入更多的过渡元素，以提升节奏感和信息传递的紧凑性。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:12",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:12",
+                "SCENE:T#1",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:T#4",
+                "SCENE:T#5",
+                "SCENE:T#6",
+                "SCENE:T#7",
+                "SCENE:T#8",
+                "SCENE:T#9",
+                "SCENE:T#10",
+                "SCENE:T#11",
+                "SCENE:T#12",
+                "SCENE:T#13",
+                "SCENE:T#14",
+                "SCENE:T#15",
+                "SCENE:T#16",
+                "SCENE:T#17",
+                "SCENE:T#18",
+                "SCENE:T#19",
+                "SCENE:T#20"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前120秒内未明确传达用户收益，且缺乏行动号召。参考视频则清晰展示了用户收益和行动号召。",
+              "differenceText": "目标视频在开头仅提到“随便聊聊”，未提供具体的用户收益或价值，而参考视频直接展示了早餐准备的技巧和时间节省的效果。",
+              "suggestedAction": "在视频开头明确指出观众将获得的具体收益，例如节省时间或提高早餐质量，并在结尾加入行动号召，例如关注或分享。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:20",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:01:20",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:00",
+                "ASR:T@00:01:05"
+              ],
+              "confidence": 0.8
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场时未能明确传达用户收益，导致观众兴趣不足，而参考视频通过具体技巧和明确收益有效吸引了观众。尽管目标视频在结构和节奏上表现良好，但信息密度和节奏变化仍需提升。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "建议在开场时明确提出视频的主题和观众可以获得的具体收益，例如“学习如何在五分钟内准备早餐的三个技巧”。",
+                "confidence": 0.8,
+                "rationale": "开场钩子：明确传达用户收益是吸引观众的关键，目标视频需要在开场时提供具体的主题和收益。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "在视频开头明确指出观众将获得的具体收益，例如节省时间或提高早餐质量，并在结尾加入行动号召，例如关注或分享。",
+                "confidence": 0.8,
+                "rationale": "价值传递：清晰展示用户收益和行动号召可以有效提升观众的参与度，目标视频需在开头和结尾强化这一点。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "可以考虑增加镜头切换频率或在段落之间加入更多的过渡元素，以提升节奏感和信息传递的紧凑性。",
+                "confidence": 0.8,
+                "rationale": "结构节奏：尽管目标视频的组织性良好，但增加镜头切换频率和过渡元素可以进一步提升信息传递的紧凑性。"
+              }
+            ],
+            "mergedActions": [
+              "在视频开场明确提出主题和观众可以获得的具体收益，例如“学习如何在五分钟内准备早餐的三个技巧”。",
+              "在视频开头明确指出观众将获得的具体收益，并在结尾加入行动号召，例如关注或分享。",
+              "增加镜头切换频率或在段落之间加入更多的过渡元素，以提升节奏感和信息传递的紧凑性。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [
+              "hook_no_value_promise"
+            ],
+            "hits": [
+              "hook_no_value_promise"
+            ],
+            "forbidden": [
+              "no_cta"
+            ],
+            "falseAlarms": [
+              "no_cta"
+            ],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 2,
+            "typedFindings": 0,
+            "citedRefs": 52,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c14_equal_quality",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 14.4,
+          "usage": {
+            "modelCalls": 6,
+            "inputTokens": 23147,
+            "outputTokens": 2478,
+            "totalTokens": 25625
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 5 秒内通过口播和屏幕文字有效传达了制作快速早餐的技巧，吸引观众继续观看。参考视频在同样时间段内也展示了类似内容，效果相似。",
+              "differenceText": "目标视频与参考视频在开场内容上基本一致，均展示了快速早餐的技巧，且都使用了相似的口播和屏幕文字。",
+              "suggestedAction": "保持当前开场内容，确保在前 5 秒内继续传达观众的利益和价值。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:03",
+                "FRAME:R1@00:00:02",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:01",
+                "SCENE:T#1"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频和参考视频在结构和节奏上存在明显差异，目标视频的镜头切换频率较高，信息密度较大。",
+              "differenceText": "目标视频的镜头切换频率较高，尤其是在前30秒内，镜头切换和信息传递的节奏较快，而参考视频的镜头切换相对均匀，信息传递较为平稳。",
+              "suggestedAction": "可以考虑在镜头切换上增加一些静态镜头，以便观众更好地消化信息。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:05",
+                "FRAME:T@00:00:11",
+                "FRAME:T@00:00:27",
+                "FRAME:T@00:01:06",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:06",
+                "FRAME:R1@00:00:12",
+                "FRAME:R1@00:00:30",
+                "FRAME:R1@00:01:06",
+                "SCENE:T#1",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:T#4",
+                "SCENE:T#5",
+                "SCENE:T#6",
+                "SCENE:T#7",
+                "SCENE:T#8",
+                "SCENE:T#9",
+                "SCENE:T#10",
+                "SCENE:T#11",
+                "SCENE:T#12",
+                "SCENE:T#13",
+                "SCENE:T#14",
+                "SCENE:T#15",
+                "SCENE:T#16"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 15 秒内明确传达了用户收益，提供了具体的早餐准备技巧，并在结尾处有行动号召。",
+              "differenceText": "目标视频在用户收益的传达上与参考视频相似，均在开头和结尾清晰表达了价值和行动号召。",
+              "suggestedAction": "保持当前的结构和信息传递，确保每个步骤都清晰可见，并在结尾加强行动号召。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:01:05",
+                "FRAME:R1@00:01:20",
+                "OCR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20"
+              ],
+              "confidence": 0.9
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场内容和用户收益传达上与参考视频表现相似，均有效吸引观众并提供具体的早餐准备技巧。然而，目标视频在镜头切换频率和信息传递节奏上存在明显差距，导致观众可能难以消化信息。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前开场内容，确保在前 5 秒内继续传达观众的利益和价值。",
+                "confidence": 0.9,
+                "rationale": "开场钩子：目标视频在前 5 秒内通过口播和屏幕文字有效传达了制作快速早餐的技巧，吸引观众继续观看。参考视频在同样时间段内也展示了类似内容，效果相似。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前的结构和信息传递，确保每个步骤都清晰可见，并在结尾加强行动号召。",
+                "confidence": 0.9,
+                "rationale": "价值传递：目标视频在前 15 秒内明确传达了用户收益，提供了具体的早餐准备技巧，并在结尾处有行动号召。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "可以考虑在镜头切换上增加一些静态镜头，以便观众更好地消化信息。",
+                "confidence": 0.8,
+                "rationale": "结构节奏：目标视频和参考视频在结构和节奏上存在明显差异，目标视频的镜头切换频率较高，信息密度较大。"
+              }
+            ],
+            "mergedActions": [
+              "保持当前开场内容，确保在前 5 秒内继续传达观众的利益和价值。",
+              "保持当前的结构和信息传递，确保每个步骤都清晰可见，并在结尾加强行动号召。",
+              "在镜头切换上增加一些静态镜头，以便观众更好地消化信息。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [],
+            "hits": [],
+            "forbidden": [
+              "hook_no_value_promise",
+              "hook_slow_start",
+              "pacing_too_dense",
+              "pacing_too_slow",
+              "value_late",
+              "no_cta",
+              "no_proof"
+            ],
+            "falseAlarms": [
+              "hook_no_value_promise",
+              "pacing_too_dense",
+              "no_cta"
+            ],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 56,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        },
+        {
+          "caseId": "c15_two_references_dense",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 8.0,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 20203,
+            "outputTokens": 1404,
+            "totalTokens": 21607
+          },
+          "retries": 0,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 3-5 秒内有效地建立了观众的兴趣，提供了明确的价值预期。",
+              "differenceText": "目标视频与参考视频在开场部分都展示了相似的内容和结构，但目标视频的口播内容更直接地吸引了观众的注意力。",
+              "suggestedAction": "保持当前的开场方式，确保口播内容简洁明了，能够迅速传达价值。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:03",
+                "FRAME:R1@00:00:02",
+                "OCR:T@00:00:00",
+                "ASR:T@00:00:01",
+                "SCENE:T#1"
+              ],
+              "confidence": 0.85
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频与参考视频在结构和节奏上存在明显差异，目标视频的镜头切换频率较高，信息密度较大。",
+              "differenceText": "目标视频的镜头切换频率更高，且每个镜头的时长较短，导致信息传递节奏较快；而参考视频的镜头切换较为均匀，信息传递节奏较为平稳。",
+              "suggestedAction": "考虑在目标视频中增加镜头的时长或减少切换频率，以便观众更好地消化信息。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:00:01",
+                "FRAME:T@00:00:02",
+                "FRAME:T@00:00:03",
+                "FRAME:T@00:00:04",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:00:01",
+                "FRAME:R1@00:00:02",
+                "FRAME:R1@00:00:03",
+                "FRAME:R1@00:00:04",
+                "SCENE:T#1",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:T#4",
+                "SCENE:T#5",
+                "SCENE:R1#1",
+                "SCENE:R1#2"
+              ],
+              "confidence": 0.85
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "unknown",
+              "observation": "目标视频在前 15 秒内明确传达了用户收益，展示了通过三个技巧将早餐准备时间从 25 分钟缩短到 5 分钟的效果。结尾有行动号召，鼓励观众关注以获取更多内容。",
+              "differenceText": "目标视频与参考视频在用户收益的传达上相似，但目标视频在结尾部分更明确地呼吁观众关注，增强了互动性。",
+              "suggestedAction": "保持当前的结构和内容，确保在每个步骤中强调用户的时间节省和便利性。",
+              "quotes": [],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:01:05",
+                "FRAME:R2@00:01:05",
+                "OCR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20"
+              ],
+              "confidence": 0.85
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场部分有效地吸引了观众的注意力，并明确传达了用户收益，展现了其优势。然而，目标视频在结构和节奏上与参考视频存在明显差距，镜头切换频率较高，可能影响信息的消化。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前的开场方式，确保口播内容简洁明了，能够迅速传达价值。",
+                "confidence": 0.85,
+                "rationale": "开场钩子：目标视频在前 3-5 秒内有效地建立了观众的兴趣，提供了明确的价值预期。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "unknown",
+                "suggestedAction": "保持当前的结构和内容，确保在每个步骤中强调用户的时间节省和便利性。",
+                "confidence": 0.85,
+                "rationale": "价值传递：目标视频在前 15 秒内明确传达了用户收益，展示了通过三个技巧将早餐准备时间从 25 分钟缩短到 5 分钟的效果。结尾有行动号召，鼓励观众关注以获取更多内容。"
+              },
+              {
+                "rank": 3,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "unknown",
+                "suggestedAction": "考虑在目标视频中增加镜头的时长或减少切换频率，以便观众更好地消化信息。",
+                "confidence": 0.85,
+                "rationale": "结构节奏：目标视频与参考视频在结构和节奏上存在明显差异，目标视频的镜头切换频率较高，信息密度较大。"
+              }
+            ],
+            "mergedActions": [
+              "保持当前的开场方式，确保口播内容简洁明了，能够迅速传达价值；在每个步骤中强调用户的时间节省和便利性；考虑在目标视频中增加镜头的时长或减少切换频率，以便观众更好地消化信息。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [
+              "pacing_too_dense"
+            ],
+            "hits": [
+              "pacing_too_dense"
+            ],
+            "forbidden": [
+              "pacing_too_slow",
+              "no_cta"
+            ],
+            "falseAlarms": [
+              "no_cta"
+            ],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 3,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 47,
+            "invalidRefs": 0,
+            "matchModes": {
+              "keyword": 3
+            }
+          }
+        }
+      ]
+    },
+    "v2": {
+      "summary": {
+        "runs": 15,
+        "failedRuns": 0,
+        "issueRecall": 0.417,
+        "falseAlarmRate": 0.0,
+        "strengthMisreportRate": 0.0,
+        "quotedFindingRate": 0.88,
+        "typedFindingRate": 1.0,
+        "invalidRefRate": 0.048,
+        "avgRetries": 1.2,
+        "avgTokens": 29464,
+        "avgLatencySeconds": 11.3,
+        "stability": null
+      },
+      "runs": [
+        {
+          "caseId": "c01_hook_no_promise",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 16.7,
+          "usage": {
+            "modelCalls": 8,
+            "inputTokens": 33931,
+            "outputTokens": 3443,
+            "totalTokens": 37374
+          },
+          "retries": 2,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "hook_no_value_promise",
+              "observation": "目标视频在前 6 秒内的口播为'大家好，我是小王，今天天气不错，我们来聊聊早餐'（ASR:T@00:00:00），而屏幕文字为'小王的日常'（OCR:T@00:00:00），未能提供明确的价值承诺。",
+              "differenceText": "参考视频在前 3 秒内的口播为'三个技巧，让你的早餐五分钟就能做好'（ASR:R1@00:00:00），并且屏幕文字为'5分钟早餐 3个技巧'（OCR:R1@00:00:00），明确传达了价值承诺。",
+              "suggestedAction": "将第 1 秒的'大家好，我是小王，今天天气不错，我们来聊聊早餐'替换为'三个技巧，让你的早餐五分钟就能做好'，并在屏幕上显示'5分钟早餐 3个技巧'。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "大家好，我是小王，今天天气不错，我们来聊聊早餐"
+                },
+                {
+                  "ref": "OCR:R1@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00"
+              ],
+              "confidence": 0.8
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场部分未能有效传达价值承诺，导致观众缺乏吸引力，而参考视频则在前几秒明确提供了价值信息，从而更好地抓住了观众的注意力。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "hook_no_value_promise",
+                "suggestedAction": "将第 1 秒的'大家好，我是小王，今天天气不错，我们来聊聊早餐'替换为'三个技巧，让你的早餐五分钟就能做好'，并在屏幕上显示'5分钟早餐 3个技巧'。",
+                "confidence": 0.8,
+                "rationale": "开场钩子需要更具吸引力，以便在视频开始时就能明确传达价值承诺，吸引观众的注意。"
+              }
+            ],
+            "mergedActions": [
+              "将第 1 秒的'大家好，我是小王，今天天气不错，我们来聊聊早餐'替换为'三个技巧，让你的早餐五分钟就能做好'，并在屏幕上显示'5分钟早餐 3个技巧'。"
+            ],
+            "evidenceGaps": [
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "缺少足够的证据来支持结构和节奏的分析，无法进行有效比较。",
+                "systemFailure": false
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "reason": "缺乏足够的证据来判断目标视频的用户收益和可操作性。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "hook_no_value_promise"
+            ],
+            "hits": [
+              "hook_no_value_promise"
+            ],
+            "forbidden": [
+              "no_cta",
+              "pacing_too_dense",
+              "pacing_too_slow"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 1,
+            "gapCount": 1,
+            "quotedFindings": 1,
+            "typedFindings": 1,
+            "citedRefs": 6,
+            "invalidRefs": 0,
+            "matchModes": {
+              "type": 1
+            }
+          }
+        },
+        {
+          "caseId": "c02_hook_slow_start",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 12.8,
+          "usage": {
+            "modelCalls": 7,
+            "inputTokens": 28681,
+            "outputTokens": 2764,
+            "totalTokens": 31445
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "GAP",
+              "findingType": "hook_slow_start",
+              "observation": "目标视频在第6秒开始出现屏幕文字'5分钟早餐 3个技巧'和口播'三个技巧，让你的早餐五分钟就能做好'，但在前5秒没有任何信息传递。",
+              "differenceText": "参考视频在第0秒就开始口播'三个技巧，让你的早餐五分钟就能做好'，并且在第0秒就显示了屏幕文字'5分钟早餐 3个技巧'，有效吸引观众注意。",
+              "suggestedAction": "将第0秒的'三个技巧，让你的早餐五分钟就能做好'口播提前到前3秒，并配上大字幕，以增强开场的吸引力。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:06",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:R1@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:06",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:06",
+                "OCR:R1@00:00:00"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "pacing_too_slow",
+              "observation": "目标视频在前 90 秒内有 15 个镜头，平均镜头时长为 6 秒。第一个镜头持续了 6 秒（SCENE:T#1），而后续镜头也保持在 6 秒，缺乏变化，导致节奏拖沓。",
+              "differenceText": "参考视频在前 88 秒内同样有 15 个镜头，但每个镜头的时长为 6 秒，且在开场部分的节奏更为紧凑，前 6 秒内有 5 个镜头（SCENE:R1#1），而目标视频在前 6 秒内仅有 1 个镜头（SCENE:T#1）。",
+              "suggestedAction": "将目标视频前 6 秒的镜头时长缩短，增加镜头切换频率，例如将第一个镜头的内容分成两个镜头，分别在第 0 秒和第 3 秒展示。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:06",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:R1@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:06",
+                "FRAME:R1@00:00:00",
+                "SCENE:T#1",
+                "SCENE:R1#1"
+              ],
+              "confidence": 0.7
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场部分缺乏信息传递，导致观众注意力不集中，而参考视频则在开场即提供了吸引人的内容。此外，目标视频的节奏较慢，镜头切换频率不足，影响了整体观看体验。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "findingType": "hook_slow_start",
+                "suggestedAction": "将第0秒的'三个技巧，让你的早餐五分钟就能做好'口播提前到前3秒，并配上大字幕，以增强开场的吸引力。",
+                "confidence": 0.8,
+                "rationale": "开场钩子需要增强，以便更有效地吸引观众注意力，提升观看体验。"
+              },
+              {
+                "rank": 2,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "pacing_too_slow",
+                "suggestedAction": "将目标视频前 6 秒的镜头时长缩短，增加镜头切换频率，例如将第一个镜头的内容分成两个镜头，分别在第 0 秒和第 3 秒展示。",
+                "confidence": 0.7,
+                "rationale": "改善镜头切换频率和节奏，以增强视频的动态感和吸引力。"
+              }
+            ],
+            "mergedActions": [
+              "将第0秒的'三个技巧，让你的早餐五分钟就能做好'口播提前到前3秒，并配上大字幕，以增强开场的吸引力。",
+              "将目标视频前6秒的镜头时长缩短，增加镜头切换频率，例如将第一个镜头的内容分成两个镜头，分别在第0秒和第3秒展示。"
+            ],
+            "evidenceGaps": [
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "reason": "缺乏足够的证据来判断目标视频的用户收益和可操作性。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "hook_slow_start"
+            ],
+            "hits": [
+              "hook_slow_start"
+            ],
+            "forbidden": [
+              "no_cta",
+              "value_unclear"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 2,
+            "gapCount": 2,
+            "quotedFindings": 2,
+            "typedFindings": 2,
+            "citedRefs": 12,
+            "invalidRefs": 0,
+            "matchModes": {
+              "type": 2
+            }
+          }
+        },
+        {
+          "caseId": "c03_value_late",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 10.4,
+          "usage": {
+            "modelCalls": 6,
+            "inputTokens": 26373,
+            "outputTokens": 2650,
+            "totalTokens": 29023
+          },
+          "retries": 1,
+          "findings": [],
+          "synthesis": {
+            "source": "rule",
+            "summary": "各维度均未形成可靠结论，需要补充证据后重新诊断。（另有 3 个维度因证据不足未下结论）",
+            "priorities": [],
+            "mergedActions": [],
+            "evidenceGaps": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "reason": "目标视频的开场内容缺乏足够的证据支持，无法形成明确的结论。",
+                "systemFailure": false
+              },
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "缺乏足够的证据来支持结构和节奏的分析。",
+                "systemFailure": false
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "reason": "缺乏足够的证据来判断目标视频的用户收益首次出现的时间和是否有结果证明。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "value_late"
+            ],
+            "hits": [],
+            "forbidden": [
+              "no_cta"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 0,
+            "gapCount": 0,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 0,
+            "invalidRefs": 0,
+            "matchModes": {}
+          }
+        },
+        {
+          "caseId": "c04_no_cta",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 12.9,
+          "usage": {
+            "modelCalls": 6,
+            "inputTokens": 25191,
+            "outputTokens": 2211,
+            "totalTokens": 27402
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在前 15 秒内，开场的口播为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00），同时屏幕文字显示'5分钟早餐 3个技巧'（OCR:T@00:00:00），有效吸引观众注意力。",
+              "differenceText": "参考视频的开场口播和屏幕文字内容与目标视频相同，均为'三个技巧，让你的早餐五分钟就能做好'（ASR:R1@00:00:00）和'5分钟早餐 3个技巧'（OCR:R1@00:00:00），没有显著差异。",
+              "suggestedAction": "保持目标视频的开场内容和节奏。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00"
+              ],
+              "confidence": 1.0
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频（T）在结构和节奏方面表现良好，镜头切换频率和信息密度与参考视频（R1）相似。目标视频的镜头数为15，平均镜头时长为5.73秒；参考视频的镜头数为15，平均镜头时长为5.87秒。",
+              "differenceText": "目标视频（T）和参考视频（R1）在镜头数量和时长上相似，均为15个镜头，且镜头时长差异不大。",
+              "suggestedAction": "保持现有的结构和节奏。",
+              "quotes": [],
+              "citedRefs": [
+                "SCENE:T#15",
+                "SCENE:R1#15"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "no_cta",
+              "observation": "在目标视频中，收益在第 65 秒首次明确出现，口播内容为'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05）。",
+              "differenceText": "参考视频在结尾有明确的行动号召，口播内容为'觉得有用就关注我，下期教你做便当'（ASR:R1@00:01:20），而目标视频没有类似的内容。",
+              "suggestedAction": "在第 65 秒后增加一个明确的行动号召，例如'觉得有用就关注我，下期教你做便当'，以引导观众进行互动。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                },
+                {
+                  "ref": "ASR:R1@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:R1@00:01:20",
+                "ASR:T@00:01:05",
+                "ASR:R1@00:01:20"
+              ],
+              "confidence": 0.8
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场口播和结构节奏方面与参考视频表现相当，均有效吸引观众注意力。然而，目标视频缺乏明确的行动号召，未能有效引导观众进行互动，这是与参考视频的关键差距。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "no_cta",
+                "suggestedAction": "在第 65 秒后增加一个明确的行动号召，例如'觉得有用就关注我，下期教你做便当'，以引导观众进行互动。",
+                "confidence": 0.8,
+                "rationale": "在目标视频中，收益在第 65 秒首次明确出现，缺乏类似参考视频的行动号召，未能有效引导观众互动。"
+              }
+            ],
+            "mergedActions": [
+              "在第 65 秒后增加一个明确的行动号召，例如'觉得有用就关注我，下期教你做便当'，以引导观众进行互动。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标视频在前 15 秒内，开场的口播为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00），同时屏幕文字显示'5分钟早餐 3个技巧'（OCR:T@00:00:00），有效吸引观众注意力。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:T@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ]
+              },
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "observation": "目标视频（T）在结构和节奏方面表现良好，镜头切换频率和信息密度与参考视频（R1）相似。目标视频的镜头数为15，平均镜头时长为5.73秒；参考视频的镜头数为15，平均镜头时长为5.87秒。",
+                "quotes": []
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [
+              "no_cta"
+            ],
+            "hits": [
+              "no_cta"
+            ],
+            "forbidden": [
+              "hook_no_value_promise",
+              "hook_slow_start",
+              "value_late"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 1,
+            "quotedFindings": 2,
+            "typedFindings": 3,
+            "citedRefs": 14,
+            "invalidRefs": 0,
+            "matchModes": {
+              "type": 1
+            }
+          }
+        },
+        {
+          "caseId": "c05_no_proof",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 11.8,
+          "usage": {
+            "modelCalls": 5,
+            "inputTokens": 19517,
+            "outputTokens": 1731,
+            "totalTokens": 21248
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在前 15 秒内的开场部分，0-3 秒内口播内容为'三个技巧，让你的早餐五分钟就能做好'，同时屏幕文字显示'5分钟早餐 3个技巧'，有效吸引观众注意力。",
+              "differenceText": "参考视频在前 15 秒内的开场部分，0-3 秒内口播内容与目标视频相同，屏幕文字也一致，均有效吸引观众注意力。",
+              "suggestedAction": "保持现有开场内容和节奏。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00",
+                "SCENE:T#1"
+              ],
+              "confidence": 0.0
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "no_proof",
+              "observation": "目标视频在第 1 秒首次提到收益，口播内容为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00）。",
+              "differenceText": "参考视频在第 65 秒提供了具体的结果证明，口播内容为'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:R1@00:01:05），而目标视频没有类似的证明。",
+              "suggestedAction": "在第 65 秒添加具体的结果证明，例如用户反馈或数据支持，以增强价值传递的可信度。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:01:05",
+                "ASR:T@00:00:00",
+                "ASR:R1@00:01:05"
+              ],
+              "confidence": 0.9
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场部分与参考视频相似，均有效吸引观众注意力。然而，目标视频缺乏具体的结果证明，未能充分展示其价值传递的可信度。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "no_proof",
+                "suggestedAction": "在第 65 秒添加具体的结果证明，例如用户反馈或数据支持，以增强价值传递的可信度。",
+                "confidence": 0.9,
+                "rationale": "增强价值传递的可信度是提升视频质量的关键，目标视频需要在适当时机提供具体的结果证明。"
+              }
+            ],
+            "mergedActions": [
+              "在第 65 秒添加具体的结果证明，例如用户反馈或数据支持，以增强价值传递的可信度。"
+            ],
+            "evidenceGaps": [
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "证据不足，无法形成结论。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标视频在前 15 秒内的开场部分，0-3 秒内口播内容为'三个技巧，让你的早餐五分钟就能做好'，同时屏幕文字显示'5分钟早餐 3个技巧'，有效吸引观众注意力。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:T@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ]
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "no_proof"
+            ],
+            "hits": [
+              "no_proof"
+            ],
+            "forbidden": [
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 2,
+            "gapCount": 1,
+            "quotedFindings": 2,
+            "typedFindings": 2,
+            "citedRefs": 13,
+            "invalidRefs": 0,
+            "matchModes": {
+              "type": 1
+            }
+          }
+        },
+        {
+          "caseId": "c06_pacing_dense",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 17.9,
+          "usage": {
+            "modelCalls": 8,
+            "inputTokens": 42846,
+            "outputTokens": 3075,
+            "totalTokens": 45921
+          },
+          "retries": 2,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在前 15 秒内，开场口播为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00），同时屏幕文字显示'5分钟早餐 3个技巧'（OCR:T@00:00:00），有效吸引观众注意力。",
+              "differenceText": "参考视频的开场口播与屏幕文字内容与目标视频相同，均为'三个技巧，让你的早餐五分钟就能做好'（ASR:R1@00:00:00）和'5分钟早餐 3个技巧'（OCR:R1@00:00:00），没有显著差异。",
+              "suggestedAction": "保持目标视频的开场内容与节奏。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00"
+              ],
+              "confidence": 1.0
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "GAP",
+              "findingType": "value_late",
+              "observation": "目标视频在第 65 秒（ASR:T@01:05:12）首次提到'这样做之后我每天早上只花五分钟，比以前省了二十分钟'，明确了观众的收益。",
+              "differenceText": "参考视频在第 30 秒（ASR:R1@00:00:30）就清晰地表述了收益，且在后续有进一步的证明和行动号召。",
+              "suggestedAction": "将第 65 秒的'这样做之后我每天早上只花五分钟，比以前省了二十分钟'提前到第 30 秒，并在前面加上相关的收益提示。",
+              "quotes": [
+                {
+                  "ref": "ASR:R1@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                },
+                {
+                  "ref": "ASR:T@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:R1@00:00:30",
+                "ASR:R1@00:00:30"
+              ],
+              "confidence": 0.0
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频与参考视频在开场内容上表现相当，均有效吸引观众注意力。然而，目标视频在价值传递方面存在明显差距，未能及时明确观众的收益，导致信息传递不够有效。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "findingType": "value_late",
+                "suggestedAction": "将第 65 秒的'这样做之后我每天早上只花五分钟，比以前省了二十分钟'提前到第 30 秒，并在前面加上相关的收益提示。",
+                "confidence": 0.0,
+                "rationale": "价值传递：目标视频在第 65 秒才首次提到观众的收益，未能及时吸引观众的兴趣。"
+              }
+            ],
+            "mergedActions": [
+              "将第 65 秒的收益提示提前到第 30 秒，并在前面增加相关的收益信息。保持目标视频的开场内容与节奏。"
+            ],
+            "evidenceGaps": [
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "证据不足，无法形成结论。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标视频在前 15 秒内，开场口播为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00），同时屏幕文字显示'5分钟早餐 3个技巧'（OCR:T@00:00:00），有效吸引观众注意力。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:T@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ]
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "pacing_too_dense"
+            ],
+            "hits": [],
+            "forbidden": [
+              "pacing_too_slow",
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 2,
+            "gapCount": 1,
+            "quotedFindings": 2,
+            "typedFindings": 2,
+            "citedRefs": 9,
+            "invalidRefs": 2,
+            "matchModes": {
+              "type": 1
+            }
+          }
+        },
+        {
+          "caseId": "c07_pacing_slow",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 8.3,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 17084,
+            "outputTokens": 1401,
+            "totalTokens": 18485
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标在本维度的具体事实：在第 0 秒，口播说了'三个技巧，让你的早餐五分钟就能做好'，同时屏幕文字显示'5分钟早餐 3个技巧'，这在前 3 秒内建立了观看的兴趣。",
+              "differenceText": "与参考的具体差异：参考视频在第 0 秒也有相同的口播和屏幕文字，内容一致。",
+              "suggestedAction": "保持目标视频的开场内容和节奏。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00",
+                "SCENE:T#1"
+              ],
+              "confidence": 1.0
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在第 5 秒首次提到收益，口播内容为'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05），并在结尾有行动号召'觉得有用就关注我，下期教你做便当'（ASR:T@01:20）。",
+              "differenceText": "参考视频在第 5 秒也首次提到收益，且结尾同样有行动号召，内容相似。",
+              "suggestedAction": "保持现有结构和内容。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                },
+                {
+                  "ref": "ASR:T@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@01:05",
+                "FRAME:T@01:20",
+                "FRAME:R1@01:05",
+                "FRAME:R1@01:20",
+                "ASR:T@01:05",
+                "ASR:T@01:20"
+              ],
+              "confidence": 1.0
+            }
+          ],
+          "synthesis": {
+            "source": "rule",
+            "summary": "目标视频在已诊断的维度上不弱于参考视频，没有需要优先改进的问题。（另有 1 个维度因证据不足未下结论）",
+            "priorities": [],
+            "mergedActions": [],
+            "evidenceGaps": [
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "证据不足，无法形成明确结论。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标在本维度的具体事实：在第 0 秒，口播说了'三个技巧，让你的早餐五分钟就能做好'，同时屏幕文字显示'5分钟早餐 3个技巧'，这在前 3 秒内建立了观看的兴趣。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:T@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ]
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "observation": "目标视频在第 5 秒首次提到收益，口播内容为'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05），并在结尾有行动号召'觉得有用就关注我，下期教你做便当'（ASR:T@01:20）。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:01:05",
+                    "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                  },
+                  {
+                    "ref": "ASR:T@00:01:20",
+                    "text": "觉得有用就关注我，下期教你做便当"
+                  }
+                ]
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "pacing_too_slow"
+            ],
+            "hits": [],
+            "forbidden": [
+              "pacing_too_dense",
+              "no_cta"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 2,
+            "gapCount": 0,
+            "quotedFindings": 2,
+            "typedFindings": 2,
+            "citedRefs": 17,
+            "invalidRefs": 0,
+            "matchModes": {}
+          }
+        },
+        {
+          "caseId": "c08_structure_unclear",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 8.5,
+          "usage": {
+            "modelCalls": 5,
+            "inputTokens": 23582,
+            "outputTokens": 1967,
+            "totalTokens": 25549
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在前 3 秒内有明确的口播内容，'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00），并且在前 4 秒内有屏幕文字'5分钟早餐 3个技巧'（OCR:T@00:00:00），有效吸引观众注意。",
+              "differenceText": "参考视频在前 3 秒内同样有口播内容，'三个技巧，让你的早餐五分钟就能做好'（ASR:R1@00:00:00），并且在前 4 秒内有屏幕文字'5分钟早餐 3个技巧'（OCR:R1@00:00:00），内容和结构相似。",
+              "suggestedAction": "保持目标视频的开场内容和结构。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00"
+              ],
+              "confidence": 0.0
+            }
+          ],
+          "synthesis": {
+            "source": "rule",
+            "summary": "目标视频在已诊断的维度上不弱于参考视频，没有需要优先改进的问题。（另有 2 个维度因证据不足未下结论）",
+            "priorities": [],
+            "mergedActions": [],
+            "evidenceGaps": [
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "缺乏足够的证据来支持结构和节奏的判断，无法进行有效比较。",
+                "systemFailure": false
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "reason": "证据不足，无法确认目标视频的收益首次出现时间及是否有结果证明。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标视频在前 3 秒内有明确的口播内容，'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00），并且在前 4 秒内有屏幕文字'5分钟早餐 3个技巧'（OCR:T@00:00:00），有效吸引观众注意。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:T@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ]
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "structure_unclear"
+            ],
+            "hits": [],
+            "forbidden": [
+              "no_cta",
+              "hook_no_value_promise"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 1,
+            "gapCount": 0,
+            "quotedFindings": 1,
+            "typedFindings": 1,
+            "citedRefs": 6,
+            "invalidRefs": 0,
+            "matchModes": {}
+          }
+        },
+        {
+          "caseId": "c09_strength_hook",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 8.2,
+          "usage": {
+            "modelCalls": 5,
+            "inputTokens": 21713,
+            "outputTokens": 2067,
+            "totalTokens": 23780
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "STRENGTH",
+              "findingType": "strength",
+              "observation": "目标视频在前 3 秒内通过口播 '三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00）和屏幕文字 '5分钟早餐 3个技巧'（OCR:T@00:00:00）快速建立了观众的兴趣和价值预期。",
+              "differenceText": "参考视频在前 3 秒内口播 '大家好，今天聊聊早餐'（ASR:R1@00:00:00），未能明确传达价值承诺。",
+              "suggestedAction": "保持目标视频的开场内容和节奏。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00"
+              ],
+              "confidence": 1.0
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在第 1 秒首次提到收益，口播内容为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00）。在第 65 秒，明确表述了结果'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05）。",
+              "differenceText": "参考视频在第 1 秒也首次提到收益，口播内容为'大家好，今天聊聊早餐'（ASR:R1@00:00:00）。在第 65 秒，明确表述了结果'以前25分钟 → 现在5分钟'（OCR:R1@00:01:05）。",
+              "suggestedAction": "保持目标视频的结构和内容",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:R1@00:00:00",
+                  "text": "大家好，今天聊聊早餐"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:R1@00:01:05",
+                "ASR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "ASR:R1@00:00:00",
+                "OCR:R1@00:01:05"
+              ],
+              "confidence": 1.0
+            }
+          ],
+          "synthesis": {
+            "source": "rule",
+            "summary": "目标视频在已诊断的维度上不弱于参考视频，没有需要优先改进的问题。优势：开场钩子。（另有 1 个维度因证据不足未下结论）",
+            "priorities": [],
+            "mergedActions": [],
+            "evidenceGaps": [
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "证据不足，无法形成可靠结论。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标视频在前 3 秒内通过口播 '三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00）和屏幕文字 '5分钟早餐 3个技巧'（OCR:T@00:00:00）快速建立了观众的兴趣和价值预期。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:T@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ]
+              }
+            ],
+            "parity": [
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "observation": "目标视频在第 1 秒首次提到收益，口播内容为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00）。在第 65 秒，明确表述了结果'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05）。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "ASR:R1@00:00:00",
+                    "text": "大家好，今天聊聊早餐"
+                  }
+                ]
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [],
+            "hits": [],
+            "forbidden": [
+              "hook_no_value_promise",
+              "hook_slow_start",
+              "hook_weak_visual_text",
+              "no_cta"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [
+              "HOOK"
+            ],
+            "strengthMisreported": [],
+            "findingCount": 2,
+            "gapCount": 0,
+            "quotedFindings": 2,
+            "typedFindings": 2,
+            "citedRefs": 14,
+            "invalidRefs": 0,
+            "matchModes": {}
+          }
+        },
+        {
+          "caseId": "c10_strength_value",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 9.5,
+          "usage": {
+            "modelCalls": 5,
+            "inputTokens": 20603,
+            "outputTokens": 2080,
+            "totalTokens": 22683
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "STRENGTH",
+              "findingType": "strength",
+              "observation": "目标视频在前 3-5 秒内使用了口播和屏幕文字，明确传达了价值承诺。具体为：在 0-3 秒内，口播内容为'三个技巧，让你的早餐五分钟就能做好'，同时屏幕文字显示'5分钟早餐 3个技巧'，这为观众提供了清晰的观看理由。",
+              "differenceText": "参考视频在前 3-5 秒内的口播内容为'早餐其实可以很简单'，屏幕文字为'简单早餐'，虽然也传达了简单的概念，但没有明确的价值承诺和具体的技巧，吸引力相对较弱。",
+              "suggestedAction": "保持目标视频的开场内容和结构。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00",
+                "SCENE:T#1"
+              ],
+              "confidence": 1.0
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "STRENGTH",
+              "findingType": "strength",
+              "observation": "在目标视频中，观众收益首次出现在第 65 秒，口播内容为'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05），并且在结尾处有行动号召'觉得有用就关注我，下期教你做便当'（ASR:T@00:01:20）。",
+              "differenceText": "参考视频中，收益首次出现较晚，在第 70 秒（ASR:R1@00:01:10），且没有明确的行动号召。",
+              "suggestedAction": "保持目前的收益表达和行动号召方式。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                },
+                {
+                  "ref": "ASR:T@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:01:05",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:01:10",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20",
+                "ASR:R1@00:01:10"
+              ],
+              "confidence": 1.0
+            }
+          ],
+          "synthesis": {
+            "source": "rule",
+            "summary": "目标视频在已诊断的维度上不弱于参考视频，没有需要优先改进的问题。优势：开场钩子、价值传递。（另有 1 个维度因证据不足未下结论）",
+            "priorities": [],
+            "mergedActions": [],
+            "evidenceGaps": [
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "证据不足，无法形成结论。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标视频在前 3-5 秒内使用了口播和屏幕文字，明确传达了价值承诺。具体为：在 0-3 秒内，口播内容为'三个技巧，让你的早餐五分钟就能做好'，同时屏幕文字显示'5分钟早餐 3个技巧'，这为观众提供了清晰的观看理由。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:T@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ]
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "observation": "在目标视频中，观众收益首次出现在第 65 秒，口播内容为'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05），并且在结尾处有行动号召'觉得有用就关注我，下期教你做便当'（ASR:T@00:01:20）。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:01:05",
+                    "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                  },
+                  {
+                    "ref": "ASR:T@00:01:20",
+                    "text": "觉得有用就关注我，下期教你做便当"
+                  }
+                ]
+              }
+            ],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [],
+            "hits": [],
+            "forbidden": [
+              "value_late",
+              "value_unclear",
+              "no_cta",
+              "no_proof"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [
+              "VALUE_DELIVERY"
+            ],
+            "strengthMisreported": [],
+            "findingCount": 2,
+            "gapCount": 0,
+            "quotedFindings": 2,
+            "typedFindings": 2,
+            "citedRefs": 16,
+            "invalidRefs": 0,
+            "matchModes": {}
+          }
+        },
+        {
+          "caseId": "c11_contradiction_bait",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 8.4,
+          "usage": {
+            "modelCalls": 5,
+            "inputTokens": 21743,
+            "outputTokens": 2002,
+            "totalTokens": 23745
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在0到3秒内的口播为'三个技巧，让你的早餐五分钟就能做好'，同时在屏幕上没有显示相关文字。参考视频在同样时间段内的口播和屏幕文字均为'三个技巧，让你的早餐五分钟就能做好'，并且在0到4秒内有屏幕文字'5分钟早餐 3个技巧'，这为观众提供了明确的价值承诺。",
+              "differenceText": "目标视频在开场没有屏幕文字强化，而参考视频在开场有屏幕文字'5分钟早餐 3个技巧'，增强了观众的兴趣和价值预期。",
+              "suggestedAction": "保持目标视频的口播内容，但建议在前3秒添加屏幕文字'5分钟早餐 3个技巧'以增强视觉吸引力。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:R1@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:R1@00:00:00"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频（T）在结构和节奏方面表现良好，镜头切换频率和信息密度与参考视频（R1）相似。目标视频的镜头数为15，平均镜头时长为5.87秒，参考视频的镜头数为15，平均镜头时长为5.87秒。",
+              "differenceText": "目标视频（T）和参考视频（R1）在镜头切换和信息分段上没有显著差异，均匀的镜头分布和信息传递节奏保持一致。",
+              "suggestedAction": "保持当前的结构和节奏设计。",
+              "quotes": [],
+              "citedRefs": [
+                "SCENE:T#15",
+                "SCENE:R1#15"
+              ],
+              "confidence": 0.8
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在第 5 秒首次提到收益，口播内容为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00）。在第 65 秒，口播内容提到'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05），并在结尾有行动号召'觉得有用就关注我，下期教你做便当'（ASR:T@00:01:20）。",
+              "differenceText": "参考视频在第 5 秒也首次提到收益，且在结尾有明确的行动号召，内容相似。",
+              "suggestedAction": "保持现有结构和内容。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:T@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:01:05",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:01:05",
+                "ASR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20"
+              ],
+              "confidence": 1.0
+            }
+          ],
+          "synthesis": {
+            "source": "rule",
+            "summary": "目标视频在已诊断的维度上不弱于参考视频，没有需要优先改进的问题。",
+            "priorities": [],
+            "mergedActions": [],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标视频在0到3秒内的口播为'三个技巧，让你的早餐五分钟就能做好'，同时在屏幕上没有显示相关文字。参考视频在同样时间段内的口播和屏幕文字均为'三个技巧，让你的早餐五分钟就能做好'，并且在0到4秒内有屏幕文字'5分钟早餐 3个技巧'，这为观众提供了明确的价值承诺。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:R1@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ]
+              },
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "observation": "目标视频（T）在结构和节奏方面表现良好，镜头切换频率和信息密度与参考视频（R1）相似。目标视频的镜头数为15，平均镜头时长为5.87秒，参考视频的镜头数为15，平均镜头时长为5.87秒。",
+                "quotes": []
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "observation": "目标视频在第 5 秒首次提到收益，口播内容为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00）。在第 65 秒，口播内容提到'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05），并在结尾有行动号召'觉得有用就关注我，下期教你做便当'（ASR:T@00:01:20）。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "ASR:T@00:01:05",
+                    "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                  }
+                ]
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED"
+          },
+          "score": {
+            "expected": [
+              "hook_weak_visual_text"
+            ],
+            "hits": [],
+            "forbidden": [
+              "hook_no_value_promise",
+              "value_late",
+              "value_unclear"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 0,
+            "quotedFindings": 2,
+            "typedFindings": 3,
+            "citedRefs": 19,
+            "invalidRefs": 0,
+            "matchModes": {}
+          }
+        },
+        {
+          "caseId": "c12_asr_failed",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 8.7,
+          "usage": {
+            "modelCalls": 6,
+            "inputTokens": 25819,
+            "outputTokens": 2114,
+            "totalTokens": 27933
+          },
+          "retries": 1,
+          "findings": [],
+          "synthesis": {
+            "source": "rule",
+            "summary": "各维度均未形成可靠结论，需要补充证据后重新诊断。（另有 3 个维度因证据不足未下结论）",
+            "priorities": [],
+            "mergedActions": [],
+            "evidenceGaps": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "reason": "目标视频没有口播证据，无法判断开场是否有效吸引观众。",
+                "systemFailure": false
+              },
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "目标视频没有口播证据，无法进行有效的结构和节奏分析。",
+                "systemFailure": false
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "reason": "目标视频没有口播证据，无法判断用户收益的具体表述和行动号召的清晰度。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "value_late"
+            ],
+            "hits": [],
+            "forbidden": [
+              "no_cta"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 0,
+            "gapCount": 0,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 0,
+            "invalidRefs": 0,
+            "matchModes": {}
+          }
+        },
+        {
+          "caseId": "c13_truncated_long_video",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 10.8,
+          "usage": {
+            "modelCalls": 6,
+            "inputTokens": 27529,
+            "outputTokens": 2578,
+            "totalTokens": 30107
+          },
+          "retries": 1,
+          "findings": [],
+          "synthesis": {
+            "source": "rule",
+            "summary": "各维度均未形成可靠结论，需要补充证据后重新诊断。（另有 3 个维度因证据不足未下结论）",
+            "priorities": [],
+            "mergedActions": [],
+            "evidenceGaps": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "reason": "目标视频的开场内容缺乏足够的证据来判断其吸引力，尤其是没有明确的价值承诺或情绪张力。",
+                "systemFailure": false
+              },
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "缺乏足够的证据来支持对目标视频的结构和节奏的判断。",
+                "systemFailure": false
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "reason": "缺乏足够的证据来判断目标视频的用户收益和行动号召的清晰度。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "hook_no_value_promise"
+            ],
+            "hits": [],
+            "forbidden": [
+              "no_cta"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 0,
+            "gapCount": 0,
+            "quotedFindings": 0,
+            "typedFindings": 0,
+            "citedRefs": 0,
+            "invalidRefs": 0,
+            "matchModes": {}
+          }
+        },
+        {
+          "caseId": "c14_equal_quality",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 7.7,
+          "usage": {
+            "modelCalls": 4,
+            "inputTokens": 18462,
+            "outputTokens": 1567,
+            "totalTokens": 20029
+          },
+          "retries": 1,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在前 15 秒内，开场的口播为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00），同时屏幕文字显示'5分钟早餐 3个技巧'（OCR:T@00:00:00），有效地吸引了观众的注意力，建立了观看的兴趣和价值预期。",
+              "differenceText": "参考视频的开场口播和屏幕文字与目标视频相同，均为'三个技巧，让你的早餐五分钟就能做好'（ASR:R1@00:00:00）和'5分钟早餐 3个技巧'（OCR:R1@00:00:00），因此在HOOK维度上，两者没有显著差距。",
+              "suggestedAction": "保持目标视频的开场内容和结构。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00"
+              ],
+              "confidence": 1.0
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在第 1 秒首次提到收益，口播内容为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00）。在第 65 秒时，口播提到'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05），并在结尾有行动号召'觉得有用就关注我，下期教你做便当'（ASR:T@00:01:20）。",
+              "differenceText": "参考视频在第 1 秒也首次提到收益，且在结尾有类似的行动号召，整体结构和收益传达方式相似。",
+              "suggestedAction": "保持现有结构和内容。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "ASR:T@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:T@00:01:20",
+                "FRAME:R1@00:00:00",
+                "FRAME:R1@00:01:20",
+                "ASR:T@00:00:00",
+                "ASR:T@00:01:05",
+                "ASR:T@00:01:20"
+              ],
+              "confidence": 1.0
+            }
+          ],
+          "synthesis": {
+            "source": "rule",
+            "summary": "目标视频在已诊断的维度上不弱于参考视频，没有需要优先改进的问题。（另有 1 个维度因证据不足未下结论）",
+            "priorities": [],
+            "mergedActions": [],
+            "evidenceGaps": [
+              {
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "reason": "缺乏足够的证据来支持结构和节奏的判断，无法形成明确结论。",
+                "systemFailure": false
+              }
+            ],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标视频在前 15 秒内，开场的口播为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00），同时屏幕文字显示'5分钟早餐 3个技巧'（OCR:T@00:00:00），有效地吸引了观众的注意力，建立了观看的兴趣和价值预期。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:T@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ]
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "observation": "目标视频在第 1 秒首次提到收益，口播内容为'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00）。在第 65 秒时，口播提到'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@00:01:05），并在结尾有行动号召'觉得有用就关注我，下期教你做便当'（ASR:T@00:01:20）。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "ASR:T@00:01:20",
+                    "text": "觉得有用就关注我，下期教你做便当"
+                  }
+                ]
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [],
+            "hits": [],
+            "forbidden": [
+              "hook_no_value_promise",
+              "hook_slow_start",
+              "pacing_too_dense",
+              "pacing_too_slow",
+              "value_late",
+              "no_cta",
+              "no_proof"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 2,
+            "gapCount": 0,
+            "quotedFindings": 2,
+            "typedFindings": 2,
+            "citedRefs": 17,
+            "invalidRefs": 0,
+            "matchModes": {}
+          }
+        },
+        {
+          "caseId": "c15_two_references_dense",
+          "status": "success",
+          "error": "",
+          "latencySeconds": 16.4,
+          "usage": {
+            "modelCalls": 8,
+            "inputTokens": 54226,
+            "outputTokens": 3011,
+            "totalTokens": 57237
+          },
+          "retries": 2,
+          "findings": [
+            {
+              "dimension": "HOOK",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在前3秒内有明确的口播内容，'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00），同时屏幕文字也显示'5分钟早餐 3个技巧'（OCR:T@00:00:00），快速建立了观众的兴趣。",
+              "differenceText": "参考视频R1和R2在开场的口播和屏幕文字内容与目标视频一致，均在前3秒内提供了相同的信息，且都没有明显的差异。",
+              "suggestedAction": "保持目标视频的开场内容和节奏。",
+              "quotes": [
+                {
+                  "ref": "ASR:T@00:00:00",
+                  "text": "三个技巧，让你的早餐五分钟就能做好"
+                },
+                {
+                  "ref": "OCR:T@00:00:00",
+                  "text": "5分钟早餐 3个技巧"
+                }
+              ],
+              "citedRefs": [
+                "FRAME:T@00:00:00",
+                "FRAME:R1@00:00:00",
+                "FRAME:R2@00:00:00",
+                "ASR:T@00:00:00",
+                "OCR:T@00:00:00"
+              ],
+              "confidence": 0.0
+            },
+            {
+              "dimension": "STRUCTURE_RHYTHM",
+              "polarity": "GAP",
+              "findingType": "pacing_too_dense",
+              "observation": "目标视频在前 88 秒内有 59 个镜头（平均镜头时长约 1.5 秒），而参考视频 R1 和 R2 各有 15 个镜头（平均镜头时长约 6 秒）。",
+              "differenceText": "目标视频的镜头数为 59，时长分布为 1.5 秒，而参考视频 R1 和 R2 的镜头数为 15，时长分布为 6 秒。",
+              "suggestedAction": "将目标视频的镜头时长适当延长，例如将部分 1.5 秒的镜头调整为 3 秒，以降低切换频率。",
+              "quotes": [],
+              "citedRefs": [
+                "SCENE:T#1",
+                "SCENE:T#2",
+                "SCENE:T#3",
+                "SCENE:R1#1",
+                "SCENE:R1#2",
+                "SCENE:R2#1"
+              ],
+              "confidence": 0.0
+            },
+            {
+              "dimension": "VALUE_DELIVERY",
+              "polarity": "PARITY",
+              "findingType": "parity",
+              "observation": "目标视频在第 5 秒首次提到收益，口播内容为'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@01:05:12），并在结尾有行动号召'觉得有用就关注我，下期教你做便当'（ASR:T@01:20:25）。",
+              "differenceText": "参考视频在第 5 秒也首次提到收益，内容相同，并且在结尾也有类似的行动号召。",
+              "suggestedAction": "保持目标视频的结构和内容。",
+              "quotes": [
+                {
+                  "ref": "ASR:R1@00:01:05",
+                  "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                },
+                {
+                  "ref": "ASR:R1@00:01:20",
+                  "text": "觉得有用就关注我，下期教你做便当"
+                }
+              ],
+              "citedRefs": [],
+              "confidence": 1.0
+            }
+          ],
+          "synthesis": {
+            "source": "llm",
+            "summary": "目标视频在开场和收益传递方面与参考视频相当，能够有效吸引观众的注意力。然而，目标视频的镜头切换过于频繁，导致节奏显得紧凑，影响了观看体验。",
+            "priorities": [
+              {
+                "rank": 1,
+                "skillKey": "structure_rhythm_analysis",
+                "dimension": "STRUCTURE_RHYTHM",
+                "findingType": "pacing_too_dense",
+                "suggestedAction": "将目标视频的镜头时长适当延长，例如将部分 1.5 秒的镜头调整为 3 秒，以降低切换频率。",
+                "confidence": 0.0,
+                "rationale": "镜头时长过短导致节奏过于密集，影响观众的理解和吸收。"
+              }
+            ],
+            "mergedActions": [
+              "将目标视频的部分镜头时长从1.5秒调整为3秒，以降低切换频率，改善观看体验。"
+            ],
+            "evidenceGaps": [],
+            "strengths": [],
+            "parity": [
+              {
+                "skillKey": "hook_analysis",
+                "dimension": "HOOK",
+                "observation": "目标视频在前3秒内有明确的口播内容，'三个技巧，让你的早餐五分钟就能做好'（ASR:T@00:00:00），同时屏幕文字也显示'5分钟早餐 3个技巧'（OCR:T@00:00:00），快速建立了观众的兴趣。",
+                "quotes": [
+                  {
+                    "ref": "ASR:T@00:00:00",
+                    "text": "三个技巧，让你的早餐五分钟就能做好"
+                  },
+                  {
+                    "ref": "OCR:T@00:00:00",
+                    "text": "5分钟早餐 3个技巧"
+                  }
+                ]
+              },
+              {
+                "skillKey": "value_delivery_analysis",
+                "dimension": "VALUE_DELIVERY",
+                "observation": "目标视频在第 5 秒首次提到收益，口播内容为'这样做之后我每天早上只花五分钟，比以前省了二十分钟'（ASR:T@01:05:12），并在结尾有行动号召'觉得有用就关注我，下期教你做便当'（ASR:T@01:20:25）。",
+                "quotes": [
+                  {
+                    "ref": "ASR:R1@00:01:05",
+                    "text": "这样做之后我每天早上只花五分钟，比以前省了二十分钟"
+                  },
+                  {
+                    "ref": "ASR:R1@00:01:20",
+                    "text": "觉得有用就关注我，下期教你做便当"
+                  }
+                ]
+              }
+            ],
+            "conflicts": [],
+            "handoffs": [],
+            "droppedHandoffs": 0,
+            "completionStatus": "COMPLETED_WITH_GAPS"
+          },
+          "score": {
+            "expected": [
+              "pacing_too_dense"
+            ],
+            "hits": [
+              "pacing_too_dense"
+            ],
+            "forbidden": [
+              "pacing_too_slow",
+              "no_cta"
+            ],
+            "falseAlarms": [],
+            "strengthDims": [],
+            "strengthMisreported": [],
+            "findingCount": 3,
+            "gapCount": 1,
+            "quotedFindings": 2,
+            "typedFindings": 3,
+            "citedRefs": 23,
+            "invalidRefs": 6,
+            "matchModes": {
+              "type": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}

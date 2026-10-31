@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Diagnosis MVP</title>
+  <style>
+    :root {
+      --bg: #f5efe6;
+      --panel: rgba(255, 255, 255, 0.86);
+      --panel-strong: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #0f766e;
+      --primary-2: #134e4a;
+      --accent: #d97706;
+      --border: rgba(31, 41, 55, 0.12);
+      --shadow: 0 18px 50px rgba(17, 24, 39, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; min-height: 100%; }
+    body {
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.22), transparent 35%),
+        radial-gradient(circle at top right, rgba(217, 119, 6, 0.18), transparent 28%),
+        linear-gradient(180deg, #fffaf2 0%, var(--bg) 100%);
+    }
+
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+      margin-bottom: 20px;
+      align-items: stretch;
+    }
+
+    .hero-card, .panel {
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 28px;
+      min-height: 240px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -35% auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.18), rgba(217, 119, 6, 0.18));
+      filter: blur(12px);
+    }
+
+    .kicker {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.10);
+      color: var(--primary-2);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.02;
+      margin: 16px 0 14px;
+      letter-spacing: -0.04em;
+    }
+
+    .lead {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 62ch;
+      margin: 0;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 18px;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .stat .value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary-2);
+      margin-bottom: 6px;
+    }
+
+    .stat .desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 20px;
+      min-width: 0;
+    }
+
+    .span-6 { grid-column: span 6; }
+    .span-12 { grid-column: span 12; }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .panel p.sub {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .row {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 13px;
+      color: #374151;
+      font-weight: 700;
+    }
+
+    input, textarea, select, button {
+      font: inherit;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.14);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--text);
+      outline: none;
+      transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: rgba(15, 118, 110, 0.55);
+      box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.10);
+    }
+
+    textarea {
+      min-height: 108px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(15, 118, 110, 0.20);
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+
+    button.secondary {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      box-shadow: 0 12px 24px rgba(217, 119, 6, 0.20);
+    }
+
+    button.ghost {
+      background: white;
+      color: var(--primary-2);
+      border: 1px solid rgba(15, 118, 110, 0.18);
+      box-shadow: none;
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(0); opacity: .96; }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .meta .item {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid rgba(31, 41, 55, 0.08);
+    }
+
+    .meta .item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .meta .item strong {
+      font-size: 14px;
+      word-break: break-all;
+    }
+
+    pre {
+      margin: 14px 0 0;
+      padding: 16px;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 18px;
+      overflow: auto;
+      min-height: 180px;
+      max-height: 360px;
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.10);
+      color: var(--primary-2);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .span-6 { grid-column: span 12; }
+      .meta { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .wrap { padding: 18px 12px 28px; }
+      .row { grid-template-columns: 1fr; }
+      .hero-card, .panel { border-radius: 18px; }
+      .hero-card { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="kicker">Video Diagnosis MVP</div>
+        <h1>上传、抽帧、ASR、诊断，一页就能跑通。</h1>
+        <p class="lead">
+          这是一个最小可用的短视频对比诊断前端页。它直接连后端接口，
+          你可以在这里完成视频上传、任务创建、结果查询和建议查看，不需要再切换多个工具。
+        </p>
+        <div class="chips">
+          <span class="chip">同源直连</span>
+          <span class="chip">上传即处理</span>
+          <span class="chip">任务幂等</span>
+          <span class="chip">核心三维度</span>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="panel stat">
+          <div class="label">当前后端地址</div>
+          <div class="value" id="backendOriginValue">-</div>
+          <div class="desc">默认使用当前页面同源地址，可手动改成别的后端。</div>
+        </div>
+        <div class="panel stat">
+          <div class="label">已知核心维度</div>
+          <div class="value">3</div>
+          <div class="desc">HOOK、STRUCTURE_RHYTHM、VALUE_DELIVERY。</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="panel span-6">
+        <h2>1. 上传视频</h2>
+        <p class="sub">上传后会自动触发抽帧和 ASR，成功后你可以直接把返回的视频 ID 拿去创建任务。</p>
+        <div class="form" id="uploadForm">
+          <div class="row">
+            <div class="field">
+              <label for="backendOrigin">后端地址</label>
+              <input id="backendOrigin" type="text" placeholder="http://localhost:8080" />
+            </div>
+            <div class="field">
+              <label for="role">角色</label>
+              <select id="role">
+                <option value="target">target</option>
+                <option value="reference">reference</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="file">视频文件</label>
+            <input id="file" type="file" accept="video/*" />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="title">标题</label>
+              <input id="title" type="text" placeholder="视频标题" />
+            </div>
+            <div class="field">
+              <label for="coverUrl">封面 URL</label>
+              <input id="coverUrl" type="text" placeholder="可选" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="description">描述</label>
+            <textarea id="description" placeholder="可选"></textarea>
+          </div>
+          <div class="actions">
+            <button type="button" id="uploadBtn">上传并自动处理</button>
+            <button type="button" class="ghost" id="fillDemoVideoBtn">填充演示值</button>
+          </div>
+        </div>
+        <pre id="uploadOutput">{ "hint": "上传结果会显示在这里" }</pre>
+        <div class="note">提示：上传成功后，复制返回的 `videoId` 去下方创建分析任务。</div>
+      </section>
+
+      <section class="panel span-6">
+        <h2>2. 创建分析任务</h2>
+        <p class="sub">填写目标视频和参考视频，点击创建后会返回一个任务 ID。重复提交同样输入会复用同一个任务。</p>
+        <div class="form" id="jobForm">
+          <div class="field">
+            <label for="targetVideoId">目标视频 ID</label>
+            <input id="targetVideoId" type="text" placeholder="videoId" />
+          </div>
+          <div class="field">
+            <label for="referenceVideoIds">参考视频 ID</label>
+            <input id="referenceVideoIds" type="text" placeholder="用英文逗号分隔，例如 id1,id2" />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label><input id="enableCoverAnalysis" type="checkbox" checked /> 开启封面分析</label>
+            </div>
+            <div class="field">
+              <label><input id="enablePerformanceAnalysis" type="checkbox" /> 开启性能分析</label>
+            </div>
+          </div>
+          <div class="actions">
+            <button type="button" class="secondary" id="createJobBtn">创建任务</button>
+            <button type="button" class="ghost" id="fillDemoJobBtn">填充演示值</button>
+          </div>
+        </div>
+        <pre id="jobOutput">{ "hint": "任务创建结果会显示在这里" }</pre>
+      </section>
+
+      <section class="panel span-6">
+        <h2>3. 查询任务状态</h2>
+        <p class="sub">输入任务 ID 后，可以看状态、进度、开始时间和结束时间。</p>
+        <div class="form">
+          <div class="field">
+            <label for="queryJobId">任务 ID</label>
+            <input id="queryJobId" type="text" placeholder="jobId" />
+          </div>
+          <div class="actions">
+            <button type="button" id="queryStatusBtn">查询状态</button>
+            <button type="button" class="ghost" id="queryResultBtn">查询结果</button>
+          </div>
+        </div>
+        <pre id="queryOutput">{ "hint": "查询结果会显示在这里" }</pre>
+      </section>
+
+      <section class="panel span-6">
+        <h2>4. 最近数据</h2>
+        <p class="sub">这里会记录你最近一次上传、创建任务和查询结果，方便你联调时快速回看。</p>
+        <div class="meta">
+          <div class="item">
+            <span>最近视频 ID</span>
+            <strong id="lastVideoId">-</strong>
+          </div>
+          <div class="item">
+            <span>最近任务 ID</span>
+            <strong id="lastJobId">-</strong>
+          </div>
+          <div class="item">
+            <span>最近状态</span>
+            <strong id="lastStatus">-</strong>
+          </div>
+        </div>
+        <div class="note">
+          推荐启动方式：先开后端，再打开这个页面。页面默认读取同源地址，所以只要后端在 `http://localhost:8080`，
+          就能直接联通。
+        </div>
+      </section>
+    </div>
+
+    <div class="footer">Video Diagnosis MVP · one folder, one click, one flow.</div>
+  </div>
+
+  <script>
+    const state = {
+      lastVideoId: localStorage.getItem('vd.lastVideoId') || '',
+      lastJobId: localStorage.getItem('vd.lastJobId') || '',
+      backendOrigin: localStorage.getItem('vd.backendOrigin') || window.location.origin
+    };
+
+    const el = (id) => document.getElementById(id);
+    const pretty = (value) => JSON.stringify(value, null, 2);
+
+    function syncState() {
+      el('backendOrigin').value = state.backendOrigin;
+      el('backendOriginValue').textContent = state.backendOrigin;
+      el('lastVideoId').textContent = state.lastVideoId || '-';
+      el('lastJobId').textContent = state.lastJobId || '-';
+      el('lastStatus').textContent = localStorage.getItem('vd.lastStatus') || '-';
+    }
+
+    function setLastVideoId(value) {
+      state.lastVideoId = value || '';
+      localStorage.setItem('vd.lastVideoId', state.lastVideoId);
+      syncState();
+    }
+
+    function setLastJobId(value) {
+      state.lastJobId = value || '';
+      localStorage.setItem('vd.lastJobId', state.lastJobId);
+      syncState();
+    }
+
+    function setLastStatus(value) {
+      localStorage.setItem('vd.lastStatus', value || '');
+      syncState();
+    }
+
+    async function request(path, options = {}) {
+      const base = (el('backendOrigin').value || window.location.origin).replace(/\/$/, '');
+      state.backendOrigin = base;
+      localStorage.setItem('vd.backendOrigin', base);
+      el('backendOriginValue').textContent = base;
+      const response = await fetch(base + path, options);
+      const data = await response.json();
+      if (!response.ok) {
+        throw data;
+      }
+      return data;
+    }
+
+    function parseData(payload) {
+      return payload && typeof payload === 'object' && 'data' in payload ? payload.data : payload;
+    }
+
+    el('uploadBtn').addEventListener('click', async () => {
+      const file = el('file').files[0];
+      if (!file) {
+        el('uploadOutput').textContent = pretty({ error: '请选择一个视频文件' });
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('role', el('role').value);
+      if (el('title').value) formData.append('title', el('title').value);
+      if (el('description').value) formData.append('description', el('description').value);
+      if (el('coverUrl').value) formData.append('coverUrl', el('coverUrl').value);
+
+      el('uploadOutput').textContent = pretty({ loading: true, message: '正在上传和自动处理...' });
+
+      try {
+        const payload = await request('/api/v1/videos/upload', {
+          method: 'POST',
+          body: formData
+        });
+        const data = parseData(payload);
+        if (data && data.videoId) setLastVideoId(data.videoId);
+        if (data && data.status) setLastStatus(data.status);
+        el('uploadOutput').textContent = pretty(payload);
+        if (data && data.videoId) {
+          el('targetVideoId').value = data.videoId;
+          el('queryJobId').value = data.videoId;
+        }
+      } catch (error) {
+        el('uploadOutput').textContent = pretty(error);
+      }
+    });
+
+    el('createJobBtn').addEventListener('click', async () => {
+      const referenceIds = el('referenceVideoIds').value
+        .split(',')
+        .map((value) => value.trim())
+        .filter(Boolean);
+      const payload = {
+        targetVideoId: el('targetVideoId').value.trim(),
+        referenceVideoIds: referenceIds,
+        targetTitle: el('title').value || null,
+        targetDescription: el('description').value || null,
+        referenceTitles: [],
+        referenceDescriptions: [],
+        enableCoverAnalysis: el('enableCoverAnalysis').checked,
+        enablePerformanceAnalysis: el('enablePerformanceAnalysis').checked
+      };
+
+      el('jobOutput').textContent = pretty({ loading: true, message: '正在创建任务...' });
+
+      try {
+        const payloadResult = await request('/api/v1/analysis/jobs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = parseData(payloadResult);
+        if (data && data.jobId) {
+          setLastJobId(data.jobId);
+          setLastStatus(data.status);
+          el('queryJobId').value = data.jobId;
+        }
+        el('jobOutput').textContent = pretty(payloadResult);
+      } catch (error) {
+        el('jobOutput').textContent = pretty(error);
+      }
+    });
+
+    el('queryStatusBtn').addEventListener('click', async () => {
+      const jobId = el('queryJobId').value.trim();
+      if (!jobId) {
+        el('queryOutput').textContent = pretty({ error: '请输入任务 ID' });
+        return;
+      }
+      try {
+        const payload = await request('/api/v1/analysis/jobs/' + encodeURIComponent(jobId));
+        const data = parseData(payload);
+        if (data && data.status) setLastStatus(data.status);
+        el('queryOutput').textContent = pretty(payload);
+      } catch (error) {
+        el('queryOutput').textContent = pretty(error);
+      }
+    });
+
+    el('queryResultBtn').addEventListener('click', async () => {
+      const jobId = el('queryJobId').value.trim();
+      if (!jobId) {
+        el('queryOutput').textContent = pretty({ error: '请输入任务 ID' });
+        return;
+      }
+      try {
+        const payload = await request('/api/v1/analysis/jobs/' + encodeURIComponent(jobId) + '/result');
+        const data = parseData(payload);
+        if (data && data.status) setLastStatus(data.status);
+        el('queryOutput').textContent = pretty(payload);
+      } catch (error) {
+        el('queryOutput').textContent = pretty(error);
+      }
+    });
+
+    el('fillDemoVideoBtn').addEventListener('click', () => {
+      el('title').value = 'Demo 视频';
+      el('description').value = '这是一个联调用的演示视频。';
+      el('coverUrl').value = '';
+    });
+
+    el('fillDemoJobBtn').addEventListener('click', () => {
+      el('targetVideoId').value = state.lastVideoId || 'demo-target-video-id';
+      el('referenceVideoIds').value = 'demo-ref-video-id-1,demo-ref-video-id-2';
+    });
+
+    el('backendOrigin').addEventListener('change', () => {
+      state.backendOrigin = (el('backendOrigin').value || window.location.origin).replace(/\/$/, '');
+      localStorage.setItem('vd.backendOrigin', state.backendOrigin);
+      syncState();
+    });
+
+    syncState();
+  </script>
+</body>
+</html>
